@@ -8,7 +8,6 @@
 #  slug         :string
 #  show_in_menu :boolean
 #  parent_id    :integer
-#  admin_id     :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

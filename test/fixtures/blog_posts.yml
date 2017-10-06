@@ -7,7 +7,7 @@
 #  content    :text
 #  posted_at  :datetime
 #  slug       :string
-#  admin_id   :integer
+#  author_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

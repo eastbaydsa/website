@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :admins
-
-  namespace :admin do
-    resources :pages
-    resources :blog_posts
-  end
+  devise_for :admins, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   get 'blog', to: 'blog#index'
   get 'blog/*slug', to: 'blog#show'

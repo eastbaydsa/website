@@ -13,7 +13,7 @@
     <ul>
       <% if admin_signed_in? %>
         <li>
-          <%= link_to 'Go to admin', admin_pages_path %>
+          <%= link_to 'Go to admin', admin_path %>
         </li>
         <li>
           <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>
