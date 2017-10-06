@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  label      :string
 #  slug       :string
-#  order      :integer
+#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

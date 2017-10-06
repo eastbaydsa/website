@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'activeadmin'
+gem 'acts_as_list'
+gem 'activeadmin_sortable_table'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
