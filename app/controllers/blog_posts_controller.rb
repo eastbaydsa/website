@@ -1,7 +1,11 @@
 class BlogPostsController < ApplicationController
 
+  def index
+    @posts = BlogPost.all
+  end
+
   def show
-    raise params.inspect
+    @post = BlogPost.find_by_slug!(params[:slug])
   end
 
 end

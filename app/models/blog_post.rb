@@ -13,5 +13,7 @@
 #
 
 class BlogPost < ApplicationRecord
-  belongs_to :author, class_name: Admin
+  include HasSlug
+
+  belongs_to :author, class_name: 'Admin'
 end

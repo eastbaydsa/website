@@ -13,5 +13,7 @@
 #
 
 class Page < ApplicationRecord
-  belongs_to :parent, class_name: Page, optional: true
+  include HasSlug
+
+  belongs_to :parent, class_name: 'Page', optional: true
 end

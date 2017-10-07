@@ -1,0 +1,7 @@
+<% @posts.each do |post| %>
+  <article>
+    <h2><%= post.title %></h2>
+    <p><%= post.posted_at %></p>
+    <%= link_to 'Read more', blog_post_path(post.slug) %>
+  </article>
+<% end %>
