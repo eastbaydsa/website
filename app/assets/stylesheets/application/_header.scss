@@ -1,0 +1,38 @@
+@import 'variables';
+
+.header {
+  background: $dsa_red;
+
+  a {
+    color: white;
+  }
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.header__logo {
+  padding-top: $default_spacing/2;
+}
+
+.header__menu {
+  list-style: none;
+  display: flex;
+}
+
+.header__menu_item {
+  margin-left: $default_spacing;
+  padding-bottom: $default_spacing/2;
+  border-bottom: 4px solid transparent;
+
+  &:hover {
+    border-color: rgba(255,255,255,0.5);
+  }
+}
+
+.header__menu-item--active {
+
+}

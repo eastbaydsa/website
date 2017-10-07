@@ -15,25 +15,27 @@
         <div class='container'>
           <div class='admin__menu'>
             <%= link_to 'Admin Dashboard →', admin_dashboard_path, class: 'admin__link' %>
-            <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'admin__link' %>            
+            <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'admin__link' %>
           </div>
         </div>
       </section>
     <% end %>
 
-    <div class='container'>
-      <h1>
-        <%= link_to 'East Bay DSA', root_path %>
-      </h1>
+    <div class='header'>
+      <div class='container header__container '>
+        <h1 class='header__logo'>
+          <%= link_to 'East Bay DSA', root_path %>
+        </h1>
+
+        <ul class='header__menu'>
+          <% @menu.each do |item| %>
+            <li class='header__menu_item'><%= link_to item.label, '/' + item.slug %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
 
     <div class='container'>
-      <ul>
-        <% @menu.each do |item| %>
-          <li><%= link_to item.label, '/' + item.slug %></li>
-        <% end %>
-      </ul>
-
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: name %>
       <% end %>
@@ -41,8 +43,10 @@
       <%= yield %>
     </div>
 
-    <div class='container'>
-      Footer
+    <div class='footer'>
+      <div class='container'>
+        Footer
+      </div>
     </div>
   </body>
 </html>
