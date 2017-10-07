@@ -1,0 +1,20 @@
+@import 'variables';
+
+.admin {
+  background: $dsa_black;
+  padding: $default_spacing/2 0;
+}
+
+.admin__menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin__link {
+  color: $dsa_white;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-color: $dsa_red;
+  }
+}

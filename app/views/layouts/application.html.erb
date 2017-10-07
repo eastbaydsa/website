@@ -10,42 +10,39 @@
 
   <body>
 
-    <ul>
-      <% if admin_signed_in? %>
-        <li>
-          <%= link_to 'Go to admin', admin_dashboard_path %>
-        </li>
-        <li>
-          <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>
-        </li>
-      <% else %>
-        <li>
-        <%= link_to('Login', new_admin_session_path)  %>
-        </li>
-      <% end %>
-    </ul>
-
-    <hr/ >
-
-    <h1>
-      <%= link_to 'East Bay DSA', root_path %>
-    </h1>
-
-    <ul>
-      <% @menu.each do |item| %>
-        <li><%= link_to item.label, '/' + item.slug %></li>
-      <% end %>
-    </ul>
-
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+    <% if admin_signed_in? %>
+      <section class='admin'>
+        <div class='container'>
+          <div class='admin__menu'>
+            <%= link_to 'Admin Dashboard →', admin_dashboard_path, class: 'admin__link' %>
+            <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'admin__link' %>            
+          </div>
+        </div>
+      </section>
     <% end %>
 
-    <%= yield %>
+    <div class='container'>
+      <h1>
+        <%= link_to 'East Bay DSA', root_path %>
+      </h1>
+    </div>
 
-    <hr />
+    <div class='container'>
+      <ul>
+        <% @menu.each do |item| %>
+          <li><%= link_to item.label, '/' + item.slug %></li>
+        <% end %>
+      </ul>
 
-    Footer
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
 
+      <%= yield %>
+    </div>
+
+    <div class='container'>
+      Footer
+    </div>
   </body>
 </html>
