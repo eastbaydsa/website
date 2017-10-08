@@ -10,7 +10,7 @@ going forward.
 Dependencies:
 
 * Ruby >= 2.4.0
-* Postgres 
+* Postgres
   * [postgresapp.com](https://postgresapp.com) is a great option here
   * Alternatively, you can install with [homebrew](https://brew.sh/)
 * bundler (gem install bundler)
@@ -44,6 +44,19 @@ foreman start
 ```
 
 Your site will be available at http://localhost:5000
+
+### NationBuilder Data
+
+Events are loaded from NationBuilder via its API. To connect to the API,
+you must supply the following three environment variables:
+
+```
+NATION_NAME=xxx
+NATION_API_TOKEN=xxx
+NATION_SITE_SLUG=xxx
+```
+
+In development, you can set these in a `.env` file at your application root.
 
 ## Deployment
 
