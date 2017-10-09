@@ -10,7 +10,9 @@ going forward.
 Dependencies:
 
 * Ruby >= 2.4.0
-* Postgres (postgresapp.com is a great option here)
+* Postgres 
+  * [postgresapp.com](https://postgresapp.com) is a great option here
+  * Alternatively, you can install with [homebrew](https://brew.sh/)
 * bundler (gem install bundler)
 * foreman (gem install foreman)
 
@@ -46,3 +48,25 @@ Your site will be available at http://localhost:5000
 ## Deployment
 
 TBD but probably Heroku
+
+## Troubleshooting
+
+### Postgres issues
+
+If you encounter this error while working with the database:
+
+```
+psql: could not connect to server: No such file or directory
+    Is the server running locally and accepting
+    connections on Unix domain socket "/var/pgsql_socket/.s.PGSQL.5432"?
+```
+
+This can be fixed by adding the following environment variable to your shell
+profile (`~/.bash_profile` or `~/.zshrc`):
+
+```bash
+export PGHOST=localhost
+```
+
+This works because if `PGHOST` is not defined, Postgres will attempt to connect
+to a Unix domain socket instead.

@@ -6,7 +6,7 @@
 #  title      :text
 #  content    :text
 #  posted_at  :datetime
-#  slug       :string
+#  slug       :string           not null
 #  author_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

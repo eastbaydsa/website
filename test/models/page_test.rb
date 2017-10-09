@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  title        :text
 #  content      :text
-#  slug         :string
+#  slug         :string           not null
 #  show_in_menu :boolean
 #  parent_id    :integer
 #  created_at   :datetime         not null
