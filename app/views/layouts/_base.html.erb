@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>East Bay DSA</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if admin_signed_in? %>
+      <section class='admin'>
+        <div class='container'>
+          <div class='admin__menu'>
+            <%= link_to 'Admin Dashboard →', admin_dashboard_path, class: 'admin__link' %>
+            <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'admin__link' %>
+          </div>
+        </div>
+      </section>
+    <% end %>
+
+    <div class='header'>
+      <div class='container header__container '>
+        <h1 class='header__logo'>
+          <%= link_to 'East Bay DSA', root_path %>
+        </h1>
+
+        <ul class='header__menu'>
+          <% @menu.each do |item| %>
+            <li class='header__menu_item'><%= link_to item.label, '/' + item.slug %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <%= yield %>
+
+    <div class='footer'>
+      <div class='footer__contact'>
+        <div class='container--flex-between'>
+          Stay in touch
+          <div class='footer__contact__links'>
+            <%= link_to 'Twitter', '#' %>
+            <%= link_to 'Facebook', '#' %>
+          </div>
+        </div>
+      </div>
+      <div class='footer__newsletter'>
+        <div class='container'>
+          Sign up for our bi-weekly newsletter:
+        </div>
+      </div>
+      <div class='footer__extra'>
+        <div class='container'>
+          Made with love by East Bay DSA 🌹
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

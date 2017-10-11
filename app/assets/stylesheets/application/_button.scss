@@ -1,0 +1,17 @@
+@import 'variables';
+
+.button {
+  display: inline-block;
+  background: $dsa_white;
+  border: 2px solid $dsa_red;
+  padding: 7px 12px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.button--reversed {
+  @extend .button;
+
+  color: $dsa_white;
+  background: $dsa_red;
+}

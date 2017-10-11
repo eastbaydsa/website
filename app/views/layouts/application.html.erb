@@ -1,54 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>East Bay DSA</title>
-    <%= csrf_meta_tags %>
+<%= render layout: 'layouts/base' do %>
+  <div class='container'>
+    <div class='content'>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-
-    <% if admin_signed_in? %>
-      <section class='admin'>
-        <div class='container'>
-          <div class='admin__menu'>
-            <%= link_to 'Admin Dashboard →', admin_dashboard_path, class: 'admin__link' %>
-            <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'admin__link' %>
-          </div>
-        </div>
-      </section>
-    <% end %>
-
-    <div class='header'>
-      <div class='container header__container '>
-        <h1 class='header__logo'>
-          <%= link_to 'East Bay DSA', root_path %>
-        </h1>
-
-        <ul class='header__menu'>
-          <% @menu.each do |item| %>
-            <li class='header__menu_item'><%= link_to item.label, '/' + item.slug %></li>
-          <% end %>
-        </ul>
-      </div>
+      <%= yield %>
     </div>
-
-    <div class='container'>
-      <div class='content'>
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, class: name %>
-        <% end %>
-
-        <%= yield %>        
-      </div>
-    </div>
-
-    <div class='footer'>
-      <div class='container'>
-        Footer
-      </div>
-    </div>
-  </body>
-</html>
+  </div>
+<% end %>
