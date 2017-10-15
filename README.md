@@ -60,7 +60,49 @@ In development, you can set these in a `.env` file at your application root.
 
 ## Deployment
 
-TBD but probably Heroku
+### Setup
+
+Some helpful info can be found
+[here](https://devcenter.heroku.com/articles/getting-started-with-rails5).
+
+Install [the Heroku Toolbelt](https://devcenter.heroku.com/articles/heroku-cli).
+You can use Homebrew to do this:
+
+```sh
+brew install heroku/brew/heroku
+```
+
+Hook your local repo up to the Heroku app by adding a Git remote:
+
+```sh
+heroku git:remote -a eastbaydsa-website-staging
+```
+
+### Deploy
+
+Use Git to push the code to Heroku:
+
+```sh
+git push heroku main:master
+```
+
+You can name any local branch you want, but if should be pushed to the `master`
+branch on Heroku.
+
+TODO(bcipriano) This is fine for the development, but once a prod app is
+running we should ensure only `main` can be pushed there.
+
+Next, run db migrations:
+
+```sh
+heroku run rake db:migrate
+```
+
+You can use the Heroku CLI to open the app in your browser:
+
+```sh
+heroku open
+```
 
 ## Troubleshooting
 
