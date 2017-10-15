@@ -1,0 +1,12 @@
+@import 'variables';
+.blog-post__header {
+  padding-bottom: $default_spacing;
+  border-bottom: 1px solid $border_color;
+  margin-bottom: $default_spacing;
+}
+
+.blog-post__posted-at {
+  margin-top: $default_spacing;
+  font-style: italic;
+  color: $light_text_color;
+}
