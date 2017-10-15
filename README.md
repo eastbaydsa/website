@@ -65,6 +65,9 @@ In development, you can set these in a `.env` file at your application root.
 Some helpful info can be found
 [here](https://devcenter.heroku.com/articles/getting-started-with-rails5).
 
+You'll need to be added as a collaborator on any Heroku apps you want to
+deploy to.
+
 Install [the Heroku Toolbelt](https://devcenter.heroku.com/articles/heroku-cli).
 You can use Homebrew to do this:
 
