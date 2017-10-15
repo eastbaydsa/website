@@ -89,7 +89,7 @@ git push heroku main:master
 You can name any local branch you want, but if should be pushed to the `master`
 branch on Heroku.
 
-TODO(bcipriano) This is fine for the development, but once a prod app is
+TODO(bcipriano) This is fine for the staging app, but once a prod app is
 running we should ensure only `main` can be pushed there.
 
 Next, run db migrations:

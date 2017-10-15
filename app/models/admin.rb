@@ -14,6 +14,11 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #
+# Indexes
+#
+#  index_admins_on_email                 (email) UNIQUE
+#  index_admins_on_reset_password_token  (reset_password_token) UNIQUE
+#
 
 class Admin < ApplicationRecord
   # Include default devise modules. Others available are:
