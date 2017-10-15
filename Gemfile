@@ -60,8 +60,13 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'annotate'
+  #gem 'annotate'
+  #gem 'annotate', github: "ctran/annotate_models", branch: "develop", require: false
+  #gem 'annotate', github: "ctran/annotate_models", branch: "develop"
+
 end
+
+gem 'annotate'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
