@@ -3,3 +3,19 @@
 .content {
   padding: $default_spacing 0;
 }
+
+article {
+  max-width: 600px;
+  line-height: 1.65;
+
+  blockquote {
+    border-left: 4px solid $border_color;
+    margin-left: $default_spacing/2;
+    padding-left: $default_spacing;
+  }
+
+  ul, ol {
+    margin-left: $default_spacing/2;
+    list-style-position: inside;
+  }
+}
