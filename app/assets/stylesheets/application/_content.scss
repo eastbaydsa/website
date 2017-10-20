@@ -4,6 +4,13 @@
   padding: $default_spacing 0;
 }
 
+/**
+ * Trix previews attachments as centered, help the render match that.
+ */
+.content a[data-trix-attachment] {
+  text-align: center;
+}
+
 article {
   max-width: 600px;
   line-height: 1.65;
