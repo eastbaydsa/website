@@ -1,3 +1,35 @@
-<h2>Home page</h2>
+<div class='home-container'>
+  <div class='home-intro'>
+    <div class='container'>
+      <%= @home.intro.html_safe %>
 
-<p>Home page goes here</p>
+      <p>
+        <%= link_to 'Attend an events', events_path, class: 'button--reversed' %>
+      </p>
+    </div>
+  </div>
+
+  <div class='featured-page'>
+    <div class='container'>
+      <div class='featured-page__item'>
+        <h4><%= @home.featured_page_1.title %></h4>
+        <%= link_to 'Learn more', page_path(@home.featured_page_1.slug), class: 'button ' %>
+      </div>
+      <div class='featured-page__item'>
+        <h4><%= @home.featured_page_2.title %></h4>
+        <%= link_to 'Learn more', page_path(@home.featured_page_2.slug), class: 'button' %>
+      </div>
+    </div>
+  </div>
+
+  <div class='upcoming-events'>
+    <div class='container'>
+      <h2>Join us at our next event</h2>
+      <p>The best way to get involved is to show up in-person.
+         We would love to see you at our next event...</p>
+      <% @events.each do |event| %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

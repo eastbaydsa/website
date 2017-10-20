@@ -1,0 +1,37 @@
+@import 'variables';
+
+.home-container {
+  flex: 1;
+}
+
+.home-intro,
+.featured-page,
+.upcoming-events {
+  padding: $default_spacing 0;
+}
+
+.home-intro {
+  background: #eee;
+  border-bottom: 3px solid $dsa_red;
+}
+
+.featured-page {
+  background: #eee;
+  border-bottom: 3px solid $dsa_red;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.featured-page__item {
+  background: white;
+  border: 1px solid $dsa_red;
+  padding: $default_spacing;
+  margin: 0 $default_spacing/4;
+  width: 33%;
+  min-width: 280px;
+  text-align: center;
+}

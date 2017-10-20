@@ -1,5 +1,15 @@
-<h1><%= @post.title %></h1>
+<div class='blog-post__header'>
+  <h1><%= @post.title %></h1>
 
-<p><%= @post.posted_at %></p>
+  <div class='blog-post__posted-at'>
+    Posted
+    <%= @post.posted_at.localtime.to_s(:long) %>
+    by
+    <%= @post.author %>
+  </div>
+</div>
 
-<%= @post.content.html_safe %>
+
+<article>
+  <%= @post.content.html_safe %>
+</article>

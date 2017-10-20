@@ -4,6 +4,7 @@
   <ul>
     <% events.each do |event| %>
       <li>
+        <%= format_time_short event.start_time %>
         <%= event.name %>
       </li>
     <% end %>

@@ -1,6 +1,28 @@
 @import 'variables';
 
 .footer {
-  background: $grey_background;
-  padding: $default_spacing 0;
+  background: #eee;
+}
+
+.footer__contact {
+  background: $dsa_red;
+  color: $dsa_white;
+  font-size: $large_font_size;
+  padding: $default_spacing/2 0;
+
+  a { color: $dsa_white; }
+}
+
+.footer__newsletter {
+  background: white;
+  border-bottom: 3px solid $dsa_red;
+  font-size: $large_font_size;
+  padding: $default_spacing/2 0;
+  text-align: center;
+}
+
+.footer__extra {
+  padding: $default_spacing/2 0;
+  color: $light-text-color;
+  text-align: center;
 }

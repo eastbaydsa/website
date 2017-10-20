@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: homes
+#
+#  id                 :integer          not null, primary key
+#  intro              :text
+#  featured_page_1_id :integer
+#  featured_page_2_id :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_home:
+  intro: Test Home
+  featured_page_1_id: 54321
+  featured_page_2_id: 98765

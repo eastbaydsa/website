@@ -19,12 +19,10 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+test_blog_post:
+  id: 12345
+  title: I am a fanatic lover of liberty
+  content: I am a fanatic lover of liberty, considering it as the unique condition under which intelligence, dignity and human happiness can develop and grow; not the purely formal liberty conceded, measured out and regulated by the State, an eternal lie which in reality represents nothing more than the privilege of some founded on the slavery of the rest; not the individualistic, egoistic, shabby, and fictitious liberty extolled by the School of J.-J. Rousseau and other schools of bourgeois liberalism, which considers the would-be rights of all men, represented by the State which limits the rights of each — an idea that leads inevitably to the reduction of the rights of each to zero.
+  slug: test-post
+  author_id: 12345
+  posted_at: <%= 5.day.ago.to_s(:db) %>
