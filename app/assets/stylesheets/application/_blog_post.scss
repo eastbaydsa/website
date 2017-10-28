@@ -10,3 +10,19 @@
   font-style: italic;
   color: $light_text_color;
 }
+
+.blog-post__snippet {
+  margin-bottom: 40px;
+}
+
+.blog-post__header-snippet {
+  padding-bottom: $compact_spacing;
+  border-bottom: 1px solid $border_color;
+  margin-bottom: $compact_spacing;
+}
+
+.blog-post__posted-at-snippet {
+  margin-top: $compact_spacing;
+  font-style: italic;
+  color: $light_text_color;
+}
