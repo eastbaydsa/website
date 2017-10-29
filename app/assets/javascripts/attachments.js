@@ -19,17 +19,6 @@ $(document).ready(function() {
     }
   });
 
-  $('input:file.s3_url').on('change', function(event) {
-    var file = $(this)[0].files[0];
-    if (file) {
-      uploadFile(file, function(progress) {
-        console.log('upload progress: ' + progress);
-      }, function(url) {
-        console.log('final url: ' + url);
-      });
-    }
-  });
-
   $('.s3_url').each(function(i, form_element) {
     setupS3UrlField($(form_element));
     refreshImagePreview($(form_element));
@@ -38,14 +27,22 @@ $(document).ready(function() {
 
 
 function setupS3UrlField($form_element) {
+  $form_element.find('.s3_url_loading').hide()
   $form_element.find('.s3_url_file').on('change', function() {
     var file = $(this)[0].files[0];
     if (file) {
+      $form_element.find('.s3_url_img').hide();
+      $form_element.find('.s3_url_loading').show();
       uploadFile(file, function(progress) {
         console.log('upload progress: ' + progress);
       }, function(url) {
-        console.log('final url: ' + url);
         $form_element.find('#home_featured_image').val(url);
+        var newImage = new Image();
+        newImage.onload = function() {
+          $form_element.find('.s3_url_loading').hide();
+          refreshImagePreview($form_element);
+        }
+        newImage.src = url;
       });
     }
   });
@@ -55,7 +52,7 @@ function setupS3UrlField($form_element) {
 function refreshImagePreview($form_element) {
   var imgUrl = $form_element.find('#home_featured_image').val();
   if (imgUrl) {
-    $form_element.find('.s3_url_img').attr('src', imgUrl);
+    $form_element.find('.s3_url_img').attr('src', imgUrl).show();
   }
 }
 

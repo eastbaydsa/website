@@ -16,7 +16,8 @@ class S3UrlInput < Formtastic::Inputs::UrlInput
     end
 
     image_preview_cell = template.content_tag :td do
-      template.image_tag('', class: 's3_url_img', style: 'width:200px;height:auto;')
+      template.image_tag('', class: 's3_url_img', style: 'width:200px;height:auto;') <<
+      template.content_tag(:div, 'Uploading...', class: 's3_url_loading')
     end
 
     image_preview_row = template.content_tag :tr do
