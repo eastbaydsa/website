@@ -8,6 +8,7 @@
 #  featured_page_2_id :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  featured_image     :string
 #
 
 require 'test_helper'
