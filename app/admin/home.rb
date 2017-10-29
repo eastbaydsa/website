@@ -4,9 +4,6 @@ ActiveAdmin.register Home do
       f.input :intro, as: :trix_editor
       f.input :featured_page_1
       f.input :featured_page_2
-      #f.input :featured_image, as: :file, :input_html => { :class => "s3_url" },
-      #    :hint => (image_tag(f.object.featured_image, style: 'width:200px;height:auto;') \
-      #              if f.object.featured_image?)
       f.input :featured_image, as: :s3_url
     end
     f.actions

@@ -60,27 +60,27 @@ function refreshImagePreview($form_element) {
 function uploadFile(file, progressCallback, successCallback) {
   $.get('/admin/admins/get_presigned_url?filename=' + file.name, {}, function(uploadUrl) {
     $.ajax({
-        type: 'PUT',
-        url: uploadUrl,
-        data: file,
-        processData: false,
-        contentType: false,
-        error: function(xhr, textStatus, errorMsg) {
-          console.log(errorMsg);
-          alert('Failed to upload file: ' + textStatus + '. See the console for more detail.');
-        },
-        xhr: function() {
-          var xhr = $.ajaxSettings.xhr();
-          xhr.upload.onprogress = function(event) {
-            var progress = event.loaded / event.total * 100;
-            return progressCallback(progress);
-          };
-          return xhr;
-        },
-        success: function(data, msg, xhr) {
-          // Strip off the signing token and other params to leave the plain URL.
-          return successCallback(uploadUrl.substring(0, uploadUrl.lastIndexOf('?')));
-        }
+      type: 'PUT',
+      url: uploadUrl,
+      data: file,
+      processData: false,
+      contentType: false,
+      error: function(xhr, textStatus, errorMsg) {
+        console.log(errorMsg);
+        alert('Failed to upload file: ' + textStatus + '. See the console for more detail.');
+      },
+      xhr: function() {
+        var xhr = $.ajaxSettings.xhr();
+        xhr.upload.onprogress = function(event) {
+          var progress = event.loaded / event.total * 100;
+          return progressCallback(progress);
+        };
+        return xhr;
+      },
+      success: function(data, msg, xhr) {
+        // Strip off the signing token and other params to leave the plain URL.
+        return successCallback(uploadUrl.substring(0, uploadUrl.lastIndexOf('?')));
+      }
     });
   });
 }
