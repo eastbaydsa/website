@@ -42,6 +42,7 @@ gem 'nationbuilder-rb', require: 'nationbuilder'
 gem 'simple_calendar', '~> 2.0'
 gem 'trix'
 gem 'annotate'
+gem 'aws-sdk-s3', '~> 1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

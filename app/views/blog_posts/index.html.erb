@@ -1,7 +1,17 @@
 <% @posts.each do |post| %>
-  <article>
-    <h2><%= post.title %></h2>
-    <p><%= post.posted_at %></p>
-    <%= link_to 'Read more', blog_post_path(post.slug) %>
+  <article class='blog-post__snippet'>
+      <div class='blog-post__header-snippet'>
+          <h2><%= post.title %></h2>
+          <div class='blog-post__posted-at-snippet'>
+              Posted
+              <%= post.posted_at.localtime.to_s(:long) %>
+              by
+              <%= post.author %>
+          </div>
+      </div>
+      <p>
+          <%= truncate(strip_tags(post.content), length: 600) %>
+          <%= link_to '(Read more)', blog_post_path(post.slug) %>
+      </p>
   </article>
 <% end %>

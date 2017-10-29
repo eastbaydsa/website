@@ -25,4 +25,13 @@ ActiveAdmin.register Admin do
     f.actions
   end
 
+  controller do
+    include ActiveAdmin::ViewsHelper
+  end
+
+  # Creates route /admin/admins/get_presigned_url.
+  collection_action :get_presigned_url, method: :get do
+    render plain: generate_presigned_url(params[:filename])
+  end
+
 end
