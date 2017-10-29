@@ -1,9 +1,9 @@
 # Custom input for transparently uploading files to S3.
+# Hides the actual text field input in favor of a file selector and an image preview.
 # If you use this input, make sure to include attachments.js as well.
 
 class S3UrlInput < Formtastic::Inputs::UrlInput
   def to_html
-
     file_input_cell = template.content_tag :td do
       builder.hidden_field(method, input_html_options) <<
       # file_field_tag requires an ID to be given for some reason. Just make sure
@@ -36,6 +36,5 @@ class S3UrlInput < Formtastic::Inputs::UrlInput
       label_html <<
       input_table
     end
-
   end
 end
