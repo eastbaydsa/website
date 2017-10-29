@@ -58,6 +58,73 @@ NATION_SITE_SLUG=xxx
 
 In development, you can set these in a `.env` file at your application root.
 
+### S3 Upload
+
+We preconfigure some fields to upload file attachments to
+[S3](https://aws.amazon.com/s3/). For this to work you must supply the
+following environment variables:
+
+```
+AWS_ACCESS_KEY_ID=xxx
+AWS_SECRET_ACCESS_KEY=xxx
+AWS_BUCKET_NAME=xxx
+```
+
+In development, you can set these in a `.env` file at your application root.
+
+The AWS key/secret you use must belong to a user with permission to create S3
+objects.
+
+The S3 bucket you use should have the following configuration. First, a bucket
+policy that allows objects to be publicly readable.
+
+```
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPublicRead",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::$AWS_BUCKET_NAME/*"
+        }
+    ]
+}
+```
+
+Substitute `$AWS_BUCKET_NAME` for your actual bucket name.
+
+Uploads are done using
+[pre-signed URLs](http://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html)
+so no general write permissions should be required.
+
+Next, set a bucket CORS policy that will allow requests coming from the site:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<CORSRule>
+    <AllowedOrigin>$SITE_FQDN</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+    <AllowedHeader>*</AllowedHeader>
+</CORSRule>
+</CORSConfiguration>
+```
+
+Substitute `$SITE_FQDN` with your actual site FQDN, including protocol
+(`http://`, `https://`) and port number, if one is used.
+
+In development you will probably want to use `http://localhost:5000` to allow
+requests from your local dev server.
+
+You can add additional `<AllowedOrigin>` lines if needed.
+
 ## Deployment
 
 ### Setup
