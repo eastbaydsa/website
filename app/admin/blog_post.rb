@@ -1,4 +1,14 @@
 ActiveAdmin.register BlogPost do
+  index do
+    column :title
+    column :content do |post|
+      truncate(strip_tags(post.content), length: 300)
+    end
+    column :posted_at
+    column :author
+    actions
+  end
+
   form do |f|
     f.object.posted_at = DateTime.now
     f.inputs do
