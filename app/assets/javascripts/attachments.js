@@ -36,7 +36,7 @@ function setupS3UrlField($form_element) {
       uploadFile(file, function(progress) {
         console.log('upload progress: ' + progress);
       }, function(url) {
-        $form_element.find('#home_featured_image').val(url);
+        $form_element.find('.s3_url_original_input').val(url);
         var newImage = new Image();
         newImage.onload = function() {
           $form_element.find('.s3_url_loading').hide();
@@ -50,7 +50,7 @@ function setupS3UrlField($form_element) {
 
 
 function refreshImagePreview($form_element) {
-  var imgUrl = $form_element.find('#home_featured_image').val();
+  var imgUrl = $form_element.find('.s3_url_original_input').val();
   if (imgUrl) {
     $form_element.find('.s3_url_img').attr('src', imgUrl).show();
   }

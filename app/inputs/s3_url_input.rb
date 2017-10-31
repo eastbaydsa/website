@@ -3,6 +3,10 @@
 # If you use this input, make sure to include attachments.js as well.
 
 class S3UrlInput < Formtastic::Inputs::UrlInput
+  def input_html_options
+    super.merge(:class => 's3_url_original_input')
+  end
+
   def to_html
     file_input_cell = template.content_tag :td do
       builder.hidden_field(method, input_html_options) <<
