@@ -21,4 +21,5 @@ class BlogPost < ApplicationRecord
   include HasSlug
 
   belongs_to :author, class_name: 'Admin'
+  alias_attribute :to_param, :slug
 end
