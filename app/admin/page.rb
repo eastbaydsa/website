@@ -22,6 +22,10 @@ ActiveAdmin.register Page do
       row :content do |page|
         page.content.html_safe
       end
+      row :direct_link do |page|
+        @url = url_for(page)
+        link_to(@url, @url, target: '_blank')
+      end
       columns_to_exclude = ["title", "content"]
       (Page.column_names - columns_to_exclude).each do |c|
         row c.to_sym

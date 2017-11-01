@@ -23,6 +23,10 @@ ActiveAdmin.register BlogPost do
       row :content do |post|
         post.content.html_safe
       end
+      row :direct_link do |post|
+        @url = url_for(post)
+        link_to(@url, @url, target: '_blank')
+      end
       columns_to_exclude = ["title", "content"]
       (BlogPost.column_names - columns_to_exclude).each do |c|
         row c.to_sym

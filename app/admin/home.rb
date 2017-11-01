@@ -20,10 +20,10 @@ ActiveAdmin.register Home do
         image_tag(home.featured_image, style: 'width:200px;height:auto;')
       end
       row :featured_page_1 do |home|
-        link_to(home.featured_page_1.title, url_for(home.featured_page_1))
+        link_to(home.featured_page_1.title, url_for(home.featured_page_1), target: '_blank')
       end
       row :featured_page_2 do |home|
-        link_to(home.featured_page_2.title, url_for(home.featured_page_2))
+        link_to(home.featured_page_2.title, url_for(home.featured_page_2), target: '_blank')
       end
       columns_to_exclude = ["id", "intro", "featured_image",
                             "featured_page_1_id", "featured_page_2_id"]
