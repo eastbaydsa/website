@@ -26,7 +26,7 @@ class S3UrlInput < Formtastic::Inputs::UrlInput
           template.content_tag(:tr) {
             template.content_tag :td do
               template.image_tag('', class: 's3_url_img', style: 'width:400px;height:auto;') <<
-              template.content_tag(:div, 'Uploading...', class: 's3_url_loading')
+              template.content_tag(:div, 'Uploading... 0%', class: 's3_url_loading')
             end
           }
 

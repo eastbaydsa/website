@@ -32,9 +32,10 @@ function setupS3UrlField($form_element) {
     var file = $(this)[0].files[0];
     if (file) {
       $form_element.find('.s3_url_img').hide();
+      updateUploadProgressDisplay($form_element, 0);
       $form_element.find('.s3_url_loading').show();
       uploadFile(file, function(progress) {
-        console.log('upload progress: ' + progress);
+        updateUploadProgressDisplay($form_element, progress);
       }, function(url) {
         $form_element.find('.s3_url_original_input').val(url);
         var newImage = new Image();
@@ -46,6 +47,11 @@ function setupS3UrlField($form_element) {
       });
     }
   });
+}
+
+
+function updateUploadProgressDisplay($form_element, progress) {
+  $form_element.find('.s3_url_loading').text('Uploading... ' + parseInt(progress) + '%');
 }
 
 
