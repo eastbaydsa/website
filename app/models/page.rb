@@ -20,4 +20,5 @@ class Page < ApplicationRecord
   include HasSlug
 
   belongs_to :parent, class_name: 'Page', optional: true
+  alias_attribute :to_param, :slug
 end
