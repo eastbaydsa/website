@@ -1,28 +1,32 @@
 @import 'variables';
 
+.footer,
+.footer h3,
+.footer li {
+  color: $light_text_color;
+}
+
 .footer {
-  background: #eee;
+  background: $dsa_grey;
+  padding: 100px;
 }
 
-.footer__contact {
-  background: $dsa_red;
-  color: $dsa_white;
-  font-size: $large_font_size;
-  padding: $default_spacing/2 0;
-
-  a { color: $dsa_white; }
+.footer__nav {
+  display: flex;
+  justify-content: space-between;
 }
 
-.footer__newsletter {
-  background: white;
-  border-bottom: 3px solid $dsa_red;
-  font-size: $large_font_size;
-  padding: $default_spacing/2 0;
-  text-align: center;
+.footer__nav_list {
+  list-style: none;
 }
 
-.footer__extra {
-  padding: $default_spacing/2 0;
-  color: $light-text-color;
-  text-align: center;
+.footer__nav_list li {
+  padding: 8px 16px 8px 0;
 }
+
+.footer__copyright {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+

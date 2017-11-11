@@ -36,24 +36,40 @@
     <%= yield %>
 
     <div class='footer'>
-      <div class='footer__contact'>
-        <div class='container--flex-between'>
-          Stay in touch
-          <div class='footer__contact__links'>
-            <%= link_to 'Twitter', '#' %>
-            <%= link_to 'Facebook', '#' %>
-          </div>
+      <div class='container footer__nav'>
+        <div>
+          <h3>Get Involved</h3>
+          <ul class='footer__nav_list'>
+            <li>Home</li>
+            <li>About</li>
+            <li>Events</li>
+            <li>News</li>
+            <li>Resources</li>
+            <li>Campaigns</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Donate</h3>
+          <ul class='footer__nav_list'>
+            <li>Donate</li>
+            <li>Store</li>
+            <li>Join</li>
+          </ul>
+        </div>
+        <div>
+          <h3>About Us</h3>
+          <div>The East Bay Democratic Socialists of<br>
+             America (DSA) are democratically<br>
+             building a progressive movement for<br>
+             social change in local communities<br>
+             and politics.</div>
+        </div>
+        <div>
+          <h3>Follow Us</h3>
         </div>
       </div>
-      <div class='footer__newsletter'>
-        <div class='container'>
-          Sign up for our bi-weekly newsletter:
-        </div>
-      </div>
-      <div class='footer__extra'>
-        <div class='container'>
-          Made with love by East Bay DSA 🌹
-        </div>
+      <div class='container footer__copyright'>
+        © 2017 East Bay DSA. All Rights Reserved
       </div>
     </div>
   </body>
