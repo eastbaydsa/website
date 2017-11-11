@@ -1,7 +1,7 @@
 @import 'variables';
 
 .header {
-  background: $dsa_red;
+  background: $dsa_grey;
 
   a {
     color: white;
@@ -15,12 +15,9 @@
 }
 
 .header__logo {
-  display: flex;
-  align-items: center;
-}
-
-.header__logo_image {
   margin-right: 10px;
+  height: 30px;
+  width: auto;
 }
 
 .header__menu {

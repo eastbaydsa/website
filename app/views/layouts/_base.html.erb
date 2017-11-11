@@ -23,10 +23,7 @@
 
     <div class='header'>
       <div class='container header__container '>
-        <h1 class='header__logo'>
-          <%= image_tag('dsa-logo.png', width: 60, class: 'header__logo_image') %>
-          <%= link_to 'East Bay DSA', root_path %>
-        </h1>
+        <%= link_to(image_tag('dsa-logo-with-text.svg', class: 'header__logo'), root_path) %>
 
         <ul class='header__menu'>
           <% @menu.each do |item| %>
