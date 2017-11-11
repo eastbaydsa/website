@@ -45,29 +45,31 @@
         <div>
           <h3>Get Involved</h3>
           <ul class='footer__nav_list'>
-            <li>Home</li>
-            <li>About</li>
-            <li>Events</li>
-            <li>News</li>
-            <li>Resources</li>
-            <li>Campaigns</li>
+            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'About', '/about' %></li>
+            <li><%= link_to 'Events', '/events' %></li>
+            <li><%= link_to 'News', '/blog' %></li>
+            <li><%= link_to 'Resources', '/resoures' %></li>
+            <li><%= link_to 'Campaigns', '/campaigns' %></li>
           </ul>
         </div>
         <div>
           <h3>Donate</h3>
           <ul class='footer__nav_list'>
-            <li>Donate</li>
-            <li>Store</li>
-            <li>Join</li>
+            <li><%= link_to 'Donate', '/donate' %></li>
+            <li><%= link_to 'Store', '/store' %></li>
+            <li><%= link_to 'Join', '/join' %></li>
           </ul>
         </div>
         <div>
           <h3>About Us</h3>
-          <div>The East Bay Democratic Socialists of<br>
-             America (DSA) are democratically<br>
-             building a progressive movement for<br>
-             social change in local communities<br>
-             and politics.</div>
+          <div class='footer__content'>
+            The East Bay Democratic Socialists of<br>
+            America (DSA) are democratically<br>
+            building a progressive movement for<br>
+            social change in local communities<br>
+            and politics.
+          </div>
         </div>
         <div>
           <h3>Follow Us</h3>

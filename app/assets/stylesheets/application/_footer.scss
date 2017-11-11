@@ -20,6 +20,10 @@
   list-style: none;
 }
 
+.footer__content {
+  margin-top: $default_spacing/4;
+}
+
 .footer__nav_list li {
   padding: 8px 16px 8px 0;
 }
@@ -31,15 +35,16 @@
 }
 
 .footer__links {
-    justify-content: space-around;
-    align-content: center;
-    flex-direction: row;
-    display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: row;
+  display: flex;
 }
+
 .footer__link {
-    margin-top: $default_spacing/2;
-    margin-left: $default_spacing/2;
-    padding-bottom: $default_spacing/2;
-    border-bottom: 4px solid transparent;
+  margin-top: $default_spacing/4;
+  margin-left: $default_spacing/2;
+  padding-bottom: $default_spacing/2;
+  border-bottom: 4px solid transparent;
 }
 
