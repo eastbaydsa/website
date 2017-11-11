@@ -14,4 +14,5 @@
  *= require simple_calendar
  *= require_tree ./application
  *= require_self
+ *= require font-awesome
  */

@@ -36,6 +36,15 @@
   }
 }
 
-.header__menu-item--active {
-
+.header__links {
+    justify-content: space-around;
+    align-content: center;
+    flex-direction: row;
+    display: flex;
+}
+.header__link {
+    margin-top: $default_spacing/2;
+    margin-left: $default_spacing/2;
+    padding-bottom: $default_spacing/2;
+    border-bottom: 4px solid transparent;
 }
