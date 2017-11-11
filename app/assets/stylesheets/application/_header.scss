@@ -11,11 +11,16 @@
 .header__container {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 }
 
 .header__logo {
-  padding-top: $default_spacing/2;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo_image {
+  margin-right: 10px;
 }
 
 .header__menu {
@@ -24,6 +29,7 @@
 }
 
 .header__menu_item {
+  margin-top: $default_spacing/2;
   margin-left: $default_spacing;
   padding-bottom: $default_spacing/2;
   border-bottom: 4px solid transparent;
