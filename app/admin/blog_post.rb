@@ -27,6 +27,11 @@ ActiveAdmin.register BlogPost do
         @url = url_for(post)
         link_to(@url, @url, target: '_blank')
       end
+      row :featured_image do |post|
+        if post.featured_image != nil
+          image_tag(post.featured_image, style: 'width:200px;height:auto;')
+        end
+      end
       columns_to_exclude = ["title", "content"]
       (BlogPost.column_names - columns_to_exclude).each do |c|
         row c.to_sym
