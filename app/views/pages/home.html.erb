@@ -1,6 +1,7 @@
 <div class='home-container'>
-  <div class='home-intro'>
+  <div class='home-intro' style="background-image:url(<%= @home.featured_image %>);">
     <div class='container'>
+
       <%= @home.intro.html_safe %>
 
       <p>
