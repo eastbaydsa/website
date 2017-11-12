@@ -5,7 +5,12 @@
 .calendar-heading {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: $default_spacing/2;
+
+  a {
+    font-size: $large_font_size;
+  }
 }
 
 .calendar-title {

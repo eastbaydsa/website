@@ -9,6 +9,10 @@
 .footer {
   background: $dsa_grey;
   padding: 100px;
+
+  a {
+    color: $dsa_white;
+  }
 }
 
 .footer__nav {
