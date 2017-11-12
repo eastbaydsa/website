@@ -2,12 +2,10 @@
 $dsa_red: #EC1F27;
 $dsa_black: #272822;
 $dsa_white: #FFFFFF;
-$dsa_grey: #353B40;
-$text-color: #444;
-$light-text-color: #888;
-
+$dsa_grey: #272822;
 $text_color: #515151;
-$light_text_color: #f2f2f2;
+$light_text_color: #888;
+$mid_grey_background: #BBB;
 $grey_background: #E3E3E3;
 $border_color: $grey_background;
 
@@ -16,5 +14,9 @@ $default_spacing: 30px;
 $compact_spacing: 10px;
 
 // Sizes
+$small_font_size: 12px;
 $default_font_size: 15px;
 $large_font_size: 20px;
+$heading_font_size: 30px;
+
+$max_width: 1100px;

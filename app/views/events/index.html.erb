@@ -1,11 +1,21 @@
-<%= month_calendar events: @events do |date, events| %>
-  <%= date.day %>
+<h1>East Bay DSA events</h1>
 
-  <ul>
+<p>Want to learn more about East Bay DSA? Attend one of our many events in
+  the area to find out how you can get involved in improving the lives
+  of working people.</p>
+
+<%= month_calendar events: @events do |date, events| %>
+  <span class='simple-calendar--date-wrapper'>
+    <span class='simple-calendar--date'>
+      <%= date.day %>
+    </span>
+  </span>
+
+  <ul class='simple-calendar--events'>
     <% events.each do |event| %>
       <li>
-        <%= format_time_short event.start_time %>
         <%= event.name %>
+        <%= format_time_short event.start_time %>
       </li>
     <% end %>
   </ul>

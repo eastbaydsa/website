@@ -6,7 +6,9 @@ ActiveAdmin.register Home do
     column :featured_page_1
     column :featured_page_2
     column :featured_image do |home|
-      image_tag(home.featured_image, style: 'width:200px;height:auto;')
+      if home.featured_image != nil
+        image_tag(home.featured_image, style: 'width:200px;height:auto;')
+      end
     end
     actions
   end

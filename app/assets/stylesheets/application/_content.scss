@@ -25,4 +25,13 @@ article {
     margin-left: $default_spacing/2;
     list-style-position: inside;
   }
+
+  figure {
+    margin: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }

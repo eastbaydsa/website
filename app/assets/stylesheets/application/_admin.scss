@@ -1,7 +1,7 @@
 @import 'variables';
 
 .admin {
-  background: $dsa_black;
+  background: $dsa_white;
   padding: $default_spacing/2 0;
 }
 
@@ -11,8 +11,7 @@
 }
 
 .admin__link {
-  color: $dsa_white;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid $dsa_red;
 
   &:hover {
     border-color: $dsa_red;

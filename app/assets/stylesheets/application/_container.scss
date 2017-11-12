@@ -3,7 +3,7 @@
 .container {
   padding: 0 $default_spacing;
   margin: 0 auto;
-  max-width: 950px;
+  max-width: $max_width;
   width: 100%;
   flex: 1;
 }

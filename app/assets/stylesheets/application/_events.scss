@@ -1,0 +1,75 @@
+@import 'variables';
+
+// Style simple-calendar markup
+
+.calendar-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $default_spacing/2;
+}
+
+.calendar-title {
+  font-size: $heading_font_size;
+}
+
+.simple-calendar {
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    background: none;
+    .simple-calendar--date {
+      background: $dsa_red;
+    }
+  }
+  .past {
+    .simple-calendar--date {
+      background: $mid_grey_background;
+    }
+  }
+  .future {}
+  .start-date {}
+
+  .prev-month {
+    background: $grey_background;
+  }
+  .next-month {
+    background: $grey_background;
+  }
+
+  .current-month {}
+  .has-events {}
+
+  th {
+    background-color: $dsa_red;
+    color: $dsa_white;
+    font-weight: normal;
+    font-size: $small_font_size;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.simple-calendar--date-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.simple-calendar--date {
+  background: $dsa_black;
+  color: $dsa_white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: $small_font_size;
+  line-height: 1;
+  width: 20px;
+  height: 20px;
+}

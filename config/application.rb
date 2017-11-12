@@ -14,5 +14,8 @@ module EbdsaWebsite
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    # Simple Calendar config
+    config.beginning_of_week = :sunday
   end
 end
