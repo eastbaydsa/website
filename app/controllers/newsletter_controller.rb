@@ -13,8 +13,6 @@ class NewsletterController < ApplicationController
         userInput = {
             person: {
               email: params['email'],
-              #last_name: "Smith",
-              #first_name: "Bob"
             }
           }
           
