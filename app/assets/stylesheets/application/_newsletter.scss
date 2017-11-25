@@ -1,0 +1,20 @@
+@import 'variables';
+
+.newsletter__header {
+  padding-bottom: $default_spacing;
+  border-bottom: 1px solid $border_color;
+  margin-bottom: $default_spacing;
+}
+
+.newsletter__body {
+    display: flex;
+    align-items: center;
+}
+
+.newsletter__item {
+    margin-right: $default_spacing;
+}
+
+.newsletter__error {
+    color: red;
+}
