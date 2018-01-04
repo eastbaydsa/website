@@ -11,12 +11,13 @@
     </span>
   </span>
 
-  <ul class='simple-calendar--events'>
+  <div class='simple-calendar--events'>
     <% events.each do |event| %>
-      <li>
-        <%= event.name %>
-        <%= format_time_short event.start_time %>
-      </li>
+      <%= link_to event_path(event.id), class: 'event' do %>
+        <span class='event-title'><%= event.name %><span>
+        <br />
+        <span class='event-time'><%= format_time_range_short event.start_time, event.end_time %></span>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 <% end %>

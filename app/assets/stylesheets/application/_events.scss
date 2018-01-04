@@ -9,7 +9,7 @@
   margin-bottom: $default_spacing/2;
 
   a {
-    font-size: $large_font_size;
+    font-size: $heading_font_size;
   }
 }
 
@@ -18,29 +18,22 @@
 }
 
 .simple-calendar {
-  .day {}
-
-  .wday-0 {}
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-  .wday-6 {}
-
+  .day {
+    min-height: 80px;
+    height: auto;
+  }
   .today {
     background: none;
     .simple-calendar--date {
-      background: $dsa_red;
+      background: $dsa_dark_red;
     }
   }
+
   .past {
     .simple-calendar--date {
       background: $mid_grey_background;
     }
   }
-  .future {}
-  .start-date {}
 
   .prev-month {
     background: $grey_background;
@@ -49,16 +42,35 @@
     background: $grey_background;
   }
 
-  .current-month {}
-  .has-events {}
+  .days {
+    display: flex;
+    border-left: 1px solid $border_color;
+    border-bottom: 1px solid $border_color;
+  }
 
-  th {
-    background-color: $dsa_red;
-    color: $dsa_white;
-    font-weight: normal;
-    font-size: $small_font_size;
-    text-align: center;
-    text-transform: uppercase;
+  .day {
+    list-style: none;
+    flex: 1;
+    border-right: 1px solid $border_color;
+    padding: 6px;
+  }
+
+  .table-head {
+    .days {
+      border: none;
+    }
+
+    .day {
+      background-color: $dsa_red;
+      border: none;
+      color: $dsa_white;
+      font-weight: normal;
+      font-size: $small_font_size;
+      min-height: 0;
+      padding: 12px;
+      text-align: center;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -66,6 +78,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .simple-calendar--date {
   background: $dsa_black;
   color: $dsa_white;
@@ -77,4 +90,26 @@
   line-height: 1;
   width: 20px;
   height: 20px;
+}
+
+.simple-calendar--events {
+  font-size: 13px;
+
+  .event {
+    border-left: 5px solid $dsa_light_blue;
+    display: block;
+    padding: 3px 0 3px 5px;
+
+    &:hover {
+       border-color: $dsa_red;
+    }
+  }
+
+  .event-title {
+    color: $text_color;
+  }
+
+  .event-time {
+    color: $dsa_blue;
+  }
 }

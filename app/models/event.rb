@@ -1,7 +1,8 @@
 class Event
-  attr_accessor :name, :start_time, :end_time, :description
+  attr_accessor :id, :name, :start_time, :end_time, :description
 
   def initialize api_response
+    self.id = api_response['id']
     self.name = api_response['name']
     self.start_time = DateTime.parse api_response['start_time']
     self.end_time = DateTime.parse api_response['end_time']

@@ -1,28 +1,28 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
-    <%= link_to calendar.url_for_previous_view do %>
+    <%= link_to events_path(start_date: @start_date - 1.month) do %>
       <i class="fa fa-caret-left"></i>
     <% end %>
     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to calendar.url_for_next_view do %>
+    <%= link_to events_path(start_date: @start_date + 1.month) do %>
       <i class="fa fa-caret-right"></i>
     <% end %>
   </div>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
+  <div class="table table-striped">
+    <div class="table-head">
+      <ul class="days">
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.day_names')[day.wday] %></th>
+          <li class="day"><%= t('date.day_names')[day.wday] %></li>
         <% end %>
-      </tr>
-    </thead>
+      </ul>
+    </div>
 
-    <tbody>
+    <div>
       <% date_range.each_slice(7) do |week| %>
-        <tr>
+        <ul class="days">
           <% week.each do |day| %>
-            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+            <%= content_tag :li , class: calendar.td_classes_for(day) do %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &block) %>
               <% else %>
@@ -30,8 +30,8 @@
               <% end %>
             <% end %>
           <% end %>
-        </tr>
+        </ul>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 </div>
