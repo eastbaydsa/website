@@ -72,7 +72,7 @@ class Event
       site_slug: ENV['NATION_SITE_SLUG'],
       id: id
     })
-    # raise raw.inspect
+
     Event.new(raw['event'])
   end
 end
