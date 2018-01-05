@@ -1,1 +1,58 @@
-<%= @event.inspect %>
+<% content_for :title { @event.name } %>
+
+<%= link_to "Events", events_path %> » <%= @event.name %>
+
+<div class="event">
+  <div class="hero">
+    <h1>
+      <%= @event.name %>
+    </h1>
+
+    <h2>
+      <%= format_date @event.start_time %>
+    </h2>
+  </div>
+
+  <%= @event.description && @event.description.html_safe %>
+
+  <h2>Details</h2>
+  <ul class='event--details'>
+    <li>
+      <dl>
+        <dt>Date</dt>
+        <dd><%= format_date @event.start_time %></dd>
+        <dt>Time</dt>
+        <dd><%= format_time_range_short @event.start_time, @event.end_time %></dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt>Venue</dt>
+        <dd><%= @event.venue %></dd>
+        <dt>Address</dt>
+        <dd><%= @event.address_string.html_safe %></dd>
+      </dl>
+    </li>
+    <li>
+    </li>
+  </ul>
+
+
+  <% if !@event.map_location_string.blank? %>
+    <% if ENV['GOOGLE_MAPS_KEY'] %>
+      <iframe
+        width="100%"
+        height="350"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAPS_KEY'] %>
+          &q=<%= @event.map_location_string %>" >
+      </iframe>
+    <% else %>
+      <p>
+        Please set a Google Maps API key in the environment to view maps.
+      </p>
+    <% end %>
+  <% else %>
+    <p>No location provided</p>
+  <% end %>
+</div>

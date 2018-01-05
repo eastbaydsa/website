@@ -1,5 +1,5 @@
 class Event
-  attr_accessor :id, :name, :start_time, :end_time, :description
+  attr_accessor :id, :name, :start_time, :end_time, :description, :venue, :address
 
   def initialize api_response
     self.id = api_response['id']
@@ -7,6 +7,39 @@ class Event
     self.start_time = DateTime.parse api_response['start_time']
     self.end_time = DateTime.parse api_response['end_time']
     self.description = api_response['intro']
+    self.venue = api_response['venue']['name']
+    self.address = api_response['venue']['address'] || {}
+  end
+
+  def address_string
+    x = [
+      [
+        address['address1'],
+        address['address2'],
+        address['address3'],
+      ],
+      [
+        address['city'],
+        address['state'],
+        address['zip'],
+      ]
+    ].map { |segment| segment.reject{ |e| e.to_s.empty? }.join(', ') }
+     .join('<br />')
+
+  end
+
+  def map_location_string
+    [
+      venue,
+      address['address1'],
+      address['address2'],
+      address['address3'],
+      address['city'],
+      address['state'],
+      address['zip'],
+    ].reject { |e| e.to_s.empty? }
+     .join(',')
+     .sub(' ', '+')
   end
 
   def self.client
@@ -32,5 +65,14 @@ class Event
       .select{ |e| e["published_at"] != nil }
       .map{ |e| Event.new(e) }
       # .maxListLength...
+  end
+
+  def self.find(id)
+    raw = client.call(:events, :show, {
+      site_slug: ENV['NATION_SITE_SLUG'],
+      id: id
+    })
+    # raise raw.inspect
+    Event.new(raw['event'])
   end
 end

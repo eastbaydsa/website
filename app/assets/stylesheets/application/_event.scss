@@ -1,0 +1,23 @@
+@import 'variables';
+
+.event {
+}
+
+.event--details {
+  display: flex;
+  margin-bottom: $default_spacing;
+
+  li {
+    flex: 1;
+    list-style: none;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin: 0;
+    margin-bottom: $default_spacing;
+  }
+}

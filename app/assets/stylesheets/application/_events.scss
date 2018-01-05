@@ -95,7 +95,7 @@
 .simple-calendar--events {
   font-size: 13px;
 
-  .event {
+  .simple-calendar--events--event {
     border-left: 5px solid $dsa_light_blue;
     display: block;
     padding: 3px 0 3px 5px;
@@ -105,11 +105,11 @@
     }
   }
 
-  .event-title {
+  .simple-calendar--events--event-title {
     color: $text_color;
   }
 
-  .event-time {
+  .simple-calendar--events--event-time {
     color: $dsa_blue;
   }
 }

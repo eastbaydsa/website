@@ -23,10 +23,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = nation_builder_client.call(:events, :show, {
-      site_slug: ENV['NATION_SITE_SLUG'],
-      id: params[:id]
-    })
+    @event = Event.find(params[:id])
   end
 
 end
