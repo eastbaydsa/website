@@ -38,8 +38,15 @@ a {
 }
 
 h1,h2,h3,h4,h5,h6,ul,ol {
-  color: $dsa_black;
   font-family: 'ManifoldDSA';
   margin: 0;
   padding: 0;
+}
+
+h1,h2,h3 {
+  color: $dsa_red;
+}
+
+h4,h5,h6,ul,ol {
+  color: $dsa_black;
 }
