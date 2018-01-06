@@ -8,7 +8,7 @@
 }
 
 .subpages--subpage {
-  background: $dsa_red;
+  background: $dsa_dark_purple;
   color: white;
   display: flex;
   font-size: $large_font_size;
@@ -18,12 +18,13 @@
   margin-bottom: $default_spacing;
   width: 48%;
 
-  &.alternating {
-    background: $dsa_purple;
+  &:nth-child(4n),
+  &:nth-child(4n+1) {
+    background: $dsa_red;
   }
 
   &:hover {
-    .subpages--subpage--link {
+    .subpages--subpage--link span {
       background-color: white;
       color: $text_color;
       text-decoration: none;
@@ -33,5 +34,6 @@
 
 .subpages--subpage--link {
   font-weight: normal;
+  margin-top: $default_spacing;
   text-decoration: underline;
 }

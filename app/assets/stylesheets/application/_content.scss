@@ -11,10 +11,12 @@
   text-align: center;
 }
 
-article {
+.content__centered {
   max-width: 700px;
   margin: 0 auto;
+}
 
+article {
   blockquote {
     border-left: 4px solid $border_color;
     margin-left: $default_spacing/2;
