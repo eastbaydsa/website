@@ -2,12 +2,15 @@
   <h1><%= @page.title %></h1>
 
   <%= @page.content.html_safe %>
-</article>
 
-<div class="subpages">
-  <% @page.subpages.each do |subpage| %>
-    <div class="subpages--subpage">
-      <%= subpage.inspect %>
-    </div>
-  <% end %>
-</div>
+  <div class="subpages">
+    <% @page.subpages.each do |subpage| %>
+      <%= link_to page_path(subpage), class: 'subpages--subpage' do %>
+        <span>Description</span>
+        <span>
+          <span class='subpages--subpage--link'><%= subpage.title %></span>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+</article>

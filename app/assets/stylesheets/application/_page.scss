@@ -1,0 +1,35 @@
+@import 'variables';
+
+.subpages {
+  display: flex;
+  justify-content: space-between;
+  margin-top: $default_spacing;
+}
+
+.subpages--subpage {
+  background: $dsa_red;
+  color: white;
+  display: flex;
+  font-size: $large_font_size;
+  font-weight: bold;
+  flex-direction: column;
+  padding: $default_spacing/2;
+  width: 48%;
+
+  &:nth-child(2n) {
+    background: $dsa_purple;
+  }
+
+  &:hover {
+    .subpages--subpage--link {
+      background-color: white;
+      color: $text_color;
+      text-decoration: none;
+    }
+  }
+}
+
+.subpages--subpage--link {
+  font-weight: normal;
+  text-decoration: underline;
+}
