@@ -1,4 +1,4 @@
-<% content_for :title { @event.name } %>
+<% content_for :title, @event.name %>
 
 <div class="breadcrumbs">
   <%= link_to "Events", events_path %> » <%= @event.name %>
