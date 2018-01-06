@@ -19,6 +19,7 @@ ActiveAdmin.register Page do
   show do
     attributes_table do
       row :title
+      row :subtitle
       row :content do |page|
         page.content.html_safe
       end
@@ -40,9 +41,10 @@ ActiveAdmin.register Page do
       f.input :content, as: :trix_editor
       f.input :slug, placeholder: 'Will be automatically generated if blank'
       f.input :parent
+      f.input :subtitle, as: :string, description: "Used when displaying a link to a subpage"
     end
     f.actions
   end
 
-  permit_params :title, :content, :slug, :parent_id
+  permit_params :title, :subtitle, :content, :slug, :parent_id
 end

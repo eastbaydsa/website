@@ -4,9 +4,15 @@
   <%= @page.content.html_safe %>
 
   <div class="subpages">
-    <% @page.subpages.each do |subpage| %>
-      <%= link_to page_path(subpage), class: 'subpages--subpage' do %>
-        <span>Description</span>
+    <% flip = true %>
+    <% @page.subpages.each_with_index do |subpage, index| %>
+      <%
+        flip = !flip if index % 2 == 0
+        alternating_class = index % 2 == (flip ? 0 : 1) ? 'alternating' : ''
+      %>
+
+      <%= link_to page_path(subpage), class: "subpages--subpage #{alternating_class}" do %>
+        <span><%= subpage.subtitle %>&nbsp;</span>
         <span>
           <span class='subpages--subpage--link'><%= subpage.title %></span>
         </span>

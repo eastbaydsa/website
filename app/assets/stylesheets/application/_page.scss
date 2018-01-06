@@ -2,6 +2,7 @@
 
 .subpages {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-top: $default_spacing;
 }
@@ -14,9 +15,10 @@
   font-weight: bold;
   flex-direction: column;
   padding: $default_spacing/2;
+  margin-bottom: $default_spacing;
   width: 48%;
 
-  &:nth-child(2n) {
+  &.alternating {
     background: $dsa_purple;
   }
 
