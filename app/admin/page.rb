@@ -44,5 +44,5 @@ ActiveAdmin.register Page do
     f.actions
   end
 
-  permit_params :title, :content, :slug, :parent
+  permit_params :title, :content, :slug, :parent_id
 end

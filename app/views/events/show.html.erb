@@ -1,6 +1,8 @@
 <% content_for :title { @event.name } %>
 
-<%= link_to "Events", events_path %> » <%= @event.name %>
+<div class="breadcrumbs">
+  <%= link_to "Events", events_path %> » <%= @event.name %>
+</div>
 
 <div class="event">
   <div class="hero">

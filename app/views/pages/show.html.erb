@@ -1,5 +1,13 @@
-<h1><%= @page.title %></h1>
-
 <article>
+  <h1><%= @page.title %></h1>
+
   <%= @page.content.html_safe %>
 </article>
+
+<div class="subpages">
+  <% @page.subpages.each do |subpage| %>
+    <div class="subpages--subpage">
+      <%= subpage.inspect %>
+    </div>
+  <% end %>
+</div>

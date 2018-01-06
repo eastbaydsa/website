@@ -19,6 +19,8 @@
 class Page < ApplicationRecord
   include HasSlug
 
+  has_many :subpages, class_name: 'Page', foreign_key: :parent_id
   belongs_to :parent, class_name: 'Page', optional: true
+
   alias_attribute :to_param, :slug
 end

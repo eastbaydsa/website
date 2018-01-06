@@ -1,14 +1,11 @@
 @import 'variables';
 
-p {
+article, p {
   line-height: 1.75;
   margin-bottom: $default_spacing;
 }
 
-.hero {
-  margin-top: $default_spacing;
-
-  h1 {
-    font-size: $hero_font_size;
-  }
+h1 {
+  font-size: $large_heading_font_size;
+  margin-bottom: $default_spacing;
 }
