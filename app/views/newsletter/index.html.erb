@@ -1,0 +1,28 @@
+<div>
+  <div class='newsletter__header'>
+    <h2>Newsletter Signup</h2>
+  </div>
+  <div class='newsletter__body'>
+    <% if @state == 'success' %>
+        <div class='newsletter__success'>You successfully signed up for the newsletter! Redirecting...</div>
+        <meta http-equiv="refresh" content="2;url=/" />
+    <% else %>
+      <div class='newsletter__item'>
+        <p align="right">
+          Sign up to get the latest East Bay DSA updates and official news by e-mail.</br>
+          <small><i>We will never sell or share your information with third parties.</i></small>
+        </p>
+      </div>
+      <div class='newsletter__item'>
+        <%= form_tag submit_newsletter_path do%>
+          <%if @state == 'error' %>
+            <div class='newsletter__error'>Error: E-mail cannot be blank!</div>
+          <% end %>
+          <input name='email' type='email' placeholder='E-mail'/>
+          <%= submit_tag 'Submit'%>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+  
