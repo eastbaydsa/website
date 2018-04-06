@@ -13,7 +13,7 @@
 
   <div class='simple-calendar--events'>
     <% events.each do |event| %>
-      <%= link_to event_path(event.id), class: 'simple-calendar--events--event' do %>
+      <%= link_to event_path(event), class: 'simple-calendar--events--event' do %>
         <span class='simple-calendar--events--event-title'><%= event.name %><span>
         <br />
         <span class='simple-calendar--events--event-time'><%= format_time_range_short event.start_time, event.end_time %></span>

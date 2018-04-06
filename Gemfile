@@ -54,6 +54,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'dotenv-rails'
   gem 'seed_dump'
+  gem 'pry'
 end
 
 group :development do

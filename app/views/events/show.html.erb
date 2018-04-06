@@ -15,39 +15,30 @@
     </h2>
   </div>
 
+  <br>
+
   <%= @event.description && @event.description.html_safe %>
 
+  <br>
+
   <h2>Details</h2>
-  <ul class='event--details'>
-    <li>
-      <dl>
-        <dt>Date</dt>
-        <dd><%= format_date @event.start_time %></dd>
-        <dt>Time</dt>
-        <dd><%= format_time_range_short @event.start_time, @event.end_time %></dd>
-      </dl>
-    </li>
-    <li>
-      <dl>
-        <dt>Venue</dt>
-        <dd><%= @event.venue %></dd>
-        <dt>Address</dt>
-        <dd><%= @event.address_string.html_safe %></dd>
-      </dl>
-    </li>
-    <li>
-    </li>
-  </ul>
+  <p>
+    <strong>When:</strong>
+    <%= format_date @event.start_time %>,
+    <%= format_time_range_short @event.start_time, @event.end_time %>
+    <br>
+    <strong>Where:</strong>
+    <%= @event.full_address %>
+  </p>
 
-
-  <% if !@event.map_location_string.blank? %>
+  <% if !@event.full_address.blank? %>
     <% if ENV['GOOGLE_MAPS_KEY'] %>
       <iframe
         width="100%"
         height="350"
         frameborder="0" style="border:0"
         src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAPS_KEY'] %>
-          &q=<%= @event.map_location_string %>" >
+          &q=<%= @event.full_address.gsub(/\s/, '+') %>" >
       </iframe>
     <% else %>
       <p>

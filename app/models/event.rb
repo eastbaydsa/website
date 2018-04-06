@@ -1,4 +1,4 @@
-class Event
+  class Event
   attr_accessor :id, :name, :start_time, :end_time, :description, :venue, :address
 
   def initialize api_response
@@ -11,37 +11,17 @@ class Event
     self.address = api_response['venue']['address'] || {}
   end
 
-  def to_param; id.to_s; end
-
-  def address_string
-    x = [
-      [
-        address['address1'],
-        address['address2'],
-        address['address3'],
-      ],
-      [
-        address['city'],
-        address['state'],
-        address['zip'],
-      ]
-    ].map { |segment| segment.reject{ |e| e.to_s.empty? }.join(', ') }
-     .join('<br />')
-
+  def to_param
+    "#{id}--#{slug}"
   end
 
-  def map_location_string
-    [
-      venue,
-      address['address1'],
-      address['address2'],
-      address['address3'],
-      address['city'],
-      address['state'],
-      address['zip'],
-    ].reject { |e| e.to_s.empty? }
-     .join(',')
-     .sub(' ', '+')
+  def slug
+    "#{start_time.to_date}-#{name}".parameterize
+  end
+
+  def full_address
+    fields = [ 'address1', 'address2', 'address3', 'city', 'state', 'zip' ]
+    fields.map{|field| address[field] }.tap{|a| a.unshift(venue) }.select(&:present?).join(', ')
   end
 
   def self.client
@@ -55,11 +35,11 @@ class Event
     @nation_builder_client
   end
 
-  def self.query(start_date, end_date = nil, limit = nil)
+  def self.query(start_date, end_date = nil, limit = 1000)
     opts = {
       site_slug: ENV['NATION_SITE_SLUG'],
       starting: start_date,
-      limit: 1000
+      limit: limit
     }
     opts[:until] = end_date if end_date
 
