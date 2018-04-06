@@ -17,16 +17,5 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event.description = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'
-    @event.name = "May Day Meetup"
-    @event.address = {
-      'address1' => '1901 Myrtle St.',
-      'address2' => 'Apt 2',
-      'address3' => nil,
-      'city' => 'Oakland',
-      'state' => 'CA',
-      'zip' => '94607'
-    }
   end
-
 end
