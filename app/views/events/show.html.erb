@@ -49,3 +49,30 @@
     <p>Exact location not set, yet.</p>
   <% end %>
 </div>
+
+<% content_for :schema do %>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Event",
+      "name": "{{ page.name }}",
+      "startDate": "{{ page.event.local_start_at | date: '%Y-%m-%dT%H:%M' }}-08:00",
+      "endDate": "{{ page.event.local_end_at | date: '%Y-%m-%dT%H:%M' }}-08:00",
+      "location": {
+      "@type": "Place",
+      "name": "{{ page.event.venue_name }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ page.event.venue_address.address1 }}",
+        "addressLocality": "{{ page.event.venue_address.city }}",
+        "postalCode": "{{ page.event.venue_address.zip }}",
+        "addressRegion": "{{ page.event.venue_address.state }}",
+        "addressCountry": "{{ page.event.venue_address.country_code }}"
+      }
+      },
+      "image": "{{ page.meta_image_url }}",
+      "description": "{{ page.excerpt }}"
+    }
+  </script>
+
+<% end %>

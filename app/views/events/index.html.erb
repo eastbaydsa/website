@@ -21,3 +21,36 @@
     <% end %>
   </div>
 <% end %>
+
+<% content_for :schema do %>
+  <script type="application/ld+json">
+    [
+      {% for event in page.calendar.events_upcoming %}
+        {% if event.name and event.event.is_location? and event.event.venue_name %}
+          {
+            "@context": "http://schema.org",
+            "@type": "Event",
+            "name": "{{ event.name }}",
+            "startDate": "{{ event.event.local_start_at | date: '%Y-%m-%dT%H:%M'}}-08:00",
+            "endDate": "{{ event.event.local_end_at | date: '%Y-%m-%dT%H:%M'}}-08:00",
+            "location": {
+              "@type": "Place",
+              "name": "{{ event.event.venue_name }}",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ event.event.venue_address.address1 }}",
+                "addressLocality": "{{ event.event.venue_address.city }}",
+                "postalCode": "{{ event.event.venue_address.zip }}",
+                "addressRegion": "{{ event.event.venue_address.state }}",
+                "addressCountry": "{{ event.event.venue_address.country_code }}"
+              }
+            }{% if event.has_meta_image? %},
+            "image": "{{ event.meta_image_url }}"{% endif %}{% if event.excerpt %},
+            "description": "{{ event.excerpt }}"{% endif %}
+          }
+          {% if forloop.last == false %},{% endif %}
+        {% endif %}
+      {% endfor %}
+    ]
+  </script>
+<% end %>
