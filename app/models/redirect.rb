@@ -11,6 +11,6 @@
 #
 
 class Redirect < ApplicationRecord
-  validates :from_path, presence: true, format: { with: /\A\/.*/i, message: 'must begin with "/"'}
+  validates :from_path, presence: true, format: { with: /\A\/.*/i, message: 'must begin with "/"'}, uniqueness: true
   validates :to_url, presence: true, format: { with: /\A(\/|http).*/i, message: 'must begin with "/" or "http"'}
 end
