@@ -1,0 +1,35 @@
+<% content_for :schema do %>
+<% listItems = [
+  '{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "http://www.eastbaydsa.org",
+        "name": "East Bay DSA"
+      }
+    }'
+]
+
+(@page.all_parents + [@page]).each_with_index do |p, index|
+  listItems << "{
+      \"@type\": \"ListItem\",
+      \"position\": #{index + 2},
+      \"item\": {
+        \"@id\": \"http://www.eastbaydsa.org/#{p.slug}\",
+        \"name\": #{p.title}
+      }
+    }"
+end %>
+
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "BreadcrumbList",
+"itemListElement":
+  [
+    <%= listItems.join(',').html_safe %>
+  ]
+}
+
+</script>
+<% end %>

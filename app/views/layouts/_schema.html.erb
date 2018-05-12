@@ -5,12 +5,13 @@
     "name": "East Bay DSA",
     "alternateName": [
       "East Bay Democratic Socialists of America",
+      "East Bay DSA",
       "DSA East Bay",
       "EBDSA"
     ],
     "url": "http://www.eastbaydsa.org",
     "email": "info@eastbaydsa.org",
-    "description": "{{ page.excerpt }}",
+    "description": "",
     "logo": "https://d3n8a8pro7vhmx.cloudfront.net/eastbaydsa/pages/1/attachments/original/1498456579/east-bay-dsa-logo.png",
     "sameAs": [
       "https://www.facebook.com/eastbaydsa/",
@@ -18,44 +19,6 @@
       "https://vimeo.com/eastbaydsa"
     ]
   }
-</script>
-
-<!-- {% if page.level > 0 %}
-{% assign home = page.parent %}
-{% else %}
-{% assign home = page %}
-{% endif %}
-
-{% assign position = 1 %} -->
-
-<script type="application/ld+json">
-{
-"@context": "http://schema.org",
-"@type": "BreadcrumbList",
-"itemListElement": [{
-  "@type": "ListItem",
-  "position": {{ position }},
-  "item": {
-    "@id": "http://www.eastbaydsa.org",
-    "name": "East Bay DSA"
-  }
-}{% for ancestor in page.ancestors %}{% if ancestor.is_homepage? == false %},{
-    "@type": "ListItem",
-    "position": {{ forloop.index0 | plus: 2 }},
-    "item": {
-      "@id": "http://www.eastbaydsa.org{{ ancestor.url }}",
-      "name": "{{ ancestor.name }}"
-    }
-  }{% endif %}{% endfor %}{% if page.is_homepage? == false %},{
-    "@type": "ListItem",
-    "position": {{ page.level | plus: 2 }},
-    "item": {
-      "@id": "http://www.eastbaydsa.org{{ page.url }}",
-      "name": "{{ page.name }}"
-    }
-  }{% endif %}
-]
-}
 </script>
 
 <%= yield :schema %>
