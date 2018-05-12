@@ -1,14 +1,15 @@
   class Event
-  attr_accessor :id, :name, :start_time, :end_time, :description, :venue, :address
+  attr_accessor :id, :name, :start_time, :end_time, :description, :venue, :address, :image_url
 
   def initialize api_response
     self.id = api_response['id']
     self.name = api_response['name']
     self.start_time = DateTime.parse api_response['start_time']
     self.end_time = DateTime.parse api_response['end_time']
-    self.description = api_response['intro']
+    self.description = api_response['intro'] # FIXME: get non-html version?
     self.venue = api_response['venue']['name']
     self.address = api_response['venue']['address'] || {}
+    self.image_url = api_response['meta_image_url'] # FIXME: image URL not returned!
   end
 
   def to_param; id; end
