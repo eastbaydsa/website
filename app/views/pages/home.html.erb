@@ -29,7 +29,7 @@
         <p>The best way to get involved is to show up in-person.
            We would love to see you at our next event&hellip;</p>
         <div class='event'>
-          <h2><%= link_to @event.name, event_path(@event) %></h2>
+          <h2><%= link_to @event.name, event_path(@event, slug: @event.slug) %></h2>
           <p>
             <%= @event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %><br>
             <%= @event.venue %>
@@ -39,7 +39,7 @@
               <%= @event.address['state'] %>
             <% end %>
           </p>
-          <p><%= link_to 'Details', event_path(@event) %></p>
+          <p><%= link_to 'Details', event_path(@event, slug: @event.slug) %></p>
         </div>
         <p>
           See more

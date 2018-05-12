@@ -51,27 +51,27 @@
 </div>
 
 <% content_for :schema do %>
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Event",
-    "name": "<%= @event.name %>",
-    "startDate": "<%= @event.start_time %>",
-    "endDate": "<%= @event.end_time %>",
-    "location": {
-      "@type": "Place",
-      "name": "<%= @event.venue %>",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "<%= @event.address['address1'] %>",
-        "addressLocality": "<%= @event.address['city'] %>",
-        "postalCode": "<%= @event.address['zip'] %>",
-        "addressRegion": "<%= @event.address['state'] %>",
-        "addressCountry": "<%= @event.address['country_code'] %>"
-      }
-    },
-    "image": "<%= @event.image_url %>",
-    "description": "<%= @event.description %>"
-  }
-</script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Event",
+      "name": "<%= @event.name %>",
+      "startDate": "<%= @event.start_time %>",
+      "endDate": "<%= @event.end_time %>",
+      "location": {
+        "@type": "Place",
+        "name": "<%= @event.venue %>",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "<%= @event.address['address1'] %>",
+          "addressLocality": "<%= @event.address['city'] %>",
+          "postalCode": "<%= @event.address['zip'] %>",
+          "addressRegion": "<%= @event.address['state'] %>",
+          "addressCountry": "<%= @event.address['country_code'] %>"
+        }
+      },
+      "image": "<%= @event.image_url %>",
+      "description": "<%= @event.description %>"
+    }
+  </script>
 <% end %>
