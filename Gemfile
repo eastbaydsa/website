@@ -46,6 +46,10 @@ gem 'aws-sdk-s3', '~> 1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'will_paginate', '~> 3.1.0'
 
+# Force some dependencies to upgrade for security reasons:
+gem 'loofah', '>= 2.2.2'
+gem 'rails-html-sanitizer', '= 1.0.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
