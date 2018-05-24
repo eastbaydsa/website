@@ -19,7 +19,8 @@
       <% end %>
     </h2>
 
-    <% @events.each do |event| %>
+    <!-- Mobile should only display upcoming_events if it's set, otherwise all events -->
+    <% (@upcoming_events || @events).each do |event| %>
       <article>
         <p>
           <%= link_to event.name, event_path(event, slug: event.slug) %><br>
