@@ -1,28 +1,62 @@
 <div class='container'>
   <h1>East Bay DSA events</h1>
 
-  <p>Want to learn more about East Bay DSA? Attend one of our many events in
+  <p>
+    Want to learn more about East Bay DSA? Attend one of our many events in
     the area to find out how you can get involved in improving the lives
-    of working people.</p>
-</div>
+    of working people.
+  </p>
 
-<%= month_calendar events: @events do |date, events| %>
-  <span class='simple-calendar--date-wrapper'>
-    <span class='simple-calendar--date'>
-      <%= date.day %>
-    </span>
-  </span>
 
-  <div class='simple-calendar--events'>
-    <% events.each do |event| %>
-      <%= link_to event_path(event, slug: event.slug), class: 'simple-calendar--events--event' do %>
-        <span class='simple-calendar--events--event-title'><%= event.name %><span>
-        <br />
-        <span class='simple-calendar--events--event-time'><%= format_time_range_short event.start_time, event.end_time %></span>
+  <div class='visible-mobile'>
+    <h2 class='calendar-heading'>
+      <%= link_to events_path(start_date: @start_date-1.month) do %>
+        <i class='fa fa-caret-left'></i>
       <% end %>
+      <%= @start_date.strftime('%B %Y') %>
+      <%= link_to events_path(start_date: @start_date+1.month) do %>
+        <i class='fa fa-caret-right'></i>
+      <% end %>
+    </h2>
+
+    <% @events.each do |event| %>
+      <article>
+        <p>
+          <%= link_to event.name, event_path(event, slug: event.slug) %><br>
+          <%= event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %>
+        </p>
+      </article>
+    <% end %>
+    <% if @events.blank? %>
+      <em>No upcoming events!</em>
     <% end %>
   </div>
-<% end %>
+
+</div>
+
+
+
+
+<div class='hidden-mobile'>
+  <br>
+  <%= month_calendar events: @events do |date, events| %>
+    <span class='simple-calendar--date-wrapper'>
+      <span class='simple-calendar--date'>
+        <%= date.day %>
+      </span>
+    </span>
+
+    <div class='simple-calendar--events'>
+      <% events.each do |event| %>
+        <%= link_to event_path(event, slug: event.slug), class: 'simple-calendar--events--event' do %>
+          <span class='simple-calendar--events--event-title'><%= event.name %><span>
+          <br />
+          <span class='simple-calendar--events--event-time'><%= format_time_range_short event.start_time, event.end_time %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <% content_for :schema do %>
   <script type="application/ld+json">
