@@ -28,8 +28,13 @@
         </p>
       </article>
     <% end %>
-    <% if @events.blank? %>
-      <em>No upcoming events!</em>
+    <% if (@upcoming_events || @events).blank? %>
+      <em>
+        No
+        <%= @start_date.beginning_of_month >= Date.today.beginning_of_month ? 'upcoming' : '' %>
+        events for
+        <%= @start_date.strftime('%B') %>
+      </em>
     <% end %>
   </div>
 
