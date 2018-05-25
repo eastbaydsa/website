@@ -18,6 +18,12 @@
 }
 
 .simple-calendar {
+  padding-top: $default_spacing * 2;
+  @media (min-width: $max-width + 100px) {
+    width: $largest_width;
+    margin: 0 auto;
+  }
+
   .day {
     min-height: 80px;
     height: auto;
@@ -46,6 +52,8 @@
     display: flex;
     border-left: 1px solid $border_color;
     border-bottom: 1px solid $border_color;
+    margin: 0;
+    padding: 0;
   }
 
   .day {
@@ -101,7 +109,7 @@
     padding: 3px 0 3px 5px;
 
     &:hover {
-       border-color: $dsa_red;
+      border-color: $dsa_red;
     }
   }
 
