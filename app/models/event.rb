@@ -34,16 +34,17 @@
     @nation_builder_client
   end
 
-  def self.query(start_date, end_date = nil, limit = 1000)
+  def self.query(start_date: Date.today, end_date: nil, limit: 1000, tags: nil)
     opts = {
       site_slug: ENV['NATION_SITE_SLUG'],
       starting: start_date,
       limit: limit
     }
+    opts[:tags] = tags if tags
     opts[:until] = end_date if end_date
 
     @events = client.call(:events, :index, opts)["results"]
-      .select{ |e| e["published_at"] != nil }
+      .select{ |e| ['published', 'expired'].include?(e['status']) }
       .map{ |e| Event.new(e) }
       # .maxListLength...
   end

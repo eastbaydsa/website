@@ -9,17 +9,29 @@
     </p>
   </div>
 
-  <div class='visible-mobile'>
-    <h2 class='calendar-heading'>
-      <%= link_to events_path(start_date: @start_date-1.month) do %>
-        <i class='fa fa-caret-left'></i>
-      <% end %>
-      <%= @start_date.strftime('%B %Y') %>
-      <%= link_to events_path(start_date: @start_date+1.month) do %>
-        <i class='fa fa-caret-right'></i>
-      <% end %>
-    </h2>
+  <form id='calendar-filter'>
+    <p>
+      <strong>Filter calendar:</strong>
+      <%= select_tag 'tags', options_for_select([
+        ['All events', ''],
+        ['Meetings', 'meeting'],
+        ['Canvasses', 'canvass'],
+        ['Phone Bank', 'phonebank']
+      ]) %>
+    </p>
+  </form>
 
+  <h2 class='calendar-heading'>
+    <%= link_to events_path(start_date: @start_date-1.month, tags: params[:tags]) do %>
+      <i class='fa fa-caret-left'></i>
+    <% end %>
+    <%= @start_date.strftime('%B %Y') %>
+    <%= link_to events_path(start_date: @start_date+1.month, tags: params[:tags]) do %>
+      <i class='fa fa-caret-right'></i>
+    <% end %>
+  </h2>
+
+  <div class='visible-mobile'>
     <!-- Mobile should only display upcoming_events if it's set, otherwise all events -->
     <% @upcoming_events.each do |event| %>
       <article>
