@@ -28,6 +28,14 @@
     margin-right: $default_spacing;
   }
 
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  &:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  }
+  &:active {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  }
 }
 
 @media (max-width: $mobile_break_point) {
