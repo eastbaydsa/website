@@ -54,7 +54,7 @@ ActiveAdmin.register BlogPost do
   end
 
   form do |f|
-    f.object.posted_at = DateTime.now
+    f.object.posted_at ||= DateTime.now
     f.inputs do
       f.input :title, as: :string
       f.input :content, as: :quill_editor

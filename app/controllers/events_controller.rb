@@ -10,7 +10,15 @@ class EventsController < ApplicationController
 
     end_date = @start_date.end_of_month
 
-    @events = Event.query(@start_date.to_s, end_date.to_s)
+    @events = Event.query((@start_date - 7.days).to_s, (end_date + 7.days).to_s)
+
+
+    @upcoming_events = @events.select{|e|
+      e.start_time > @start_date.to_time.beginning_of_day &&
+      e.end_time < end_date.end_of_day &&
+      (@start_date == Date.today.beginning_of_month ? e.start_time.future? : true)
+    }
+
     render layout: 'full_width'
   end
 

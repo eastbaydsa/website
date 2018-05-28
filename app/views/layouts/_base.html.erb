@@ -5,6 +5,9 @@
     <title><%= title.blank? ? '' : "#{title} | " %>East Bay DSA</title>
     <%= csrf_meta_tags %>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <% if ENV['GOOGLE_ANALYTICS_ID'] %>
       <!-- Global Site Tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GOOGLE_ANALYTICS_ID'] %>"></script>
