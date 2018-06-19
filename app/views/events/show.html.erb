@@ -35,6 +35,16 @@
     <%= @event.full_address %>
   </p>
 
+  <% if @event.has_rsvp %>
+    <h2>RSVP</h2>
+    <%= form_tag rsvp_path(@event.id) do %>
+      <div class='signup'>
+        <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
+        <%= submit_tag 'Submit', class: 'button button-primary' %>
+      </div>
+    <% end %>
+  <% end %>
+
   <% if !@event.full_address.blank? %>
     <% if ENV['GOOGLE_MAPS_KEY'] %>
       <iframe

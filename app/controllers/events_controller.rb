@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     @start_date = Date.parse(params[:start_date]) rescue nil
     @start_date ||= Date.today.beginning_of_month
     params[:start_date] = @start_date.to_s # simple_calendar gem reads from params
-    
+
     end_date = @start_date.end_of_month
     # When blank, returns all events
     @tags = params[:tags] || []
@@ -28,5 +28,39 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+  end
+
+  def rsvp
+    @event = Event.find(params[:id])
+
+    begin
+      person = nation_builder_client.call(:people, :push, person: { email: email_param })
+      person_id = person['person']['id']
+
+      nation_builder_client.call(:events, :rsvp_create, {
+        site_slug: ENV['NATION_SITE_SLUG'],
+        id: @event.id,
+        rsvp: {
+          person_id: person_id
+        }
+      })
+
+      flash[:success] = 'Thank you for RSVP-ing; see you there!'
+    rescue NationBuilder::ClientError => e
+      validation_errors = JSON.parse(e.message)['validation_errors'] || []
+      if validation_errors.include? 'signup_id has already been taken'
+        flash[:success] = 'Thank you for RSVP-ing; see you there!'
+      else
+        flash[:error] = 'Something when wrong; please try again, or contact us at info@eastbaydsa.org'
+      end
+    end
+
+    redirect_to event_path(@event, slug: @event.slug)
+  end
+
+protected
+
+  def email_param
+    params[:email].to_s.downcase.strip
   end
 end

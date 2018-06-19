@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/events', to: 'events#index', as: :events
   get '/events/:id/:slug', to: 'events#show', as: :event
+  post '/events/:id/rsvp', to: 'events#rsvp', as: :rsvp
 
   get 'join' => 'static#join'
 
