@@ -15,11 +15,9 @@
     </h2>
     <%= 'Tags: ' if @event.tags.present? %>
     <% @event.tags.each do |tag| %>
-      <small class='tag'><%= tag %></small>
+      <small class='tag'><%= tag.humanize %></small>
     <% end %>
   </div>
-
-  <br>
 
   <%= @event.description && @event.description.html_safe %>
 
@@ -36,13 +34,16 @@
   </p>
 
   <% if @event.has_rsvp %>
-    <h2>RSVP</h2>
-    <%= form_tag rsvp_path(@event.id) do %>
-      <div class='signup'>
-        <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
-        <%= submit_tag 'Submit', class: 'button button-primary' %>
-      </div>
-    <% end %>
+    <div class="event__rsvp">
+      <h2>RSVP</h2>
+      <p>Will you attend? Let us know!</p>
+      <%= form_tag rsvp_path(@event.id) do %>
+        <div class='signup'>
+          <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
+          <%= submit_tag 'Submit', class: 'button button-primary' %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 
   <% if !@event.full_address.blank? %>
