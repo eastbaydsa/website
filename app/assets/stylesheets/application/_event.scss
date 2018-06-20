@@ -21,18 +21,3 @@
     margin-bottom: $default_spacing;
   }
 }
-
-.event__rsvp {
-  margin: $default_spacing 0;
-  padding: $default_spacing;
-  background: $dsa_red;
-  color: white;
-
-  h2 {
-    margin-bottom: 0;
-  }
-
-  input[type=submit] {
-    background: $dsa_purple;
-  }
-}

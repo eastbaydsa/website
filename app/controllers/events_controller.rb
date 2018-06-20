@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     begin
-      person = nation_builder_client.call(:people, :push, person: { email: email_param })
+      person = nation_builder_client.call(:people, :push, person: person_params.to_h )
       person_id = person['person']['id']
 
       nation_builder_client.call(:events, :rsvp_create, {
@@ -60,7 +60,7 @@ class EventsController < ApplicationController
 
 protected
 
-  def email_param
-    params[:email].to_s.downcase.strip
+  def person_params
+    params.permit(:email, :first_name, :last_name)
   end
 end

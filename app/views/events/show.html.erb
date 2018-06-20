@@ -34,14 +34,18 @@
   </p>
 
   <% if @event.has_rsvp %>
-    <div class="event__rsvp">
+    <div class="form__container">
       <h2>RSVP</h2>
       <p>Will you attend? Let us know!</p>
       <%= form_tag rsvp_path(@event.id) do %>
-        <div class='signup'>
-          <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
-          <%= submit_tag 'Submit', class: 'button button-primary' %>
+        <div class="form__group form__name">
+          <%= text_field_tag :first_name, params[:first_name], class: 'input', placeholder: 'First name' %>
+          <%= text_field_tag :last_name, params[:last_name], class: 'input', placeholder: 'Last name' %>
         </div>
+        <div class='form__group form__signup'>
+          <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
+        </div>
+        <%= submit_tag 'Submit', class: 'button button-primary' %>
       <% end %>
     </div>
   <% end %>
