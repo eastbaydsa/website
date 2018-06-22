@@ -49,9 +49,9 @@ class EventsController < ApplicationController
     rescue NationBuilder::ClientError => e
       validation_errors = JSON.parse(e.message)['validation_errors'] || []
       if validation_errors.include? 'signup_id has already been taken'
-        flash[:success] = 'Thank you for RSVP-ing; see you there!'
+        flash[:success] = 'Thanks for your RSVP - see you there!'
       else
-        flash[:error] = 'Something when wrong; please try again, or contact us at info@eastbaydsa.org'
+        flash[:error] = 'Something went wrong; please try again, or contact us at info@eastbaydsa.org'
       end
     end
 

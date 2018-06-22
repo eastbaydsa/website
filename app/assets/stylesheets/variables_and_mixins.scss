@@ -59,6 +59,12 @@ $border_color: #e3e3e3;
     border: none;
   }
 
+  &.button-secondary {
+    color: #fff;
+    background: $dsa_purple;
+    border: none;
+  }
+
   &.button-lg {
     font-size: $h3_font_size;
     padding: 8px 20px;

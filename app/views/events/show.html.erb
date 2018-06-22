@@ -33,7 +33,7 @@
     <%= @event.full_address %>
   </p>
 
-  <% if @event.has_rsvp %>
+  <% if @event.accept_rsvps %>
     <div class="form__container">
       <h2>RSVP</h2>
       <p>Will you attend? Let us know!</p>
@@ -45,7 +45,7 @@
         <div class='form__group form__signup'>
           <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
         </div>
-        <%= submit_tag 'Submit', class: 'button button-primary' %>
+        <%= submit_tag 'Submit', class: 'button button-secondary' %>
       <% end %>
     </div>
   <% end %>
