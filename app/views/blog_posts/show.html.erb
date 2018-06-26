@@ -1,4 +1,5 @@
-<% content_for :title, @post.title %>
+<%= content_for :title, @post.meta_title.present? ? @post.meta_title : @post.title %>
+<%= content_for :description, @post.meta_desc %>
 
 <div class="breadcrumbs">
   <%= link_to "News", blog_posts_path %> &raquo; <%= @post.title %>

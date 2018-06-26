@@ -40,6 +40,8 @@ ActiveAdmin.register BlogPost do
         )
         link_to(@url, @url, target: '_blank')
       end
+      row :meta_title
+      row :meta_desc
       row :featured_image do |post|
         if post.featured_image != nil
           image_tag(post.featured_image, style: 'width:200px;height:auto;')
@@ -63,9 +65,11 @@ ActiveAdmin.register BlogPost do
       f.input :author
       f.input :posted_at
       f.input :listed, hint: 'Unlisted posts can still be visited by URL, but will not show up in the main list of posts'
+      f.input :meta_title, as: :string
+      f.input :meta_desc, as: :string
     end
     f.actions
   end
 
-  permit_params :title, :content, :slug, :author_id, :posted_at, :featured_image, :listed
+  permit_params :title, :content, :slug, :author_id, :posted_at, :featured_image, :listed, :meta_title, :meta_desc
 end

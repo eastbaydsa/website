@@ -27,6 +27,8 @@ ActiveAdmin.register Page do
           page.content.html_safe
         end
       end
+      row :meta_title
+      row :meta_desc
       row :background_image_url do |page|
         if page.background_image_url != nil
           image_tag(page.background_image_url, style: 'width:200px;height:auto;')
@@ -49,6 +51,8 @@ ActiveAdmin.register Page do
       f.input :parent, collection: Page.pluck(:slug, :id)
       f.input :listed, hint: 'Unlisted pages can still be visited by URL, but will not show up as a sub-page'
       f.input :background_image_url, as: :s3_url
+      f.input :meta_title, as: :string
+      f.input :meta_desc, as: :string
     end
     f.inputs 'Sign Up' do
       f.input :show_form, label: 'Display a sign-up form directly after the Content of this page.', hint: 'Make sure to put some text at the end of the "Content" section above, like "Sign up for our newsletter" in bold, to explain what this form signs you up for!'
@@ -57,5 +61,6 @@ ActiveAdmin.register Page do
     f.actions
   end
 
-  permit_params :title, :subtitle, :content, :slug, :parent_id, :listed, :show_form, :form_tags, :background_image_url
+  permit_params :title, :subtitle, :content, :slug, :parent_id, :listed, :show_form, :form_tags,
+    :background_image_url, :meta_title, :meta_desc
 end
