@@ -1,14 +1,4 @@
 <div class="simple-calendar">
-  <div class="calendar-heading">
-    <%= link_to events_path(start_date: @start_date - 1.month) do %>
-      <i class="fa fa-caret-left"></i>
-    <% end %>
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to events_path(start_date: @start_date + 1.month) do %>
-      <i class="fa fa-caret-right"></i>
-    <% end %>
-  </div>
-
   <div class="table table-striped">
     <div class="table-head">
       <ul class="days">

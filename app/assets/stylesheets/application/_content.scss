@@ -4,6 +4,22 @@
   padding: $extra_spacing 0 50px;
 }
 
+.hidden-mobile {
+  display: block;
+}
+.visible-mobile {
+  display: none;
+}
+
+@media (max-width: $tablet_break_point) {
+  .hidden-mobile {
+    display: none;
+  }
+  .visible-mobile {
+    display: block;
+  }
+}
+
 /**
  * Trix previews attachments as centered, help the render match that.
  */
@@ -18,7 +34,8 @@ article {
     padding-left: $default_spacing;
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin-left: $default_spacing/2;
     list-style-position: inside;
   }

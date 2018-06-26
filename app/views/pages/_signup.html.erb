@@ -1,5 +1,5 @@
 <%= form_tag signup_path do %>
-  <div class='signup'>
+  <div class='form__group'>
     <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
     <%= hidden_field_tag 'tags', @page.form_tags %>
     <%= submit_tag 'Submit', class: 'button button-primary' %>

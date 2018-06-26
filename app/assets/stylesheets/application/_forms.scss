@@ -1,0 +1,41 @@
+@import 'variables_and_mixins';
+
+.form__container {
+  margin: $default_spacing 0;
+  padding: $default_spacing;
+  background: $dsa_red;
+  color: white;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  input[type=submit] {
+    margin-left: 0;
+  }
+}
+
+.form__group {
+  display: flex;
+  align-items: center;
+  margin-right: -$compact_spacing;
+
+  input[type=text], input[type=email] {
+    flex: 1;
+    width: 100%;
+    margin-bottom: $compact_spacing;
+    margin-right: $compact_spacing;
+  }
+
+  input[type=submit] {
+    margin-bottom: $compact_spacing;
+    margin-right: $compact_spacing;    
+  }
+}
+
+@media (max-width: 500px) {
+  .form__group {
+    display: block;
+    margin-right: 0;
+  }
+}

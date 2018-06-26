@@ -1,13 +1,12 @@
 <%= render layout: 'layouts/base' do %>
   <%= yield :before_content %>
   <div class='content'>
-    <div class='container container-full-width'>
+    <div class='container'>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "flash flash__#{name}" %>
       <% end %>
-
-      <%= yield %>
     </div>
+
+    <%= yield %>
   </div>
 <% end %>
-

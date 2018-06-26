@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @page = Page.where(slug: 'home').first
     @page ||= Page.first
 
-    @events = Event.query(Date.today, nil, 3)
+    @events = Event.query(limit: 3)
     render :show
   end
 
@@ -13,10 +13,10 @@ class PagesController < ApplicationController
     @page = Page.find_by_slug!(params[:slug])
   end
 
-private
+  private
 
   def check_for_redirects
-    if params[:slug] and r = Redirect.find_by_from_path("/#{params[:slug]}")
+    if params[:slug] && r = Redirect.find_by_from_path("/#{params[:slug]}")
       r.increment! :clicks
       redirect_to r.to_url
     end

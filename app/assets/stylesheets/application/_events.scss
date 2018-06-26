@@ -1,12 +1,16 @@
 @import 'variables_and_mixins';
 
-// Style simple-calendar markup
+#calendar-filter {
+  select {
+    min-width: 200px;
+  }
+}
 
 .calendar-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $default_spacing/2;
+  padding-top: $default_spacing;
 
   a {
     font-size: $h2_font_size;
@@ -17,8 +21,17 @@
   font-size: $h2_font_size;
 }
 
+#calendar-filter label, .tag {
+  display: inline-block;
+  background: #ececec;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+// Style simple-calendar markup
 .simple-calendar {
-  padding-top: $default_spacing * 2;
+  padding-top: $default_spacing;
   @media (min-width: $max-width + 100px) {
     width: $largest_width;
     margin: 0 auto;
