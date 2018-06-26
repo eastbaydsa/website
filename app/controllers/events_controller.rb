@@ -29,7 +29,7 @@ class EventsController < ApplicationController
         @upcoming_events = @events.select{|e|
           e.start_time > @start_date.to_time.beginning_of_day &&
           e.end_time < end_date.end_of_day
-        }
+        }.sort_by(&:start_time)
 
         render layout: 'full_width'
       end
