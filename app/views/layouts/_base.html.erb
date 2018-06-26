@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% title = yield :title %>
-    <title><%= title.blank? ? '' : "#{title} - " %>East Bay DSA</title>
+    <title><%= [yield(:title), 'East Bay DSA'].select(&:present?).join(' - ') %></title>
     <%= csrf_meta_tags %>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <% if yield(:description).present? %>
+      <meta name="description" content="<%= yield(:description) %>">
+    <% end %>
 
     <% if ENV['GOOGLE_ANALYTICS_ID'] %>
       <!-- Global Site Tag (gtag.js) - Google Analytics -->

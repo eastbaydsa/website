@@ -15,6 +15,8 @@
 #  show_form            :boolean          default(FALSE), not null
 #  form_tags            :string
 #  background_image_url :string
+#  meta_title           :string
+#  meta_desc            :string
 #
 # Indexes
 #
