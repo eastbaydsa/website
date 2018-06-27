@@ -13,9 +13,11 @@
     <h2>
       <%= format_date @event.start_time %>
     </h2>
-    <%= 'Tags: ' if @event.tags.present? %>
-    <% @event.tags.each do |tag| %>
-      <small class='tag'><%= tag.humanize %></small>
+    <% if false %>
+      <%= 'Tags: ' if @event.tags.present? %>
+      <% @event.tags.each do |tag| %>
+        <small class='tag'><%= tag.humanize %></small>
+      <% end %>
     <% end %>
   </div>
 
@@ -31,6 +33,14 @@
     <br>
     <strong>Where:</strong>
     <%= @event.full_address %>
+    <br>
+    <%= link_to 'Add to Google calendar', @event.gcal_url, target: '_blank' %> /
+    <%= link_to 'Add to calendar', event_url(@event, slug: @event.slug, format: :ics) %> /
+    <%= link_to 'Subscribe to our calendar', events_url(protocol: 'webcal', format: :ics) %>
+  </p>
+</div>
+
+    
   </p>
 
   <% if @event.accept_rsvps %>

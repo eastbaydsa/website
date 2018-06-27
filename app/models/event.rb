@@ -1,4 +1,7 @@
 class Event
+  # If EBDSA ever has events outside this timezone,
+  # the calendar integration might not work properly
+  DEFAULT_TIMEZONE = 'US/Pacific'
   TAGS = {
     'meeting' => 'Meetings',
     'canvass' => 'Canvasses',
@@ -25,6 +28,30 @@ class Event
 
   def slug
     "#{start_time.to_date}-#{name}".parameterize
+  end
+
+  def to_ical(options = {})
+    ical_event = Icalendar::Event.new
+    ical_event.dtstart     = Icalendar::Values::DateTime.new start_time, 'tzid' => DEFAULT_TIMEZONE
+    ical_event.dtend       = Icalendar::Values::DateTime.new end_time, 'tzid' => DEFAULT_TIMEZONE
+    ical_event.summary     = name
+    ical_event.description = ActionView::Base.full_sanitizer.sanitize(description)
+    ical_event.url         = options[:url]
+    ical_event.location    = full_address
+    ical_event
+  end
+
+  def gcal_url
+    require 'uri'
+    uri = URI.parse('https://www.google.com/calendar/event')
+    uri.query = URI.encode_www_form(
+      action: 'TEMPLATE',
+      text: name,
+      details: ActionView::Base.full_sanitizer.sanitize(description),
+      location: full_address,
+      dates: "#{start_time.strftime('%Y%m%dT%H%M%S')}/#{end_time.strftime('%Y%m%dT%H%M%S')}"
+    )
+    uri.to_s
   end
 
   def full_address

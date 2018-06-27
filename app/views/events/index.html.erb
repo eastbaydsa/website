@@ -9,16 +9,18 @@
     </p>
   </div>
 
-  <%= form_tag events_path, id: 'calendar-filter', method: :get do %>
-    <%= hidden_field_tag :start_date, params[:start_date] %>
-    <p>
-      <% Event::TAGS.each do |tag, human_readable| %>
-        <label>
-          <%= check_box_tag 'tags[]', tag, @tags.include?(tag) || @tags.blank? %>
-          <%= human_readable %>
-        </label>
-      <% end %>
-    </p>
+  <% if false %>
+    <%= form_tag events_path, id: 'calendar-filter', method: :get do %>
+      <%= hidden_field_tag :start_date, params[:start_date] %>
+      <p>
+        <% Event::TAGS.each do |tag, human_readable| %>
+          <label>
+            <%= check_box_tag 'tags[]', tag, @tags.include?(tag) || @tags.blank? %>
+            <%= human_readable %>
+          </label>
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
 
   <h2 class='calendar-heading'>
@@ -70,6 +72,29 @@
         <% end %>
       <% end %>
     </div>
+  <% end %>
+</div>
+
+<div class='container'>
+  <br>
+  <h2>Subscribe to the calendar</h2>
+  <p>
+    <%= link_to 'Click here to subscribe', events_url(protocol: 'webcal', format: :ics), class: 'button button-primary' %>
+  </p>
+  <p>
+    Or copy-paste this URL into your calendar app:<br>
+    <%= link_to events_url(format: :ics), events_url(format: :ics) %>
+  </p>
+  <br>
+  <% if false and @tags.present? # this works but we should settle on tags first %>
+    <h3>
+      Only want to subscribe to events tagged <%= @tags.map{|i| "\"#{i}\""}.to_sentence last_word_connector: ', or' %>?
+    </h3>
+    <p>
+      <%= link_to "Click here to subscribe", events_url(tags: @tags, protocol: 'webcal', format: :ics) %>
+      or copy-paste this URL into your calendar app:<br>
+      <%= link_to events_url(tags: @tags, format: :ics), events_url(tags: @tags, format: :ics) %>
+    </p>
   <% end %>
 </div>
 
