@@ -84,7 +84,7 @@
     <%= link_to events_url(format: :ics), events_url(format: :ics) %>
   </p>
   <br>
-  <% if @tags.present? %>
+  <% if false and @tags.present? # this works but we should settle on tags first %>
     <h3>
       Only want to subscribe to events tagged <%= @tags.map{|i| "\"#{i}\""}.to_sentence last_word_connector: ', or' %>?
     </h3>
