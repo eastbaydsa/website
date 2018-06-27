@@ -13,9 +13,11 @@
     <h2>
       <%= format_date @event.start_time %>
     </h2>
-    <%= 'Tags: ' if @event.tags.present? %>
-    <% @event.tags.each do |tag| %>
-      <small class='tag'><%= tag.humanize %></small>
+    <% if false %>
+      <%= 'Tags: ' if @event.tags.present? %>
+      <% @event.tags.each do |tag| %>
+        <small class='tag'><%= tag.humanize %></small>
+      <% end %>
     <% end %>
   </div>
 
