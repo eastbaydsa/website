@@ -20,4 +20,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def handle_redirect
+    redirect_to params[:u]
+  end
+
+  def handle_unsubscribe
+    redirect_to "https://eastbaydsa.nationbuilder.com/unsubscribe?e=#{params[:e]}&utm_source=#{params[:utm_source]}&utm_medium=#{params[:utm_medium]}&utm_campaign=#{params[:utm_campaign]}&n=#{params[:n]}"
+  end
+
 end
