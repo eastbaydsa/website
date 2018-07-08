@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'news', to: 'blog_posts#index', as: 'blog_posts'
   get 'news/:year/:month/:day/:slug', to: 'blog_posts#show', as: 'blog_post'
   post 'signup', to: 'signups#create', as: 'signup'
+
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_error'
+
   get '*slug', to: 'pages#show', as: 'page'
   root to: "pages#home"
 end
