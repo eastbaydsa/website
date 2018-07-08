@@ -20,5 +20,8 @@ module EbdsaWebsite
 
     # Set default time zone to PST
     config.time_zone = 'Pacific Time (US & Canada)'
+
+    # Handle errors with app controller
+    config.exceptions_app = self.routes
   end
 end
