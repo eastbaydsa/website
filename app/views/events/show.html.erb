@@ -32,6 +32,7 @@
     <%= format_time_range_short @event.start_time, @event.end_time %>
     <br>
     <strong>Where:</strong>
+    <%= @event.venue %>
     <%= @event.full_address %>
     <br>
     <%= link_to 'Add to Google calendar', @event.gcal_url, target: '_blank' %> /
@@ -40,7 +41,7 @@
   </p>
 </div>
 
-    
+
   </p>
 
   <% if @event.accept_rsvps %>

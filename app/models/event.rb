@@ -56,7 +56,7 @@ class Event
 
   def full_address
     fields = [ 'address1', 'address2', 'address3', 'city', 'state', 'zip' ]
-    fields.map{|field| address[field] }.tap{|a| a.unshift(venue) }.select(&:present?).join(', ')
+    fields.map{|field| address[field] }.select(&:present?).join(', ')
   end
 
   def self.client
