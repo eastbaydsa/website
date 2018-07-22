@@ -48,7 +48,13 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     begin
-      person = nation_builder_client.call(:people, :push, person: person_params.to_h )
+      person = nil
+      begin
+        person = nation_builder_client.call(:people, :push, person: person_params.to_h )
+      rescue
+        person = nation_builder_client.call(:people, :match, email: person_params.to_h[:email])
+      end
+
       person_id = person['person']['id']
 
       nation_builder_client.call(:events, :rsvp_create, {
