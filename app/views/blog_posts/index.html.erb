@@ -16,8 +16,8 @@
     <h2>
       <%= link_to post.title, blog_post_path(
           year: post.posted_at.year,
-          month: post.posted_at.month,
-          day: post.posted_at.day,
+          month: post.posted_at.month.to_s.rjust(2, '0'),
+          day: post.posted_at.day.to_s.rjust(2, '0'),
           slug: post.slug
       ) %>
     </h2>
@@ -29,8 +29,8 @@
       <%= truncate(strip_tags(post.content), length: 300) %>
       <%= link_to '(Read&nbsp;more)'.html_safe, blog_post_path(
         year: post.posted_at.year,
-        month: post.posted_at.month,
-        day: post.posted_at.day,
+        month: post.posted_at.month.to_s.rjust(2, '0'),
+        day: post.posted_at.day.to_s.rjust(2, '0'),
         slug: post.slug
         ) %>
     </p>
