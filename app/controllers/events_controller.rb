@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :require_nationbuilder_slug
+  before_action :set_event
 
   def index
     # When blank, returns all events
@@ -37,7 +38,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     respond_to do |format|
       format.ics { render plain: render_ical(@event), content_type: 'text/calendar' }
       format.html
@@ -45,40 +45,41 @@ class EventsController < ApplicationController
   end
 
   def rsvp
-    @event = Event.find(params[:id])
+    person =   nation_builder_client.call(:people, :push, person: person_params.to_h) rescue nil
+    person ||= nation_builder_client.call(:people, :match, email: person_params.to_h[:email]) rescue nil
 
-    begin
-      person = nil
-      begin
-        person = nation_builder_client.call(:people, :push, person: person_params.to_h )
-      rescue
-        person = nation_builder_client.call(:people, :match, email: person_params.to_h[:email])
-      end
-
+    if person.blank?
+      flash[:error] = 'Something went wrong; please try again, or contact us at info@eastbaydsa.org'
+    else
       person_id = person['person']['id']
 
       nation_builder_client.call(:events, :rsvp_create, {
         site_slug: ENV['NATION_SITE_SLUG'],
         id: @event.id,
-        rsvp: {
-          person_id: person_id
-        }
+        rsvp: { person_id: person_id }
       })
 
       flash[:success] = 'Thank you for RSVP-ing; see you there!'
-    rescue NationBuilder::ClientError => e
-      validation_errors = JSON.parse(e.message)['validation_errors'] || []
-      if validation_errors.include? 'signup_id has already been taken'
-        flash[:success] = 'Thanks for your RSVP - see you there!'
-      else
-        flash[:error] = 'Something went wrong; please try again, or contact us at info@eastbaydsa.org'
-      end
     end
 
+  rescue NationBuilder::ClientError => e
+
+    validation_errors = JSON.parse(e.message)['validation_errors'] || []
+    if validation_errors.include? 'signup_id has already been taken'
+      flash[:success] = 'Thanks for your RSVP - see you there!'
+    else
+      flash[:error] = 'Something went wrong; please try again, or contact us at info@eastbaydsa.org'
+    end
+
+  ensure
     redirect_to event_path(@event, slug: @event.slug)
   end
 
 protected
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def render_ical(events, options = {})
     events = [events] unless events.is_a? Array
