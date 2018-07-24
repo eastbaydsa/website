@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :require_nationbuilder_slug
-  before_action :set_event
+  before_action :set_event, only: [:show, :rsvp]
 
   def index
     # When blank, returns all events
