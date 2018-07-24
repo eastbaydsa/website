@@ -45,30 +45,32 @@ class EventsController < ApplicationController
   end
 
   def rsvp
-    person =   nation_builder_client.call(:people, :push, person: person_params.to_h) rescue nil
-    person ||= nation_builder_client.call(:people, :match, email: person_params.to_h[:email]) rescue nil
+    # check if we already have this user by email address
+    person = $nation_builder_client.call(:people, :match, email: person_params.to_h[:email]) rescue nil
+    # if this method throws errors (like "none found"), just ignore and create new
 
-    if person.blank?
-      flash[:error] = 'Something went wrong; please try again, or contact us at info@eastbaydsa.org'
-    else
-      person_id = person['person']['id']
+    # don't have 'em? create anew!
+    # ClientErrors created by either of the next 2 API calls can be caught below
+    person ||= $nation_builder_client.call(:people, :push, person: person_params.to_h)
 
-      nation_builder_client.call(:events, :rsvp_create, {
-        site_slug: ENV['NATION_SITE_SLUG'],
-        id: @event.id,
-        rsvp: { person_id: person_id }
-      })
+    $nation_builder_client.call(:events, :rsvp_create, {
+      site_slug: ENV['NATION_SITE_SLUG'],
+      id: @event.id,
+      rsvp: { person_id: person['person']['id'] }
+    })
 
-      flash[:success] = 'Thank you for RSVP-ing; see you there!'
-    end
+    flash[:success] = 'Thanks for your RSVP - see you there!'
 
   rescue NationBuilder::ClientError => e
 
-    validation_errors = JSON.parse(e.message)['validation_errors'] || []
-    if validation_errors.include? 'signup_id has already been taken'
-      flash[:success] = 'Thanks for your RSVP - see you there!'
+    validation_errors = JSON.parse(e.message)['validation_errors']
+    # remove the duplicate-rsvp error, just tell the user it worked :)
+    validation_errors.delete 'signup_id has already been taken'
+
+    if validation_errors.present?
+      flash[:error] = "Error: #{validation_errors.join('.')}"
     else
-      flash[:error] = 'Something went wrong; please try again, or contact us at info@eastbaydsa.org'
+      flash[:success] = 'Thanks for your RSVP - see you there!'
     end
 
   ensure
