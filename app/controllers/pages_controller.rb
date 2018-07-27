@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   def check_for_redirects
     if params[:slug] && r = Redirect.find_by_from_path("/#{params[:slug]}")
       r.increment! :clicks
-      redirect_to r.to_url
+      redirect_to r.to_url, status: :moved_permanently
     end
   end
 end
