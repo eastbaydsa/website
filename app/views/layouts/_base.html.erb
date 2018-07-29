@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= [yield(:title), 'East Bay DSA'].select(&:present?).join(' - ') %></title>
     <%= csrf_meta_tags %>
@@ -32,16 +32,14 @@
   <body>
 
     <div class='header'>
-      <div class='container'>
-        <div>
-          <%= link_to(image_tag('dsa-logo-with-text-and-subtitle.svg', class: 'header__logo'), root_path) %>
+      <nav class='container'>
+        <%= link_to(image_tag('dsa-logo-with-text-and-subtitle.svg', class: 'header__logo'), root_path) %>
 
-          <%= link_to 'javascript:void(0);', class: 'hamburger', onclick: '$(".header__menu").toggleClass("show");' do %>
-            <i class='fa fa-bars'></i>
-          <% end %>
-        </div>
+        <button class="hamburger" type="button" aria-label="menu" aria-expanded="false">
+          <i class='fa fa-bars'></i>
+        </button>
 
-        <ul class='header__menu'>
+        <ul class='header__menu' role="menu">
           <% header_menu_items.each do |item| %>
             <li><%= link_to item.label, item.slug %></li>
           <% end %>
@@ -49,7 +47,7 @@
             <li><%= link_to 'Admin', current_admin_path %></li>
           <% end %>
         </ul>
-      </div>
+      </nav>
     </div>
 
     <%= yield %>
