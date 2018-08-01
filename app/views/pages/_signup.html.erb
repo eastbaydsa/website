@@ -1,6 +1,10 @@
+<% collect_phone ||= false %>
 <%= form_tag signup_path do %>
   <div class='form__group'>
     <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
+    <% if @page.form_collect_phone %>
+      <%= phone_field_tag :phone, params[:phone], class: 'input signup__phone', placeholder: 'Mobile phone', required: true %>
+    <% end %>
     <%= hidden_field_tag 'tags', @page.form_tags %>
     <%= submit_tag 'Submit', class: 'button button-primary' %>
   </div>

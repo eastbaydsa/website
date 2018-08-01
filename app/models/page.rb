@@ -17,6 +17,7 @@
 #  background_image_url :string
 #  meta_title           :string
 #  meta_desc            :string
+#  form_collect_phone   :boolean          default(FALSE), not null
 #
 # Indexes
 #

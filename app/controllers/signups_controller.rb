@@ -5,7 +5,11 @@ class SignupsController < ApplicationController
 
   def create
     begin
-      person = nation_builder_client.call(:people, :push, person: { email: email_param })
+      person_params = { email: email_param }
+      if (params[:phone])
+        person_params[:mobile] = phone_param
+      end
+      person = nation_builder_client.call(:people, :push, person: person_params)
       person_id = person['person']['id']
       nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: tags_param }} )
       redirect_back flash: { success: 'Thank you for signing up.' }, fallback_location: root_path
@@ -29,5 +33,9 @@ protected
 
   def email_param
     params[:email].to_s.downcase.strip
+  end
+
+  def phone_param
+    params[:phone].gsub(/[^0-9]/, '')
   end
 end
