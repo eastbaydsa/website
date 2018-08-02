@@ -59,17 +59,6 @@ class Event
     fields.map{|field| address[field] }.select(&:present?).join(', ')
   end
 
-  def self.client
-    unless @nation_builder_client
-      unless ENV['NATION_NAME'] && ENV['NATION_API_TOKEN']
-        raise "You must set `NATION_NAME` and `NATION_API_TOKEN` in your .env file to use this feature."
-      end
-
-      @nation_builder_client = NationBuilder::Client.new(ENV['NATION_NAME'], ENV['NATION_API_TOKEN'])
-    end
-    @nation_builder_client
-  end
-
   def self.query(start_date: Date.today, end_date: nil, limit: 500, tags: [])
     opts = {
       site_slug: ENV['NATION_SITE_SLUG'],
@@ -85,7 +74,7 @@ class Event
     tags = tags.clone
     other = tags.delete 'other'
 
-    @events = client.call(:events, :index, opts)["results"]
+    @events = $nation_builder_client.call(:events, :index, opts)["results"]
       .select{ |e| ['published', 'expired'].include?(e['status']) }
       .sort_by{ |e| e['start_time']} # NationBuilder API returns unsorted events
       .take(limit)
@@ -100,7 +89,7 @@ class Event
   end
 
   def self.find(id)
-    raw = client.call(:events, :show, {
+    raw = $nation_builder_client.call(:events, :show, {
       site_slug: ENV['NATION_SITE_SLUG'],
       id: id
     })
