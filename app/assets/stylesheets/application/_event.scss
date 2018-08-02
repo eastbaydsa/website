@@ -1,6 +1,10 @@
 @import 'variables_and_mixins';
 
 .event {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .event--details {
