@@ -2,14 +2,7 @@
 
 .hero {
   margin-bottom: $extra_spacing;
-  h1 {
-    background-color: $dsa_purple;
-   -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    font-weight: bold;
-    display: inline;
-    padding: 0 0.5rem 0.3rem;
-  }
+  h1 { font-weight: bold; }
 
   h1, p { margin: 0; }
 
@@ -20,6 +13,15 @@
     background-size: cover;
     background-position: center center;
     text-shadow: #000 0 0 1em;
+
+    h1 {
+      background-color: $dsa_purple;
+     -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      font-weight: bold;
+      display: inline;
+      padding: 0 0.5rem 0.3rem;
+    }
   }
 }
 
