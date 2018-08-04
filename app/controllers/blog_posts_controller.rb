@@ -1,7 +1,7 @@
 class BlogPostsController < ApplicationController
 
   def index
-    @posts = BlogPost.listed.order('posted_at DESC').paginate(:page => params[:page], :per_page => 10)
+    @posts = BlogPost.listed.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
