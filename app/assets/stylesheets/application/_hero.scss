@@ -2,7 +2,15 @@
 
 .hero {
   margin-bottom: $extra_spacing;
-  h1 { font-weight: bold; }
+  h1 {
+    background-color: $dsa_purple;
+   -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    font-weight: bold;
+    display: inline;
+    padding: 0 0.5rem 0.3rem;
+  }
+
   h1, p { margin: 0; }
 
   &.hero-with-image {
