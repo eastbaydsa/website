@@ -150,7 +150,7 @@ heroku git:remote -a eastbaydsa-website-staging
 
 ### Staging Environment
 
-Visit the stage build at http://eastbaydsa-staging.herokuapp.com/events to test your changes.
+Visit the stage build at http://eastbaydsa-staging.herokuapp.com to test your changes.
 
 ### Deploy
 
