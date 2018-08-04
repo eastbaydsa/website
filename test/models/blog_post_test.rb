@@ -14,6 +14,7 @@
 #  listed         :boolean          default(TRUE)
 #  meta_title     :string
 #  meta_desc      :string
+#  featured       :boolean          default(TRUE), not null
 #
 # Indexes
 #

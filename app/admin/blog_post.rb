@@ -11,6 +11,7 @@ ActiveAdmin.register BlogPost do
     column :posted_at
     column :author
     column :listed
+    column :featured
     column :direct_link do |post|
       @url = blog_post_path(
         year: post.posted_at.year,
@@ -65,11 +66,12 @@ ActiveAdmin.register BlogPost do
       f.input :author
       f.input :posted_at
       f.input :listed, hint: 'Unlisted posts can still be visited by URL, but will not show up in the main list of posts'
+      f.input :featured, hint: 'Featured posts that are also listed are visibile on the homepage'
       f.input :meta_title, as: :string
       f.input :meta_desc, as: :string
     end
     f.actions
   end
 
-  permit_params :title, :content, :slug, :author_id, :posted_at, :featured_image, :listed, :meta_title, :meta_desc
+  permit_params :title, :content, :slug, :author_id, :posted_at, :featured_image, :listed, :featured, :meta_title, :meta_desc
 end
