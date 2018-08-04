@@ -1,0 +1,33 @@
+@import 'variables_and_mixins';
+
+#home-hero {
+  position: relative;
+  background-color: $dsa_red;
+  color: $text-color;
+  text-shadow: none;
+  height: 450px;
+  margin-top: -30px;
+  margin-bottom: 80px;
+}
+
+#home-hero-content {
+  position: absolute;
+  background: white;
+  max-width: 500px;
+  height: 450px;
+  padding: $default_spacing * 2;
+  top: 50px;;
+  left: 0;
+  border-bottom: $dsa_red solid 10px;
+  margin-left: 10%;
+
+  h1 {
+    font-weight: normal;
+    line-height: 1.2;
+    margin-bottom: $default_spacing * 1.5;
+    strong {
+      color: $dsa_red;
+      font-weight: bold;
+    }
+  }
+}

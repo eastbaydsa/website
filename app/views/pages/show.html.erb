@@ -13,17 +13,15 @@
 <% end %>
 
 
-<% unless @page.home? %>
-  <div class='breadcrumbs'>
-    <!-- Always put a Home at the beginning, then ignore it within all_parents -->
-    <%= link_to 'Home', root_url %> &raquo;
-    <% for parent in @page.all_parents.reverse %>
-      <% next if parent.home? %>
-      <%= link_to parent.title, page_path(parent) %> &raquo;
-    <% end %>
-    <%= @page.title %>
-  </div>
-<% end %>
+<div class='breadcrumbs'>
+  <!-- Always put a Home at the beginning, then ignore it within all_parents -->
+  <%= link_to 'Home', root_url %> &raquo;
+  <% for parent in @page.all_parents.reverse %>
+    <% next if parent.home? %>
+    <%= link_to parent.title, page_path(parent) %> &raquo;
+  <% end %>
+  <%= @page.title %>
+</div>
 
 
 <article>
@@ -51,9 +49,5 @@
     <% end %>
   <% end %>
 </div>
-
-<% if @page.home? %>
-  <%= render 'upcoming_events' %>
-<% end %>
 
 <%= render partial: 'schema' %>

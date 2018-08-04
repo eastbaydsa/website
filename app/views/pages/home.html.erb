@@ -1,0 +1,25 @@
+<%= content_for :title, @page.meta_title.present? ? @page.meta_title : @page.title %>
+<%= content_for :description, @page.meta_desc %>
+
+<div id='home-hero' class='hero hero-with-image' style='background-image: url(<%= @page.background_image_url %>);'>
+  <div id='home-hero-content'>
+    <h1>
+      We are the East Bay chapter of <strong>Democratic Socialists of America</strong>
+    </h1>
+    <p>
+      Democratic Socialists of America (DSA) is the country's largest socialist organization,
+      and East Bay DSA is the fifth-largest chapter in the US. We are building progressive
+      movements for social change in Oakland, Berkeley, and throughout the East Bay while
+      establishing an openly democratic socialist presence in American communities and politics.
+    </p>
+
+  </div>
+</div>
+
+<div class='container container-full-width'>
+  <div class='quill-output'><%= @page.content.html_safe %></div>
+
+  <%= render 'upcoming_events' %>
+
+</div>
+<%= render partial: 'schema' %>
