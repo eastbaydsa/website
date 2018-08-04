@@ -25,7 +25,8 @@
 class BlogPost < ApplicationRecord
   include HasSlug
 
-  scope :listed, -> { where(listed: true) }
+  scope :listed, -> { where(listed: true).order('posted_at DESC') }
+  scope :homepage, -> { where(listed: true, featured: true).order('posted_at DESC') }
 
   belongs_to :author, class_name: 'Admin'
   alias_attribute :to_param, :slug
