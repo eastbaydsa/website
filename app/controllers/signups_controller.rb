@@ -1,7 +1,19 @@
 class SignupsController < ApplicationController
-
   before_action :require_nationbuilder_slug
-  before_action :require_email
+  before_action :require_email, only: :create
+
+  def check
+    email = params[:email].to_s.strip.downcase
+    if [ 'kyletns@gmail.com',
+         'randall.leeds@gmail.com',
+         'ddagradi@gmail.com',
+         'dominic@chain.com',
+         'kyle@groupmuse.com' ].include? email
+      render json: { status: :found }, status: :ok
+    else
+      render json: { status: :not_found }, status: :not_found
+    end
+  end
 
   def create
     person = $nation_builder_client.call(:people, :push, person: person_params.to_h)
