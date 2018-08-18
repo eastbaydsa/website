@@ -148,6 +148,10 @@ Hook your local repo up to the Heroku app by adding a Git remote:
 heroku git:remote -a eastbaydsa-website-staging
 ```
 
+### Staging Environment
+
+Visit the stage build at http://eastbaydsa-staging.herokuapp.com to test your changes.
+
 ### Deploy
 
 Use Git to push the code to Heroku:
@@ -175,6 +179,16 @@ heroku open
 ```
 
 ## Troubleshooting
+
+### Updating your DB
+
+After pulling main, if you notice changes to `db/schema.rb`, run
+
+```bash
+bundle exec rake db:migrate
+```
+
+If this command fails, try running `bundle`, and then retry the above command.
 
 ### Postgres issues
 

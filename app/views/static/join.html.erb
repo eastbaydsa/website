@@ -19,12 +19,13 @@
     Stay up-to-date on local upcoming events and actions!
   </p>
 
+  <% person_params = params[:person] || {} %>
   <%= form_tag signup_path do %>
     <%if @state == 'error' %>
       <div class='signup__error'>Error: E-mail cannot be blank!</div>
     <% end %>
     <div class='signup'>
-      <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
+      <%= email_field_tag 'person[email]', person_params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
       <%= hidden_field_tag 'tags', 'eb_supporter' %>
       <%= submit_tag 'Submit', class: 'button button-primary' %>
     </div>
