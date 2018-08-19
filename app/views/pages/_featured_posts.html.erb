@@ -1,19 +1,23 @@
 <% if @posts.present? %>
   <h1>Recent news</h1>
-  <% @posts.each do |post| %>
-    <article>
-      <h3><%= post.title %></h3>
-      <%= truncate(strip_tags(post.content), length: 150) %>
-      <%= link_to '(Read&nbsp;more)'.html_safe, blog_post_path(
-        year: post.posted_at.year,
-        month: post.posted_at.month.to_s.rjust(2, '0'),
-        day: post.posted_at.day.to_s.rjust(2, '0'),
-        slug: post.slug
-        ) %>
-    </article>
-  <% end %>
 
-  <p>
-    <%= link_to 'Older posts', blog_posts_path  , class: 'button button-primary' %>
-  </p>
+  <div id='homepage-posts'>
+    <% @posts.each do |post| %>
+      <article class='homepage-post'>
+        <h3><%= post.title %></h3>
+        <p class='text-light'>
+          <%= post.posted_at.localtime.to_date.to_s(:long) %>
+        </p>
+
+        <%= truncate(strip_tags(post.content), length: 150) %>
+        <br>
+        <%= link_to 'Read&nbsp;more →'.html_safe, blog_post_path(
+          year: post.posted_at.year,
+          month: post.posted_at.month.to_s.rjust(2, '0'),
+          day: post.posted_at.day.to_s.rjust(2, '0'),
+          slug: post.slug
+          ) %>
+      </article>
+    <% end %>
+  </div>
 <% end %>

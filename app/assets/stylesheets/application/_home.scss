@@ -5,21 +5,19 @@
   background-color: $dsa_red;
   color: $text-color;
   text-shadow: none;
-  height: 450px;
+  height: 500px;
   margin-top: -30px;
-  margin-bottom: 80px;
 }
 
 #home-hero-content {
-  position: absolute;
   background: white;
-  max-width: 500px;
-  height: 450px;
+  max-width: 550px;
+  height: 500px;
   padding: $default_spacing * 2;
-  top: 50px;;
+  margin-top: -25px;
   left: 0;
-  border-bottom: $dsa_red solid 10px;
-  margin-left: 10%;
+  border-top: $dsa_red solid 25px;
+  font-size: 20px;
 
   h1 {
     font-weight: normal;
@@ -29,5 +27,54 @@
       color: $dsa_red;
       font-weight: bold;
     }
+  }
+}
+
+#home-cta {
+  color: white;
+  background: $dsa_red;
+  padding-top: 100px;
+  margin-bottom: 50px;
+
+  #home-newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.home-container {
+  width: 90%;
+  padding: 0;
+}
+
+.home-content {
+  h1 {
+    display: inline-block;
+    background: $dsa_purple;
+    color: white;
+    padding: 0 10px;
+    margin-left: -10px;
+  }
+}
+
+.home-columns {
+  display: flex;
+
+  > div {
+    flex: 1;
+  }
+}
+
+#home-news {
+  #homepage-posts {
+    display: flex;
+  }
+
+  .homepage-post {
+    margin-left: -10px;
+    margin-right: 40px;
+    border-left: 10px solid  $dsa_red;
+    padding-left: 25px;
   }
 }

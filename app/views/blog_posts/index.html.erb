@@ -23,11 +23,12 @@
     </h2>
     <p>
 
-      <span class='text-light'>
-        <%= post.posted_at.localtime.to_date.to_s(:long) %> -
-      </span>
+      <p class='text-light'>
+        <%= post.posted_at.localtime.to_date.to_s(:long) %>
+      </p>
       <%= truncate(strip_tags(post.content), length: 300) %>
-      <%= link_to '(Read&nbsp;more)'.html_safe, blog_post_path(
+      <br>
+      <%= link_to 'Read&nbsp;more →'.html_safe, blog_post_path(
         year: post.posted_at.year,
         month: post.posted_at.month.to_s.rjust(2, '0'),
         day: post.posted_at.day.to_s.rjust(2, '0'),

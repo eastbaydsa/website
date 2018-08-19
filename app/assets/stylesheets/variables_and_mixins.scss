@@ -7,7 +7,7 @@ $light_text_color: #888;
 
 // Layout
 $largest_width: calc(100% - 100px);
-$max_width: 780px;
+$max_width: 850px;
 $tablet_break_point: 768px;
 $mobile_break_point: 500px;
 $default_spacing: 20px;
@@ -17,10 +17,11 @@ $text_indent: 30px;
 
 // Sizes
 $small_font_size: 14px;
-$default_font_size: 18px;
+$nav_font_size: 18px;
+$default_font_size: 22px;
 $h1_font_size: 42px;
 $h2_font_size: 32px;
-$h3_font_size: 24px;
+$h3_font_size: 28px;
 
 // Old variables before visual redesign:
 $dsa_dark_red: #ea2127;
@@ -41,7 +42,7 @@ $border_color: #e3e3e3;
   padding: 11.5px 20px 11.5px;
   text-align: center;
   text-decoration: none;
-  font-size: $default_font_size;
+  font-size: $nav_font_size;
   height: 50px;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
