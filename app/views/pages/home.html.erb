@@ -20,7 +20,10 @@
 <div id='home-cta'>
   <div class='home-container home-columns container container-full-width'>
     <div id="home-newsletter">
-      <h3>Get our newsletter</h3>
+      <div>
+        <h3>Check out the newsletter</h3>
+        <p>Stay up to date with our exciting work!</p>
+      </div>
       <%= form_tag signup_path do %>
         <%if @state == 'error' %>
           <div class='signup__error'>Error: E-mail cannot be blank!</div>
@@ -28,21 +31,17 @@
         <div class='signup'>
           <%= email_field_tag :email, params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
           <%= hidden_field_tag 'tags', 'eb_supporter' %>
-          <%= submit_tag 'Submit', class: 'button' %>
+          <%= submit_tag 'Submit', class: 'button button-secondary' %>
         </div>
       <% end %>
     </div>
 
     <div id="home-join">
-
-      <h3>Become an official member</h3>
-      <p>
-        If you want to vote at meetings, you'll need to officially join National DSA on their website and pay dues.
-        All dues-paying members of National DSA living in the East Bay are automatically members of East Bay DSA.
-      </p>
-      <p>
-        <%= link_to 'Join National DSA', 'https://dsausa.nationbuilder.com/join', class: 'button button-primary' %>
-      </p>
+      <h3>Get involved today!</h3>
+      <span>
+        <%= link_to 'Join DSA', 'https://dsausa.nationbuilder.com/join', class: 'button button-secondary' %>
+        <%= link_to 'Attend an event', '/events', class: 'button button-secondary' %>
+      </span>
     </div>
   </div>
 </div>

@@ -33,13 +33,31 @@
 #home-cta {
   color: white;
   background: $dsa_red;
-  padding-top: 100px;
+  padding-top: 90px;
   margin-bottom: 50px;
+  padding-bottom: 40px;
 
   #home-newsletter {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex: auto;
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    form {
+      margin-left: 30px;
+    }
+  }
+
+  #home-join {
+    display: flex;
+    flex: auto;
+    align-items: center;
+    h3 {
+      margin-right: 30px;
+    }
   }
 }
 
@@ -67,6 +85,8 @@
 }
 
 #home-news {
+  margin-bottom: 30px;
+  
   #homepage-posts {
     display: flex;
   }
