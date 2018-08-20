@@ -72,7 +72,6 @@
     background: $dsa_purple;
     color: white;
     padding: 0 10px;
-    margin-left: -10px;
   }
 }
 
@@ -86,15 +85,43 @@
 
 #home-news {
   margin-bottom: 30px;
-  
+
   #homepage-posts {
     display: flex;
   }
 
   .homepage-post {
-    margin-left: -10px;
+    flex: 1;
     margin-right: 40px;
     border-left: 10px solid  $dsa_red;
     padding-left: 25px;
+  }
+}
+
+#home-events {
+  #homepage-events {
+    display: flex;
+  }
+
+  .homepage-event {
+    flex: 1;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+
+
+    a {
+      flex: 1;
+      background: $dsa_red;
+      color: white;
+      display: block;
+      padding: 25px;
+      text-decoration: none;
+
+      &:hover {
+        background: $dsa_purple;
+        text-decoration: underline;
+      }
+    }
   }
 }
