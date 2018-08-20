@@ -4,7 +4,7 @@
   <div id='homepage-posts'>
     <% @posts.each do |post| %>
       <article class='homepage-post'>
-        <h3><%= post.title %></h3>
+        <strong><%= post.title %></strong>
         <p class='text-light'>
           <%= post.posted_at.localtime.to_date.to_s(:long) %>
         </p>

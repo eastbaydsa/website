@@ -1,5 +1,18 @@
 @import 'variables_and_mixins';
 
+.home-container {
+  width: 95%;
+  padding: 0;
+
+  @media (max-width: 960px) {
+    width: 80%;
+  }
+
+  @media (min-width: 1300px) {
+    width: 90%;
+  }
+}
+
 #home-hero {
   position: relative;
   background-color: $dsa_red;
@@ -36,34 +49,37 @@
   padding-top: 90px;
   margin-bottom: 50px;
   padding-bottom: 40px;
+  font-size: 18px;
+
+  h3 {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+
 
   #home-newsletter {
-    display: flex;
-    align-items: center;
-    flex: auto;
+    @media (min-width: 1110px) {
+      display: flex;
+      align-items: center;
+      flex: auto;
 
-    h3 {
-      margin-bottom: 0;
-    }
-
-    form {
-      margin-left: 30px;
+      form {
+        margin-left: 30px;
+      }
     }
   }
 
   #home-join {
-    display: flex;
-    flex: auto;
-    align-items: center;
-    h3 {
-      margin-right: 30px;
+    @media (min-width: 1110px) {
+      display: flex;
+      flex: auto;
+      align-items: center;
+      justify-content: center;
+      h3 {
+        margin-right: 30px;
+      }
     }
   }
-}
-
-.home-container {
-  width: 90%;
-  padding: 0;
 }
 
 .home-content {
@@ -87,7 +103,9 @@
   margin-bottom: 30px;
 
   #homepage-posts {
-    display: flex;
+    @media (min-width: 960px) {
+      display: flex;
+    }
   }
 
   .homepage-post {
@@ -100,7 +118,9 @@
 
 #home-events {
   #homepage-events {
-    display: flex;
+    @media (min-width: 960px) {
+      display: flex;
+    }
   }
 
   .homepage-event {
