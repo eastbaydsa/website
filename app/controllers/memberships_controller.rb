@@ -14,6 +14,7 @@ class MembershipsController < ApplicationController
   private
 
   def require_whitelisted_ip
+    return if ENV['AUTH0_IP_WHITELIST'] == 'disabled'
     whitelist = ENV['AUTH0_IP_WHITELIST'].split(',')
     head :forbidden unless whitelist.include? request.remote_ip
   end
