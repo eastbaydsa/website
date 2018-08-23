@@ -1,5 +1,4 @@
 class SignupsController < ApplicationController
-
   before_action :require_nationbuilder_slug
   before_action :require_email
 
