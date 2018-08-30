@@ -81,6 +81,51 @@
   }
 }
 
+#campaigns {
+  color: white;
+  margin-bottom: $default-spacing;
+
+  @media (min-width: 860px) {
+    display: flex;
+  }
+
+  .campaign {
+    background-size: cover;
+    text-shadow: 1px 0 0 black;
+    padding-top: 300px;
+    flex: 1;
+    display: flex;
+    margin-left: -6%;
+    margin-right: -6%;
+    margin-bottom: $default-spacing;
+
+    @media (min-width: 860px) {
+      margin: 0 0 $default-spacing 0;
+    }
+
+  }
+
+  a {
+    color: white;
+  }
+
+  .campaign-content {
+    background: rgba(0,0,0,0.5);
+    padding: $default-spacing;
+  }
+
+  #campaign-jovanka {
+    background-image: image-url('campaign-jovanka.jpg');
+  }
+
+  #campaign-housing {
+    background-image: image-url('campaign-housing.jpg');
+    @media (min-width: 860px) {
+      margin-left: 10px;
+    }
+  }
+}
+
 .home-content {
   h1 {
     display: inline-block;
