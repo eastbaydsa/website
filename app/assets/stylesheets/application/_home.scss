@@ -2,14 +2,15 @@
 
 .home-container {
   width: 95%;
+  max-width: 1200px;
   padding: 0;
 
-  @media (max-width: 960px) {
-    width: 80%;
+  @media (max-width: 600px) {
+    width: 90%;
   }
 
-  @media (min-width: 1300px) {
-    width: 90%;
+  @media (min-width: 600px) {
+    width: 80%;
   }
 }
 
@@ -18,19 +19,30 @@
   background-color: $dsa_red;
   color: $text-color;
   text-shadow: none;
-  height: 500px;
   margin-top: -30px;
+  padding-bottom: 0;
 }
 
 #home-hero-content {
+  @media (max-width: 600px) {
+    padding: 18px;
+    padding: $default-spacing;
+
+    h1 {
+      font-size: 26px;
+    }
+  }
+
+  p {
+    margin-bottom: $default-spacing;
+  }
+
   background: white;
   max-width: 550px;
-  height: 500px;
   padding: $default_spacing * 2;
-  margin-top: -25px;
-  left: 0;
   border-top: $dsa_red solid 25px;
   font-size: 20px;
+  margin-bottom: -30px;
 
   h1 {
     font-weight: normal;
@@ -46,9 +58,9 @@
 #home-cta {
   color: white;
   background: $dsa_red;
-  padding-top: 90px;
-  margin-bottom: 50px;
-  padding-bottom: 40px;
+  padding-top: $default-spacing * 2.5;
+  margin-bottom: $default-spacing * 2;
+  padding-bottom: 30px;
   font-size: 18px;
 
   h3 {
@@ -56,27 +68,14 @@
     margin-bottom: 0;
   }
 
-
-  #home-newsletter {
-    @media (min-width: 1110px) {
+  @media (min-width: 1110px) {
+    #home-newsletter {
       display: flex;
       align-items: center;
       flex: auto;
 
       form {
         margin-left: 30px;
-      }
-    }
-  }
-
-  #home-join {
-    @media (min-width: 1110px) {
-      display: flex;
-      flex: auto;
-      align-items: center;
-      justify-content: center;
-      h3 {
-        margin-right: 30px;
       }
     }
   }
@@ -102,33 +101,38 @@
 #home-news {
   margin-bottom: 30px;
 
-  #homepage-posts {
-    @media (min-width: 960px) {
+  @media (min-width: 960px) {
+    #homepage-posts {
       display: flex;
+    }
+
+    .homepage-post {
+      margin-right: 40px;
     }
   }
 
   .homepage-post {
     flex: 1;
-    margin-right: 40px;
     border-left: 10px solid  $dsa_red;
     padding-left: 25px;
   }
 }
 
 #home-events {
-  #homepage-events {
-    @media (min-width: 960px) {
+  @media (min-width: 960px) {
+    #homepage-events {
       display: flex;
+    }
+
+    .homepage-event {
+      margin-right: 40px;
     }
   }
 
   .homepage-event {
     flex: 1;
-    margin-right: 40px;
     display: flex;
     flex-direction: column;
-
 
     a {
       flex: 1;

@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @page = Page.where(slug: 'home').first
     @page ||= Page.first
 
-    @events = Event.query(limit: 4)
+    @events = Event.query(limit: 3)
     @posts = BlogPost.homepage.limit(3)
     render layout: 'full_width'
   end
