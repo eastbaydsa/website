@@ -128,10 +128,11 @@
 
 .home-content {
   h1 {
+    color: $dsa_purple;
     display: inline-block;
-    background: $dsa_purple;
-    color: white;
-    padding: 0 10px;
+    font-weight: bold;
+    margin-top: $default-spacing;
+    margin-bottom: $default-spacing * 1.5;
   }
 }
 
