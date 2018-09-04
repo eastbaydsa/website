@@ -92,12 +92,19 @@
   .campaign {
     background-size: cover;
     text-shadow: 1px 0 0 black;
+    text-decoration: none;
     padding-top: 300px;
     flex: 1;
     display: flex;
     margin-left: -6%;
     margin-right: -6%;
     margin-bottom: $default-spacing;
+
+    &:hover {
+      h3 {
+        text-decoration: underline;
+      }
+    }
 
     @media (min-width: 860px) {
       margin: 0 0 $default-spacing 0;
