@@ -169,6 +169,15 @@
     border-left: 10px solid  $dsa_red;
     padding-left: 25px;
   }
+
+  strong a {
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 #home-events {

@@ -3,20 +3,21 @@
 
   <div id='homepage-posts'>
     <% @posts.each do |post| %>
+      <% link_path = blog_post_path(
+        year: post.posted_at.year,
+        month: post.posted_at.month.to_s.rjust(2, '0'),
+        day: post.posted_at.day.to_s.rjust(2, '0'),
+        slug: post.slug
+        ) %>
       <article class='homepage-post'>
-        <strong><%= post.title %></strong>
+        <strong><%= link_to post.title, link_path %></strong>
         <p class='text-light'>
           <%= post.posted_at.localtime.to_date.to_s(:long) %>
         </p>
 
         <%= truncate(strip_tags(post.content), length: 150) %>
         <br>
-        <%= link_to 'Read&nbsp;more →'.html_safe, blog_post_path(
-          year: post.posted_at.year,
-          month: post.posted_at.month.to_s.rjust(2, '0'),
-          day: post.posted_at.day.to_s.rjust(2, '0'),
-          slug: post.slug
-          ) %>
+        <%= link_to 'Read&nbsp;more →'.html_safe, link_path  %>
       </article>
     <% end %>
   </div>
