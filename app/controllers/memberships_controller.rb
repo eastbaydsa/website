@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :require_nationbuilder_slug, :require_whitelisted_ip
+  before_action :require_nationbuilder_slug, :require_whitelisted_ip, :require_api_key
 
   def check
     email = params[:email].to_s.strip.downcase

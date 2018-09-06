@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_api_key
+    unless params[:api_key].present? and ENV['API_KEY'].present? and params[:api_key] == ENV['API_KEY']
+      render json: { message: 'Access denied' }, status: :unauthorized
+    end
+  end
+
   def handle_redirect
     redirect_to params[:u]
   end
