@@ -23,10 +23,10 @@ protected
 
   def page_form_tags
     # pull tags for this signup from the Page object
-    blacklist = ['national_member'] # tags that aren't allowed via a signup form
+    banlist = ['national_member'] # tags that aren't allowed via a signup form
     if params[:page_id].present?
       page = Page.find params[:page_id]
-      page.form_tags.to_s.split(',').map(&:strip).select(&:present?) - blacklist
+      return page.form_tags.to_s.split(',').map(&:strip).select(&:present?) - banlist
     end
   end
 
