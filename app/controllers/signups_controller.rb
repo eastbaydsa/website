@@ -5,7 +5,7 @@ class SignupsController < ApplicationController
   def create
     person = $nation_builder_client.call(:people, :push, person: person_params.to_h)
     person_id = person['person']['id']
-    $nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: tags_param }} )
+    $nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: page_form_tags }} )
     redirect_back flash: { success: 'Thank you for signing up.' }, fallback_location: root_path
   rescue NationBuilder::ClientError => e
     error = JSON.parse(e.message)['validation_errors'][0].capitalize rescue nil
@@ -21,9 +21,13 @@ protected
     end
   end
 
-  def tags_param
-    # returns an array of tags, assuming they're comma-seperated
-    params[:tags].to_s.split(',').map(&:strip).select(&:present?)
+  def page_form_tags
+    # pull tags for this signup from the Page object
+    blacklist = ['national_member'] # tags that aren't allowed via a signup form
+    if params[:page_id].present?
+      page = Page.find params[:page_id]
+      page.form_tags.to_s.split(',').map(&:strip).select(&:present?) - blacklist
+    end
   end
 
   def person_params

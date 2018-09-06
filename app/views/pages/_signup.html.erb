@@ -5,7 +5,7 @@
     <% if @page.form_collect_phone? %>
       <%= phone_field_tag 'person[mobile]', person_params[:mobile], class: 'input signup__phone', placeholder: 'Mobile phone', required: true %>
     <% end %>
-    <%= hidden_field_tag 'tags', @page.form_tags %>
+    <%= hidden_field_tag 'page_id', @page.id %>
     <%= submit_tag 'Submit', class: 'button button-primary' %>
   </div>
 <% end %>
