@@ -25,5 +25,7 @@
     <% end %>
   </div>
 
-  <%= link_to 'See more on our calendar →', events_path, class: 'button button-primary' %>
+  <%= link_to events_path, class: 'button button-primary' do %>
+    See more on our calendar &#8594;
+  <% end %>
 <% end %>
