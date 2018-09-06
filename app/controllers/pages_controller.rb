@@ -2,12 +2,16 @@ class PagesController < ApplicationController
   before_action :check_for_redirects, only: :show
 
   def home
-    @page = Page.where(slug: 'home').first
-    @page ||= Page.first
-
     @events = Event.query(limit: 3)
     @posts = BlogPost.homepage.limit(3)
-    render layout: 'full_width'
+
+    if Setting.homepage_hardcoded
+      render 'home', layout: 'full_width'
+    else
+      @page = Page.where(slug: 'home').first
+      @page ||= Page.first
+      render 'show'
+    end
   end
 
   def show

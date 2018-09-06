@@ -1,0 +1,12 @@
+# config/settings.yml for rails-settings-cached
+defaults: &defaults
+  homepage_hardcoded: false
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -38,6 +38,9 @@ GEM
       sprockets (< 4.1)
     activeadmin_quill_editor (0.1.1)
       activeadmin (~> 1.0)
+    activeadmin_settings_cached (2.3.1)
+      activeadmin
+      rails-settings-cached (>= 0.5.3, < 0.6.7)
     activeadmin_sortable_table (1.2.0)
       activeadmin (>= 1.0.0.pre1)
       uber (= 0.0.15)
@@ -206,6 +209,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-settings-cached (0.6.6)
+      rails (>= 4.2.0)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -288,6 +293,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   activeadmin_quill_editor
+  activeadmin_settings_cached
   activeadmin_sortable_table
   acts_as_list
   annotate
