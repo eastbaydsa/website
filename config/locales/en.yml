@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  settings:
+    attributes:
+      homepage_hardcoded: "Use HTML file at pages/home as homepage"
+  formtastic:
+    hints:
+      setting:
+        homepage_hardcoded: "Otherwise, system will look for a Page with slug \"home\""

@@ -8,18 +8,20 @@
         "name": "East Bay DSA"
       }
     }'
-  ]
+  ] %>
 
-  (@page.all_parents + [@page]).each_with_index do |p, index|
-    listItems << "{
-      \"@type\": \"ListItem\",
-      \"position\": #{index + 2},
-      \"item\": {
-        \"@id\": \"http://www.eastbaydsa.org/#{p.slug}\",
-        \"name\": \"#{p.title}\"
-      }
-    }"
-  end %>
+  <% if @page %>
+    <% (@page.all_parents + [@page]).each_with_index do |p, index|
+      listItems << "{
+        \"@type\": \"ListItem\",
+        \"position\": #{index + 2},
+        \"item\": {
+          \"@id\": \"http://www.eastbaydsa.org/#{p.slug}\",
+          \"name\": \"#{p.title}\"
+        }
+      }"
+    end %>
+  <% end %>
 
   <script type="application/ld+json">
     {

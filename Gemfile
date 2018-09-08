@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'activeadmin'
+gem 'activeadmin_settings_cached'
 gem 'acts_as_list'
 gem 'activeadmin_sortable_table'
 gem 'autoprefixer-rails'
