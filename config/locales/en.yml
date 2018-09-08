@@ -33,6 +33,7 @@ en:
   settings:
     attributes:
       homepage_hardcoded: "Use HTML file at pages/home as homepage"
+      search_in_footer: "Show search bar in site footer?"
   formtastic:
     hints:
       setting:

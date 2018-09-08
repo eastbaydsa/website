@@ -65,15 +65,17 @@
           </article>
         </div>
         <div class='footer__info'>
-          <article>
-            <%= form_tag 'https://duckduckgo.com/', method: :get, onsubmit: "this.elements['q'].value = 'site:#{current_domain} ' + this.elements['term'].value;" do %>
-              <div class='form__group'>
-                <%= text_field_tag 'term', nil, class: 'input', placeholder: "Search #{current_domain}", required: true %>
-                <%= hidden_field_tag 'q' %>
-                <%= submit_tag 'Search', class: 'button button-primary' %>
-              </div>
-            <% end %>
-          </article>
+          <% if Setting.search_in_footer %>
+            <article>
+              <%= form_tag 'https://duckduckgo.com/', method: :get, onsubmit: "this.elements['q'].value = 'site:#{current_domain} ' + this.elements['term'].value;" do %>
+                <div class='form__group'>
+                  <%= text_field_tag 'term', nil, class: 'input', placeholder: "Search #{current_domain}", required: true %>
+                  <%= hidden_field_tag 'q' %>
+                  <%= submit_tag 'Search', class: 'button button-primary' %>
+                </div>
+              <% end %>
+            </article>
+          <% end %>
 
           <article>
             <p class='text-light'>About Us</p>
