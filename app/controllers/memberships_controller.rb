@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :require_nationbuilder_slug, :require_whitelisted_ip, :require_api_key
+  before_action :log_ip, :require_nationbuilder_slug, :require_api_key
 
   def check
     email = params[:email].to_s.strip.downcase
@@ -19,9 +19,8 @@ class MembershipsController < ApplicationController
 
   private
 
-  def require_whitelisted_ip
-    return if ENV['AUTH0_IP_WHITELIST'].nil? or ENV['AUTH0_IP_WHITELIST'] == 'disabled'
-    whitelist = ENV['AUTH0_IP_WHITELIST'].split(',')
-    head :forbidden unless whitelist.include? request.remote_ip
+  def log_ip
+    email = params[:email] || '[no email provided]'
+    logger.info "Memberships#check request received from #{request.remote_ip} for #{email}"
   end
 end
