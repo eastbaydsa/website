@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_api_key
-    unless params[:api_key].present? and ENV['API_KEY'].present? and params[:api_key] == ENV['API_KEY']
+    unless params[:api_key].present? and ENV['API_KEY'].present? and
+        ActiveSupport::SecurityUtils.secure_compare(params[:api_key], ENV['API_KEY'])
       render json: { message: 'Access denied' }, status: :unauthorized
     end
   end
