@@ -28,7 +28,6 @@
     <% end %>
     <div class='signup'>
       <%= email_field_tag 'person[email]', person_params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
-      <%= hidden_field_tag 'tags', 'eb_supporter' %>
       <%= submit_tag 'Submit', class: 'button button-primary' %>
     </div>
   <% end %>
