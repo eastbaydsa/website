@@ -1,9 +1,8 @@
 <%= content_for :title, nil %>
 <%= content_for :description, "The East Bay Democratic Socialists of America (DSA) are democratically building a progressive movement for social change in local communities and politics." %>
-    
 
-<% # <div id='home-hero' class='hero hero-home' style='background-image: url(<%= @page.background_image_url %>);'> %>
-<div id='home-hero' class='hero hero-home' style='background-image: url(https://ebdsa-website.s3-us-west-1.amazonaws.com/upload/2018-08-31/1535695366900-dsa-header-cropped.jpg);'>
+
+<div id='home-hero' class='hero hero-home' style='background-image: url(<%= Setting.homepage_image_url %>);'>
   <div class='home-container home-columns container container-full-width'>
     <div id='home-hero-content'>
       <h1>
