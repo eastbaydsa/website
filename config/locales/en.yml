@@ -33,8 +33,10 @@ en:
   settings:
     attributes:
       homepage_hardcoded: "Use HTML file at pages/home as homepage"
+      homepage_image_url: "Homepage banner image"
       search_in_footer: "Show search bar in site footer?"
   formtastic:
     hints:
       setting:
         homepage_hardcoded: "Otherwise, system will look for a Page with slug \"home\""
+        homepage_image_url: "Required if homepage_hardcoded is set"

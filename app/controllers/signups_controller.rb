@@ -5,7 +5,9 @@ class SignupsController < ApplicationController
   def create
     person = $nation_builder_client.call(:people, :push, person: person_params.to_h)
     person_id = person['person']['id']
+
     $nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: page_form_tags }} )
+
     redirect_back flash: { success: 'Thank you for signing up.' }, fallback_location: root_path
   rescue NationBuilder::ClientError => e
     error = JSON.parse(e.message)['validation_errors'][0].capitalize rescue nil
@@ -27,6 +29,8 @@ protected
     if params[:page_id].present?
       page = Page.find params[:page_id]
       return page.form_tags.to_s.split(',').map(&:strip).select(&:present?) - banlist
+    else
+      return ['eb_supporter']
     end
   end
 
