@@ -1,6 +1,7 @@
 <%= content_for :title, @post.meta_title.present? ? @post.meta_title : @post.title %>
 <%= content_for :description, @post.meta_desc %>
 <%= content_for :meta do %>
+  <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:type" content="article" />
   <% if @post.featured_image %>
     <meta property="og:image" content="<%= @post.featured_image %>" />
