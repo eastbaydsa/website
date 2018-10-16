@@ -58,7 +58,7 @@
         </div>
         <% if @event.rsvp_phone %>
           <div class='form__group form__signup'>
-            <%= phone_field_tag :phone, params[:phone], class: 'input signup__email', placeholder: 'Phone number', required: true %>
+            <%= phone_field_tag :mobile, params[:mobile], class: 'input signup__email', placeholder: 'Mobile phone', required: true %>
           </div>
         <% end %>
         <%= submit_tag 'Submit', class: 'button button-secondary' %>

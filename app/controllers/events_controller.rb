@@ -55,11 +55,16 @@ class EventsController < ApplicationController
       $nation_builder_client.call(:people, :update, {
         id: person['person']['id'],
         person: {
-          phone: params[:phone]
+          phone: params[:mobile],
+          mobile: params[:mobile]
         }
       })
     else
-      person = $nation_builder_client.call(:people, :push, person: person_params.to_h)
+      push_params = person_params.to_h
+      if push_params[:mobile]
+        push_params[:phone] = push_params[:mobile]
+      end
+      person = $nation_builder_client.call(:people, :push, person: push_params)
     end
 
 
@@ -120,6 +125,6 @@ protected
   end
 
   def person_params
-    params.permit(:email, :first_name, :last_name, :phone)
+    params.permit(:email, :first_name, :last_name, :mobile)
   end
 end
