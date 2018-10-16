@@ -9,7 +9,9 @@ class Event
     'other' => 'Other' # <- Catch-all for rest of our tags, and events e/o any tags
   }
 
-  attr_accessor :id, :name, :start_time, :end_time, :description, :venue, :address, :image_url, :tags, :accept_rsvps
+  attr_accessor :id, :name, :start_time, :end_time,
+    :description, :venue, :address, :image_url,
+    :tags, :accept_rsvps, :rsvp_phone
 
   def initialize api_response
     self.id = api_response['id']
@@ -22,6 +24,7 @@ class Event
     self.image_url = api_response['meta_image_url'] # FIXME: image URL not returned!
     self.tags = api_response['tags']
     self.accept_rsvps = api_response['rsvp_form']['accept_rsvps']
+    self.rsvp_phone = api_response['rsvp_form']['phone'] == "required"
   end
 
   def to_param; id; end

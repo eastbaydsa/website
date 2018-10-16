@@ -51,7 +51,17 @@ class EventsController < ApplicationController
 
     # don't have 'em? create anew!
     # ClientErrors created by either of the next 2 API calls can be caught below
-    person ||= $nation_builder_client.call(:people, :push, person: person_params.to_h)
+    if person
+      $nation_builder_client.call(:people, :update, {
+        id: person['person']['id'],
+        person: {
+          phone: params[:phone]
+        }
+      })
+    else
+      person = $nation_builder_client.call(:people, :push, person: person_params.to_h)
+    end
+
 
     $nation_builder_client.call(:events, :rsvp_create, {
       site_slug: ENV['NATION_SITE_SLUG'],
@@ -62,7 +72,6 @@ class EventsController < ApplicationController
     flash[:success] = 'Thanks for your RSVP - see you there!'
 
   rescue NationBuilder::ClientError => e
-
     validation_errors = JSON.parse(e.message)['validation_errors']
     # remove the duplicate-rsvp error, just tell the user it worked :)
     validation_errors.delete 'signup_id has already been taken'
@@ -111,6 +120,6 @@ protected
   end
 
   def person_params
-    params.permit(:email, :first_name, :last_name)
+    params.permit(:email, :first_name, :last_name, :phone)
   end
 end
