@@ -12,7 +12,10 @@
     justify-content: space-between;
   }
 
-  .footer__menu { flex: 25%; }
+  .footer__menu {
+    flex: 25%;
+    padding-right: 30px;
+  }
   .footer__info { flex: 75%; }
 
   @media (max-width: $mobile_break_point) {
