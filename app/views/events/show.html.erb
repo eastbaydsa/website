@@ -46,7 +46,7 @@
 
   <% if @event.accept_rsvps %>
     <div class="form__container">
-      <h2>RSVP</h2>
+      <h2 id="rsvp">RSVP</h2>
       <p>Will you attend? Let us know!</p>
       <%= form_tag rsvp_path(@event.id) do %>
         <div class="form__group form__name">
