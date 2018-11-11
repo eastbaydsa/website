@@ -10,6 +10,16 @@
 .visible-mobile {
   display: none;
 }
+.show-past {
+  color: $text_color;
+  display: block;
+  text-align: center;
+  margin: $default_spacing 0;
+}
+
+.past-events {
+  display: none;
+}
 
 @media (max-width: $tablet_break_point) {
   .hidden-mobile {

@@ -26,8 +26,16 @@ class EventsController < ApplicationController
           tags: @tags
         )
 
+        if @start_date == Date.today.beginning_of_month
+          @past_events = @events.select{|e|
+            e.start_time >  @start_date.beginning_of_day &&
+            e.end_time < Date.today.beginning_of_day
+          }.sort_by(&:start_time)
+        end
+
         @upcoming_events = @events.select{|e|
-          e.start_time > @start_date.beginning_of_day &&
+          (e.start_time > (@start_date ==
+            Date.today.beginning_of_month ? Date.today.beginning_of_day : @start_date.beginning_of_day)) &&
           e.end_time < end_date.end_of_day
         }.sort_by(&:start_time)
 

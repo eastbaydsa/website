@@ -35,6 +35,19 @@
 
   <div class='visible-mobile'>
     <!-- Mobile should only display upcoming_events if it's set, otherwise all events -->
+    <% if @past_events %>
+      <a class='show-past' href='#'>Show past events</a>
+      <div class='past-events'>
+        <% @past_events.each do |event| %>
+          <article>
+            <p>
+              <%= link_to event.name, event_path(event, slug: event.slug) %><br>
+              <%= event.start_time.strftime('%A, %B %e, %Y at %l:%M %p') %>
+            </p>
+          </article>
+        <% end %>
+      </div>
+    <% end %>
     <% @upcoming_events.each do |event| %>
       <article>
         <p>
