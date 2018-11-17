@@ -21,7 +21,6 @@ class EventsController < ApplicationController
 
         end_date = @start_date.end_of_month
 
-        byebug
         @events = Event.query(
           start_date: (@start_date - 7.days).to_s,
           end_date: (end_date + 7.days).to_s,

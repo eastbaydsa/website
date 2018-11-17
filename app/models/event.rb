@@ -76,7 +76,6 @@ class Event
     # call responds
     tags = tags.clone
     other = tags.delete 'other'
-    byebug
     @events = $nation_builder_client.call(:events, :index, opts)["results"]
       .select{ |e| ['published', 'expired'].include?(e['status']) }
       .sort_by{ |e| e['start_time']} # NationBuilder API returns unsorted events
@@ -85,7 +84,6 @@ class Event
       .select{ |event|
         next true if tags.blank? and other.blank? and exclude_tags.blank? # return all events if no tags provided
         # normal tags - event shares one of the provided tags:
-        byebug
         (((tags & event.tags).present? or tags.blank?) and !(exclude_tags & event.tags).present?) or
         # 'other' category - event lacks any of our listed tags, but other was checked:
         ((TAGS.keys & event.tags).blank? && other)
