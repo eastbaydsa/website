@@ -190,6 +190,8 @@ GEM
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.5)
+    rack-slashenforce (0.0.3)
+      rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.4)
@@ -311,6 +313,7 @@ DEPENDENCIES
   pg
   pry
   puma (~> 3.7)
+  rack-slashenforce
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
   seed_dump
@@ -328,4 +331,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.5
+   1.17.1

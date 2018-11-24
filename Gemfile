@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'rack-slashenforce'
 gem 'devise'
 gem 'activeadmin'
 gem 'activeadmin_settings_cached'
