@@ -155,21 +155,15 @@ heroku git:remote -a eastbaydsa-staging
 Configure the test environment
 
 ```sh
-psql -c 'create database travis_ci_test;' -U postgres
+sudo su - postgres
+psql -c 'create database "ebdsa-website-test";' -U postgres
+exit
 ```
 
 Run the tests
 
 ```sh
-# set test DB config
-cp config/database.yml config/database.local.yml
-cp config/database.travis.yml config/database.yml
-
-# runs tests
 bundle exec rake
-
-# set original DB config
-cp config/database.yml config/database.local.yml
 ```
 
 ### Staging Environment
