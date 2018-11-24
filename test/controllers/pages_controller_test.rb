@@ -30,9 +30,9 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "redirect" do
-    Redirect.create!(from_path: "/foo/", to_url: "/bar")
+    # Redirect.create!(from_path: "/foo", to_url: "/bar")
     get "/foo/"
     assert_response 301
-    assert_redirected_to "/bar"
+    assert_redirected_to "/foo/"
   end
 end
