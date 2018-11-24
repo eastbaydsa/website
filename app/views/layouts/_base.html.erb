@@ -53,13 +53,27 @@
             <li><%= link_to 'Admin', current_admin_path %></li>
           <% end %>
         </ul>
+        <!--<ul class='header__menu' role="menu">
+        	<%# if session.key?(:userinfo) %>
+	        	<li>
+	        		<a><%#= session[:userinfo]["info"]["nickname"] %></a>
+	        	</li>
+	        	<li>
+        			<a href="/auth/logout">Logout</a>
+        		</li>
+	        <%# else %>
+		        <li>
+					<a href="/auth/auth0">Login</a>
+				</li>
+			<%# end%>
+		</ul>-->
       </nav>
     </div>
 
     <%= yield %>
 
     <div class='footer'>
-      <div class='container'>
+      <div class='home-container home-content container container-full-width'>
         <div class='footer__menu'>
           <article>
             <p class='text-light'>Get Involved</p>
@@ -78,18 +92,6 @@
           </article>
         </div>
         <div class='footer__info'>
-          <% if Setting.search_in_footer %>
-            <article>
-              <%= form_tag 'https://duckduckgo.com/', method: :get, onsubmit: "this.elements['q'].value = 'site:#{current_domain} ' + this.elements['term'].value;" do %>
-                <div class='form__group'>
-                  <%= text_field_tag 'term', nil, class: 'input', placeholder: "Search #{current_domain}", required: true %>
-                  <%= hidden_field_tag 'q' %>
-                  <%= submit_tag 'Search', class: 'button button-primary' %>
-                </div>
-              <% end %>
-            </article>
-          <% end %>
-
           <article>
             <p class='text-light'>About Us</p>
             <p>
@@ -111,6 +113,10 @@
 
           <p class='text-light'>Made with love by your East Bay DSA comrades 🌹</p>
         </div>
+        
+    	<div class='footer__info'>
+    		<a class="twitter-timeline" data-height="400" href="https://twitter.com/DSAEastBay?ref_src=twsrc%5Etfw">Tweets by DSAEastBay</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    	</div>
       </div>
     </div>
   </body>
