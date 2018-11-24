@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   get '/404', to: 'errors#not_found'
   get '/500', to: 'errors#internal_error'
 
+  get 'auth/oauth2/callback' => 'auth0#callback'
+  get 'auth/logout' => 'auth0#logout'
+  get 'auth/failure' => 'auth0#failure'
+  
   get '*slug', to: 'pages#show', as: 'page'
+  
   root to: "pages#home"
 end

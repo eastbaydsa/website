@@ -53,6 +53,20 @@
             <li><%= link_to 'Admin', current_admin_path %></li>
           <% end %>
         </ul>
+        <ul class='header__menu' role="menu">
+        	<% if session.key?(:userinfo) %>
+	        	<li>
+	        		<a><%= session[:userinfo]["info"]["nickname"] %></a>
+	        	</li>
+	        	<li>
+        			<a href="/auth/logout">Logout</a>
+        		</li>
+	        <% else %>
+		        <li>
+					<a href="/auth/auth0">Login</a>
+				</li>
+			<% end%>
+		</ul>
       </nav>
     </div>
 

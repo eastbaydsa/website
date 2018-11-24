@@ -30,4 +30,18 @@ module ApplicationHelper
       admin_dashboard_path
     end
   end
+  
+  def check_membership email
+     # need to rescue from the API call, cause it throws an error if not found
+    person = $nation_builder_client.call(:people, :match, email: email) rescue nil
+    national_member = person['person']['tags'].include?('national_member') rescue false
+    if national_member
+      national_member = person['person']['tags'].any? {|tag| tag.start_with?("meeting_general_")} rescue false
+    end
+    
+    whitelist = ENV['AUTH0_EMAIL_WHITELIST'].to_s.split(',')
+
+    national_member or whitelist.include?(email)
+  end
+  
 end
