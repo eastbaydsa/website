@@ -150,6 +150,28 @@ Hook your local repo up to the Heroku app by adding a Git remote:
 heroku git:remote -a eastbaydsa-staging
 ```
 
+### Running Tests
+
+Configure the test environment
+
+```sh
+psql -c 'create database travis_ci_test;' -U postgres
+```
+
+Run the tests
+
+```sh
+# set test DB config
+cp config/database.yml config/database.local.yml
+cp config/database.travis.yml config/database.yml
+
+# runs tests
+bundle exec rake
+
+# set original DB config
+cp config/database.yml config/database.local.yml
+```
+
 ### Staging Environment
 
 Visit the stage build at http://eastbaydsa-staging.herokuapp.com to test your changes.
