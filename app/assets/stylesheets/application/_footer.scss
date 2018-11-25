@@ -14,11 +14,16 @@
 
   .footer__menu {
     flex: 25%;
-    padding-right: 30px;
   }
-  .footer__info { flex: 75%; }
+  .footer__info { 
+    flex: 75%; 
+    padding-left: 30px;
+  }
 
   @media (max-width: $mobile_break_point) {
     .container { flex-direction: column; }
+    .footer__info {
+      padding-left: 0;
+    }
   }
 }
