@@ -25,7 +25,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show" do
-    get "#{@pages_uri}/#{pages(:test_page).slug}"
+    get "#{@pages_uri}#{pages(:test_page).slug}/"
     assert_response :success
   end
 
@@ -33,6 +33,16 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     Redirect.create!(from_path: "/foo", to_url: "/bar")
     get "/foo"
     assert_response 301
+    assert_redirected_to "/foo/"
+    get "/foo/"
+    assert_response 301
     assert_redirected_to "/bar"
   end
+  
+  test "redirect to slash" do
+    get "#{@pages_uri}#{pages(:test_page).slug}"
+    assert_response 301
+    assert_redirected_to "#{@pages_uri}#{pages(:test_page).slug}/"
+  end
+
 end

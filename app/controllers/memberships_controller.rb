@@ -1,19 +1,12 @@
 class MembershipsController < ApplicationController
+  include ApplicationHelper
+  
   before_action :log_ip, :require_nationbuilder_slug, :require_api_key
 
   def check
     email = params[:email].to_s.strip.downcase
 
-    # need to rescue from the API call, cause it throws an error if not found
-    person = $nation_builder_client.call(:people, :match, email: email) rescue nil
-    national_member = person['person']['tags'].include?('national_member') rescue false
-    if national_member
-      national_member = person['person']['tags'].any? {|tag| tag.start_with?("meeting_general_")} rescue false
-    end
-    
-    whitelist = ENV['AUTH0_EMAIL_WHITELIST'].to_s.split(',')
-
-    if national_member or whitelist.include?(email)
+    if check_membership(email)
       render json: { status: :found }, status: :ok
     else
       render json: { status: :not_found }, status: :not_found
