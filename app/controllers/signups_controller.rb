@@ -1,8 +1,12 @@
 class SignupsController < ApplicationController
   before_action :require_nationbuilder_slug
-  before_action :require_email
 
   def create
+    unless person_params[:email].present?
+      redirect_back flash: { error: 'Please enter an email address' }, fallback_location: root_path
+      return
+    end
+
     person = $nation_builder_client.call(:people, :push, person: person_params.to_h)
     person_id = person['person']['id']
 
@@ -15,13 +19,21 @@ class SignupsController < ApplicationController
     redirect_back flash: { error: error }, fallback_location: root_path
   end
 
-protected
+  def majority_signup
+    person = $nation_builder_client.call(:people, :push, person: {
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email]
+    })
+    person_id = person['person']['id']
 
-  def require_email
-    unless person_params[:email].present?
-      redirect_back flash: { error: 'Please enter an email address' }, fallback_location: root_path
-    end
+    $nation_builder_client.call(:people, :tag_person, { id: person_id, tagging: { tag: 'interest_majority' }} )
+    render json: {status: 'ok'}
+  rescue NationBuilder::ClientError => e
+    render json: JSON.parse(e.message), status: 400
   end
+
+protected
 
   def page_form_tags
     # pull tags for this signup from the Page object
