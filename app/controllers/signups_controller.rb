@@ -19,7 +19,7 @@ class SignupsController < ApplicationController
     redirect_back flash: { error: error }, fallback_location: root_path
   end
 
-  def majority_signup
+  def signup_majority
     person = $nation_builder_client.call(:people, :push, person: {
       first_name: params[:first_name],
       last_name: params[:last_name],
