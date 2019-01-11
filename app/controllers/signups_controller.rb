@@ -1,5 +1,6 @@
 class SignupsController < ApplicationController
   before_action :require_nationbuilder_slug
+  skip_before_action :verify_authenticity_token, only: :signup_majority
 
   def create
     unless person_params[:email].present?
