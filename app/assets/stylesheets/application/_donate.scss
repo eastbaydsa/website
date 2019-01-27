@@ -1,0 +1,24 @@
+#donate {
+  display: flex;
+  flex-wrap: wrap;
+
+  p {
+    margin-bottom: 20px;
+  }
+  em {
+    opacity: 0.65;
+  }
+}
+
+.donate-left {
+  margin-right: 40px;
+  min-width: 300px;
+  flex: 1;
+}
+
+.donate-right {
+  min-width: 310px;
+  max-width: 425px;
+  flex: 1;
+  flex-basis: 425px;
+}
