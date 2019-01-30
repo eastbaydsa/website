@@ -1,4 +1,4 @@
-@import 'variables_and_mixins';
+@import "variables_and_mixins";
 
 .home-container {
   width: 95%;
@@ -109,7 +109,6 @@
     @media (min-width: 860px) {
       margin: 0 0 $default-spacing 0;
     }
-
   }
 
   a {
@@ -117,32 +116,41 @@
   }
 
   .campaign-content {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     padding: $default-spacing;
   }
 
-  #campaign-jovanka {
-    background-image: image-url('campaign-jovanka.jpg');
+  #campaign-oea {
+    background-image: image-url("campaign-schools.jpg");
   }
 
-  #campaign-housing {
-    background-image: image-url('campaign-housing.jpg');
+  #campaign-night-school {
+    background-image: image-url("campaign-night-school.jpg");
     @media (min-width: 860px) {
       margin-left: 10px;
     }
   }
 }
 
-.campaigns-addendum {
-  background: $dsa_purple;
-  padding: $default-spacing * 2 $default-spacing;
-  color: white;
-  font-size: 24px;
-
-  a {
-    color: white;
-  }
-}
+// .campaigns-addendum {
+//   background: #419143; // bread for ed color
+//   padding: $default-spacing * 1.5 $default-spacing * 1.5;
+//   color: white;
+//   font-size: 24px;
+//   margin-bottom: $default-spacing;
+//   display: flex;
+//   align-items: center;
+//   flex-wrap: wrap;
+//
+//   span {
+//     margin-right: $default-spacing;
+//     margin: $default-spacing/2 $default-spacing $default-spacing/2 0;
+//   }
+//
+//   a {
+//     margin-top: $default-spacing/2;
+//   }
+// }
 
 .home-content {
   h1 {
@@ -177,7 +185,7 @@
 
   .homepage-post {
     flex: 1;
-    border-left: 10px solid  $dsa_red;
+    border-left: 10px solid $dsa_red;
     padding-left: 25px;
   }
 
