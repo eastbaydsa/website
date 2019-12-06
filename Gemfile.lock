@@ -208,7 +208,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.0)
-    puma (3.10.0)
+    puma (3.12.2)
     rack (2.0.5)
     rack-slashenforce (0.0.3)
       rack
@@ -334,7 +334,7 @@ DEPENDENCIES
   omniauth-auth0 (~> 2.0.0)
   pg
   pry
-  puma (~> 3.7)
+  puma (~> 3.12)
   rack-slashenforce
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
