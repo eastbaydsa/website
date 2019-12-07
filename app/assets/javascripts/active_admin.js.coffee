@@ -3,4 +3,5 @@
 #= require trix
 #= require activeadmin/quill_editor/quill
 #= require quill_editor_input
+#= require quill_link
 #= require attachments
