@@ -1,0 +1,18 @@
+<% if @highlighted_campaigns.present? %>
+  <h1>Campaigns</h1>
+
+  <div id='homepage-campaigns'>
+    <% @highlighted_campaigns.each do |campaign| %>
+      <article class='homepage-campaign'>
+        <strong><%= link_to campaign.title, page_path(campaign) %></strong>
+        <p class='text-light'>
+          <%= campaign.created_at.localtime.to_date.to_s(:long) %>
+        </p>
+
+        <%= truncate(strip_tags(campaign.content), length: 150) %>
+        <br>
+        <%= link_to 'Read&nbsp;more →'.html_safe, page_path(campaign)  %>
+      </article>
+    <% end %>
+  </div>
+<% end %>

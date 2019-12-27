@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906161531) do
+ActiveRecord::Schema.define(version: 20191227003328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 20180906161531) do
     t.string "meta_title"
     t.string "meta_desc"
     t.boolean "form_collect_phone", default: false, null: false
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_pages_on_order_id", unique: true
     t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
 

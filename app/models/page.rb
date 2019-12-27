@@ -18,16 +18,20 @@
 #  meta_title           :string
 #  meta_desc            :string
 #  form_collect_phone   :boolean          default(FALSE), not null
+#  order_id             :integer
 #
 # Indexes
 #
-#  index_pages_on_slug  (slug) UNIQUE
+#  index_pages_on_order_id  (order_id) UNIQUE
+#  index_pages_on_slug      (slug) UNIQUE
 #
 
 class Page < ApplicationRecord
   include HasSlug
 
-  scope :listed, -> { where(listed: true) }
+  scope :listed,                -> { where(listed: true) }
+  scope :campaigns,             -> { where('slug LIKE ?', 'campaign%') }
+  scope :highlighted_campaigns, -> { campaigns.where.not(order_id: nil) }
 
   has_many :subpages, class_name: 'Page', foreign_key: :parent_id
   belongs_to :parent, class_name: 'Page', optional: true

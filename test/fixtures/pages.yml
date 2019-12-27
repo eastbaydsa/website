@@ -18,10 +18,12 @@
 #  meta_title           :string
 #  meta_desc            :string
 #  form_collect_phone   :boolean          default(FALSE), not null
+#  order_id             :integer
 #
 # Indexes
 #
-#  index_pages_on_slug  (slug) UNIQUE
+#  index_pages_on_order_id  (order_id) UNIQUE
+#  index_pages_on_slug      (slug) UNIQUE
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

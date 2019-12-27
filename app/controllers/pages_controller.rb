@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     @events = Event.query(limit: 3)
     @posts = BlogPost.homepage.limit(3)
+    @highlighted_campaigns = Page.highlighted_campaigns.limit(3)
 
     if Setting.homepage_hardcoded
       render 'home', layout: 'full_width'
