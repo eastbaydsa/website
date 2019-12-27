@@ -4,14 +4,10 @@
   <div id='homepage-campaigns'>
     <% @highlighted_campaigns.each do |campaign| %>
       <article class='homepage-campaign'>
-        <strong><%= link_to campaign.title, page_path(campaign) %></strong>
-        <p class='text-light'>
-          <%= campaign.created_at.localtime.to_date.to_s(:long) %>
-        </p>
-
-        <%= truncate(strip_tags(campaign.content), length: 150) %>
-        <br>
-        <%= link_to 'Read&nbsp;more →'.html_safe, page_path(campaign)  %>
+        <%= image_tag( campaign.background_image_url) %>
+        <strong><%= link_to campaign.title.html_safe, page_path(campaign) %></strong>
+        <p> <%= truncate(strip_tags(campaign.content), length: 150) %> </p>
+        <%= link_to 'Get involved &#8594;'.html_safe, page_path(campaign), class: 'additional-info'  %>
       </article>
     <% end %>
   </div>

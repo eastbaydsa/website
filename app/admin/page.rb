@@ -11,6 +11,7 @@ ActiveAdmin.register Page do
     column :content do |post|
       truncate(strip_tags(post.content), length: 300)
     end
+    column :order_id
     column :listed
     actions
   end

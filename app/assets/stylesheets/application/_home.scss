@@ -170,15 +170,19 @@
   }
 }
 
-#home-news {
+#home-news, #home-highlighted {
   margin-bottom: 30px;
 
   @media (min-width: 960px) {
-    #homepage-posts {
+    #homepage-posts, #homepage-campaigns {
       display: flex;
     }
 
     .homepage-post {
+      margin-right: 40px;
+    }
+
+    .homepage-campaign {
       margin-right: 40px;
     }
   }
@@ -187,6 +191,23 @@
     flex: 1;
     border-left: 10px solid $dsa_red;
     padding-left: 25px;
+  }
+
+  .homepage-campaign {
+    flex: 1;
+    img {
+      max-width: 100%;
+    }
+
+    p {
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+
+    strong {
+      font-size: 1.7em;
+      line-height: 1.9em;
+    }
   }
 
   strong a {
