@@ -122,6 +122,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     flipper (0.17.1)
+    flipper-active_record (0.17.1)
+      activerecord (>= 4.2, < 7)
+      flipper (~> 0.17.1)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
     formtastic (3.1.5)
@@ -327,6 +330,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   flipper
+  flipper-active_record
   font-awesome-rails (~> 4.7, >= 4.7.0.2)
   icalendar
   jbuilder (~> 2.5)
