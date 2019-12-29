@@ -11,7 +11,7 @@ ActiveAdmin.register Page do
     column :content do |post|
       truncate(strip_tags(post.content), length: 300)
     end
-    column :order_id
+    column :order
     column :listed
     actions
   end
@@ -52,7 +52,7 @@ ActiveAdmin.register Page do
       f.input :parent, collection: Page.pluck(:slug, :id)
       f.input :listed, hint: 'Unlisted pages can still be visited by URL, but will not show up as a sub-page'
       f.input :background_image_url, as: :s3_url
-      f.input :order_id, as: :number, hint: 'Used for Campaigns that show up on the Home page'
+      f.input :order, as: :number, hint: 'Used for Campaigns that show up on the Home page'
       f.input :meta_title, as: :string
       f.input :meta_desc, as: :string
     end
@@ -65,6 +65,6 @@ ActiveAdmin.register Page do
   end
 
   permit_params :title, :subtitle, :content, :slug, :parent_id, :listed,
-    :show_form, :form_collect_phone, :form_tags, :order_id,
+    :show_form, :form_collect_phone, :form_tags, :order,
     :background_image_url, :meta_title, :meta_desc
 end

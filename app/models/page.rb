@@ -31,7 +31,7 @@ class Page < ApplicationRecord
 
   scope :listed,                -> { where(listed: true) }
   scope :campaigns,             -> { where('slug LIKE ?', 'campaign%') }
-  scope :highlighted_campaigns, -> { campaigns.where.not(order_id: nil) }
+  scope :highlighted_campaigns, -> { campaigns.where.not(order: nil) }
 
   has_many :subpages, class_name: 'Page', foreign_key: :parent_id
   belongs_to :parent, class_name: 'Page', optional: true
