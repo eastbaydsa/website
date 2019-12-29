@@ -6,5 +6,6 @@ services:
   - postgresql
 before_script:
   - gem install bundler
+  - bundler --version
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
