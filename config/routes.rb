@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  constraints CanAccessFlipperUI do
+    mount Flipper::UI.app(Flipper) => '/admin/flipper'
+  end
 
   constraints(:host => /oaklandbreadfored.org/) do
     match "/(*path)" => redirect {|params, req| "https://eastbaydsa.org/campaigns/bread-for-ed"}, via: [:get, :post]

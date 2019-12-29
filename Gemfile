@@ -50,6 +50,7 @@ gem 'activeadmin_quill_editor'
 gem 'icalendar'
 gem 'flipper'
 gem 'flipper-active_record'
+gem 'flipper-ui'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
