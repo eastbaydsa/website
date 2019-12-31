@@ -41,11 +41,11 @@
 </div>
 
 <div class='home-container home-content container container-full-width'>
-  <%# if Flipper.enabled?(:homepage_campaigns) %>
-  <div id='home-highlighted'>
-    <%= render 'highlighted_campaigns' %>
-  </div>
-  <%# end %>
+  <% if @show_campaigns_homepage_section %>
+    <div id='home-highlighted'>
+      <%= render 'highlighted_campaigns' %>
+    </div>
+  <% end %>
   <div id='home-news'>
     <%= render 'featured_posts' %>
   </div>
