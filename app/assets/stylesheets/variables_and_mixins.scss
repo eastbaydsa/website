@@ -83,3 +83,15 @@ $border_color: #e3e3e3;
   background: $dsa_red;
   border: none;
 }
+
+@mixin wide-container {
+  color: white;
+  padding-top: $default-spacing * 2.5;
+  margin-bottom: $default-spacing * 2;
+  padding-bottom: 30px;
+  font-size: 18px;
+  h3 {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+}

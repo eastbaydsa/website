@@ -46,6 +46,11 @@
       <%= render 'highlighted_campaigns' %>
     </div>
   <% end %>
+</div>
+<% if @show_majority_homepage_section %>
+  <%= render 'majority_homepage_section' %>
+<% end %>
+<div class='home-container home-content container container-full-width'>
   <div id='home-news'>
     <%= render 'featured_posts' %>
   </div>
