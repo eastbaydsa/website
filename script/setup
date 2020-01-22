@@ -1,0 +1,12 @@
+#!/bin/sh
+# Usage: script/setup
+
+set -e
+
+script/bootstrap
+
+set -x
+
+echo "==> Setting up databases"
+bin/rake db:drop
+bin/rake db:setup

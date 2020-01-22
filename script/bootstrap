@@ -84,8 +84,4 @@ checksum ${checksum_args} > ${checksum_path}
 echo "x`cat ${checksum_path} 2>/dev/null`"
 echo "x`checksum ${checksum_args}`"
 
-echo "==> Setting up databases"
-bin/rake db:setup
-bin/rake db:seed
-
 echo "==> application is now bootstrapped…"
