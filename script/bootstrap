@@ -69,6 +69,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
     # bug with bundler https://bundler.io/blog/2019/01/04/an-update-on-the-bundler-2-release.html
     bundler_version=`cat Gemfile.lock | grep -A 1 "BUNDLED WITH" | tail -1`
     gem install bundler -v $bundler_version
+    gem install foreman
     rbenv rehash
   }
 fi
