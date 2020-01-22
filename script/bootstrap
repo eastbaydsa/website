@@ -20,7 +20,8 @@ fi
 # checksum function returns checksum of current configuration.
 checksum() {
   (
-    cat $0
+    cat $0 2>/dev/null
+    cat .ruby-version 2>/dev/null
     cat Brewfile 2>/dev/null
     cat Gemfile Gemfile.lock 2>/dev/null
     cat bin/* 2>/dev/null
@@ -65,7 +66,9 @@ if [ "$(uname -s)" = "Darwin" ]; then
   rbenv install --skip-existing `rbenv version-name`
 
   (rbenv which bundle &>/dev/null && bundle -v &>/dev/null) || {
-    gem install bundler
+    # bug with bundler https://bundler.io/blog/2019/01/04/an-update-on-the-bundler-2-release.html
+    bundler_version=`cat Gemfile.lock | grep -A 1 "BUNDLED WITH" | tail -1`
+    gem install bundler -v $bundler_version
     rbenv rehash
   }
 fi
