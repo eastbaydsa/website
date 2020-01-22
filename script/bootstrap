@@ -1,0 +1,108 @@
+#!/bin/sh
+# Usage: script/bootstrap
+# Ensures all dependencies are installed locally.
+
+set -e
+
+if [ "$1" = "--debug" ]; then
+  shift
+  PRINT_DEBUG="1"
+  set -x
+fi
+
+# md5sum function used for calculating the checksum.
+if ! which md5sum >/dev/null 2>/dev/null; then
+  md5sum() {
+    md5
+  }
+fi
+
+# checksum function returns checksum of current configuration.
+checksum() {
+  (
+    cat $0
+    cat Brewfile 2>/dev/null
+    cat Gemfile Gemfile.lock 2>/dev/null
+    cat bin/* 2>/dev/null
+    brew services list | grep postgresql
+    echo "$@"
+  ) | md5sum
+}
+
+bundler_args="--path vendor/gems --local"
+checksum_args="${bundler_args}" # if we change the path also rev the checksum.
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --pristine)
+      pristine=yes
+      shift ;;
+    --quiet)
+      quiet=yes
+      bundler_args="${bundler_args} $1"
+      shift ;;
+    --force)
+      force=yes
+      shift ;;
+    *)
+      bundler_args="${bundler_args} $1"
+      shift ;;
+  esac
+done
+
+# Check the checksum.
+checksum_path=.bundle/checksum
+if [ "x${force}" != "yes" ]; then
+  if [ "x`cat ${checksum_path} 2>/dev/null`" = "x`checksum ${checksum_args}`" ]; then
+    if [ -z "${quiet}" ]; then
+      echo Bundle is up-to-date.
+    fi
+    exit 0
+  fi
+fi
+
+# only do these things on OS X
+if [ "$(uname -s)" = "Darwin" ]; then
+  echo "==> Running brew bundle"
+  brew update >/dev/null
+  brew bundle check &>/dev/null || brew bundle
+
+  abort_with_shell_setup_message() {
+    case $(basename ${SHELL:-bash}) in
+    sh|bash)
+      echo 'Error: add `eval "$(rbenv init -)"` to the end of your .bash_profile!' >&2; exit 1
+      ;;
+    zsh)
+      echo 'Error: add `eval "$(rbenv init -)"` to the end of your .zshrc!' >&2; exit 1
+      ;;
+    *)
+      echo 'Error: you must finish setting up rbenv in your shell; check `rbenv init` for instructions!' >&2; exit 1
+    esac
+  }
+
+  rbenv install --skip-existing ${rbenv version-name}
+
+  (rbenv which bundle &>/dev/null && bundle -v &>/dev/null) || {
+    gem install bundler
+    rbenv rehash
+  }
+fi
+
+bundle install $bundler_args
+
+# ensure gems are all installed
+echo "==> Installing gem dependencies…"
+bundle check --path vendor/gems 2>&1 > /dev/null || {
+  bundle install --path vendor/gems --quiet --without production
+  bundle package --all
+}
+
+checksum ${checksum_args} > ${checksum_path}
+
+echo "x`cat ${checksum_path} 2>/dev/null`"
+echo "x`checksum ${checksum_args}`"
+
+echo "==> Setting up databases"
+bin/rake db:setup
+bin/rake db:seed
+
+echo "==> application is now bootstrapped…"
