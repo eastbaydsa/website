@@ -12,4 +12,3 @@ BlogPost.create!([
 ]) if Rails.env.development?
 MenuItem.create!(label: 'Blog', slug: '/blog', container: 1)
 MenuItem.create!(label: 'Events', slug: '/events', container: 1)
-Home.create!(intro: "We are the East Bay DSA", featured_page_1_id: 1, featured_page_2_id: 1)
