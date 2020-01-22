@@ -1,3 +1,3 @@
 brew "rbenv"
 brew "postgres"
-brew "foreman"
+cask "foreman"
