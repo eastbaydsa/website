@@ -1,2 +1,2 @@
 brew "rbenv"
-brew "postgres"
+brew "postgresql"
