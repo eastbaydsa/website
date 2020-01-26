@@ -14,11 +14,13 @@ going forward.
 git clone git@github.com:eastbaydsa/website.git ebdsa-website
 cd ebdsa-website
 
-# In the cloned directory, run bootstrap script:
+# In the cloned directory, run bootstrap script to setup up dependencies:
 script/bootstrap
 
-# Run database migrations:
+# Run script to setup the database:
 script/setup
+
+# Get credentials from someone and add them to .env
 
 # Start local server
 script/server
