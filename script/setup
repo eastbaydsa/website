@@ -15,5 +15,13 @@ if ! pg_ctl -D /usr/local/var/postgres status; then
 fi
 
 echo "==> Setting up databases"
-bin/rake db:drop
-bin/rake db:setup
+if [ ! -f "tmp/datadump" ]; then
+    echo "tmp/datadump does not exist"
+    echo "please add datadump file to tmp directory"
+    echo "reach out to someone to get a snapshot of the database"
+    exit 1
+fi
+
+psql -c 'DROP DATABASE IF EXISTS "ebdsa-website"'
+psql -c 'create database "ebdsa-website"'
+pg_restore -v -d ebdsa-website tmp/datadump
