@@ -23,5 +23,7 @@ if [ ! -f "tmp/datadump" ]; then
 fi
 
 psql -c 'DROP DATABASE IF EXISTS "ebdsa-website"'
-psql -c 'create database "ebdsa-website"'
-pg_restore -v -d ebdsa-website tmp/datadump
+psql -c 'DROP DATABASE IF EXISTS "ebdsa-website-test"'
+bundle exec rake db:create
+bundle exec rake db:migrate
+pg_restore -v -a -d ebdsa-website tmp/datadump
