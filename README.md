@@ -7,20 +7,21 @@ going forward.
 
 ## Getting Started
 
-### Development setup
+### Quick start for OSX
 
 ```sh
 # Clone the repository source to local machine:
 git clone git@github.com:eastbaydsa/website.git ebdsa-website
 cd ebdsa-website
 
+# Get credentials from someone and add them to .env
+# Get datadump file and put in tmp/ directory
+
 # In the cloned directory, run bootstrap script to setup up dependencies:
 script/bootstrap
 
 # Run script to setup the database:
 script/setup
-
-# Get credentials from someone and add them to .env
 
 # Start local server
 script/server
@@ -29,6 +30,44 @@ script/server
 open http://localhost:5000
 ```
 
+Dependencies:
+
+- Ruby >= 2.4.0
+- Postgres
+  - [postgresapp.com](https://postgresapp.com) is a great option here
+  - Alternatively, you can install with [homebrew](https://brew.sh/)
+- bundler (gem install bundler)
+- foreman (gem install foreman)
+
+### First time setup
+
+Clone the repository source to local machine:
+
+```sh
+git clone git@github.com:eastbaydsa/website.git ebdsa-website
+cd ebdsa-website
+```
+
+In the cloned directory, install your gem dependencies with `bundler`:
+
+```sh
+bundle install
+```
+
+Create your database and run migrations:
+
+```sh
+bin/rake db:setup
+bin/rake db:seed
+```
+
+And start your local server with `foreman`:
+
+```sh
+foreman start
+```
+
+Your site will be available at http://localhost:5000
 
 ### NationBuilder Data
 
