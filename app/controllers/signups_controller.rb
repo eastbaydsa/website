@@ -48,7 +48,7 @@ protected
   end
 
   def person_params
-    person = params.fetch(:person, {}).permit :email, :mobile
+    person = params.fetch(:person, {}).permit :email, :mobile, :first_name, :last_name
     person[:email] = person[:email].downcase.strip if person[:email].present?
     person[:mobile] = person[:mobile].gsub(/[^0-9]/, '') if person[:mobile].present?
     person

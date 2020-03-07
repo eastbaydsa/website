@@ -1,6 +1,8 @@
 <% person_params = params[:person] || {} %>
 <%= form_tag signup_path do %>
   <div class='form__group'>
+    <%= text_field_tag 'person[first_name]', person_params[:first_name], class: 'input signup__first_name', placeholder: 'First name', required: false %>
+    <%= text_field_tag 'person[last_name]', person_params[:last_name], class: 'input signup__last_name', placeholder: 'Last name', required: false %>
     <%= email_field_tag 'person[email]', person_params[:email], class: 'input signup__email', placeholder: 'E-mail', required: true %>
     <% if @page.form_collect_phone? %>
       <%= phone_field_tag 'person[mobile]', person_params[:mobile], class: 'input signup__phone', placeholder: 'Mobile phone', required: true %>
