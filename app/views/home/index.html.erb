@@ -28,7 +28,7 @@
 
       <% person_params = params[:person] || {} %>
       <%= form_tag signup_path do %>
-        <%if @state == 'error' %>
+        <% if @state == 'error' %>
           <div class='signup__error'>Error: E-mail cannot be blank!</div>
         <% end %>
         <div class='signup'>
@@ -42,13 +42,13 @@
 
 <div class='home-container home-content container container-full-width'>
   <% if @show_campaigns_homepage_section %>
-    <div id='home-highlighted'>
-      <%= render 'highlighted_campaigns' %>
-    </div>
+  <div id='home-highlighted'>
+    <%= render 'highlighted_campaigns' %>
+  </div>
   <% end %>
 </div>
 <% if @show_majority_homepage_section %>
-  <%= render 'majority_homepage_section' %>
+<%= render 'majority_homepage_section' %>
 <% end %>
 <div class='home-container home-content container container-full-width'>
 

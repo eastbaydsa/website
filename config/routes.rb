@@ -40,5 +40,5 @@ Rails.application.routes.draw do
 
   get '*slug', to: 'pages#show', as: 'page'
 
-  root to: "pages#home"
+  root to: "home#index"
 end
