@@ -5,6 +5,7 @@ ActiveAdmin.register_page 'Site Configuration' do
 
   title = 'Site Configuration'
   display = {
+    homepage_header_text: :string,
     homepage_image_url: :s3_url,
     search_in_footer: :boolean,
 

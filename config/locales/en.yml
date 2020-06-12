@@ -32,6 +32,7 @@
 en:
   settings:
     attributes:
+      homepage_header_text: "Homepage header text"
       homepage_image_url: "Homepage banner image"
       search_in_footer: "Show search bar in site footer?"
 
