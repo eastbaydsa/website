@@ -1,4 +1,6 @@
 ActiveAdmin.register MenuItem do
+  menu parent: "Navigation"
+
   include ActiveAdmin::SortableTable # creates the controller action which handles the sorting
   config.sort_order = 'position_asc' # assumes you are using 'position' for your acts_as_list column
 

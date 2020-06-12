@@ -1,4 +1,6 @@
 ActiveAdmin.register Redirect do
+  menu parent: "Navigation"
+
   index do
     column :from_path
     column :to_url
@@ -12,7 +14,6 @@ ActiveAdmin.register Redirect do
       row :to_url
       row :clicks
     end
-    active_admin_comments
   end
 
   form do |f|

@@ -6,7 +6,6 @@
 #  title                :text
 #  content              :text
 #  slug                 :string           not null
-#  show_in_menu         :boolean
 #  parent_id            :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
@@ -19,6 +18,9 @@
 #  meta_desc            :string
 #  form_collect_phone   :boolean          default(FALSE), not null
 #  order                :integer
+#  homepage_campaign    :boolean
+#  homepage_text        :text
+#  homepage_color       :text
 #
 # Indexes
 #
@@ -30,8 +32,7 @@ class Page < ApplicationRecord
   include HasSlug
 
   scope :listed,                -> { where(listed: true) }
-  scope :campaigns,             -> { where('slug LIKE ?', 'campaign%') }
-  scope :highlighted_campaigns, -> { campaigns.where.not(order: nil) }
+  scope :highlighted_campaigns, -> { where(homepage_campaign: true).order(order: :asc) }
 
   has_many :subpages, class_name: 'Page', foreign_key: :parent_id
   belongs_to :parent, class_name: 'Page', optional: true

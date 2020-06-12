@@ -6,7 +6,6 @@
 #  title                :text
 #  content              :text
 #  slug                 :string           not null
-#  show_in_menu         :boolean
 #  parent_id            :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
@@ -19,6 +18,9 @@
 #  meta_desc            :string
 #  form_collect_phone   :boolean          default(FALSE), not null
 #  order                :integer
+#  homepage_campaign    :boolean
+#  homepage_text        :text
+#  homepage_color       :text
 #
 # Indexes
 #

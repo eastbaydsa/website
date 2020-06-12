@@ -49,10 +49,11 @@ trix-editor {
 // https://github.com/blocknotes/activeadmin_quill_editor/blob/master/app/assets/stylesheets/activeadmin/_quill_editor_input.sass
 body.active_admin form .quill-editor {
   display: inline-block;
-  width: calc(80% - 22px);
+  width: 100%;
+  max-width: 625px;
   .ql-editor {
     background-color: #fff;
-    max-height: 300px;
+    max-height: 500px;
     min-height: 150px;
     padding: 10px;
     // reset internal elements

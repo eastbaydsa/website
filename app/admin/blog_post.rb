@@ -1,4 +1,6 @@
 ActiveAdmin.register BlogPost do
+  menu parent: "Content"
+
   controller do
     defaults :finder => :find_by_slug
   end
@@ -53,7 +55,6 @@ ActiveAdmin.register BlogPost do
         row c.to_sym
       end
     end
-    active_admin_comments
   end
 
   form do |f|

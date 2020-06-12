@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191229004622) do
+ActiveRecord::Schema.define(version: 20200612205218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 20191229004622) do
     t.text "title"
     t.text "content"
     t.string "slug", null: false
-    t.boolean "show_in_menu"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,6 +102,9 @@ ActiveRecord::Schema.define(version: 20191229004622) do
     t.string "meta_desc"
     t.boolean "form_collect_phone", default: false, null: false
     t.integer "order"
+    t.boolean "homepage_campaign"
+    t.text "homepage_text"
+    t.text "homepage_color"
     t.index ["order"], name: "index_pages_on_order", unique: true
     t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
