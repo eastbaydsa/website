@@ -73,6 +73,10 @@ ActiveAdmin.register Page do
     end
     f.inputs 'Homepage feature' do
       f.input :homepage_campaign, as: :boolean, label: 'Feature as homepage campaign'
+      f.input :homepage_text, as: :text, label: 'Homepage blurb'
+      f.input :homepage_color, as: :color_picker, palette: [
+        '#ed2c24', '#ea2127', '#3b2462', '#009aaf', '#e73c78', '#3059a9', '#6c0dcb', '#1d7832', '#ab6305'
+      ]
       f.input :order, as: :select, collection: 1..10
     end
     f.inputs 'Meta information' do
@@ -89,5 +93,6 @@ ActiveAdmin.register Page do
 
   permit_params :title, :subtitle, :content, :slug, :parent_id, :listed,
     :show_form, :form_collect_phone, :form_tags, :order,
-    :background_image_url, :meta_title, :meta_desc, :homepage_campaign
+    :background_image_url, :meta_title, :meta_desc, :homepage_campaign, 
+    :homepage_text, :homepage_color
 end
