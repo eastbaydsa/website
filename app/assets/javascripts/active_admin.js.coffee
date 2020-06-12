@@ -1,4 +1,5 @@
 #= require active_admin/base
+#= require activeadmin_addons/all
 #= require activeadmin_sortable_table
 #= require trix
 #= require activeadmin/quill_editor/quill
