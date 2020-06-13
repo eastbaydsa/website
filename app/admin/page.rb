@@ -19,6 +19,7 @@ ActiveAdmin.register Page do
     column :content do |post|
       truncate(strip_tags(post.content), length: 50)
     end
+    toggle_bool_column :homepage_campaign
     actions
   end
 

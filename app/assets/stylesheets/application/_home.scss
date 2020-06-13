@@ -212,10 +212,6 @@
       margin-right: 40px;
     }
 
-    .homepage-campaign {
-      flex-basis: 50%;
-      max-width: 50%;
-    }
   }
 
   .homepage-post {
@@ -223,24 +219,35 @@
     border-left: 10px solid $dsa_red;
     padding-left: 25px;
   }
+}
+
+#homepage-campaigns {
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 
   .homepage-campaign {
-    flex: 1;
     position: relative;
+    flex: 1;
+    height: 375px;
+    flex-basis: 50%;
+    margin-bottom: 0;
 
-    img {
-      max-width: 100%;
-      filter: grayscale(100%) brightness(150%) contrast(50%);
-    }
-
-    .campaign-overlay {
+    .background, .color-overlay, .background-wrapper {
       position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
       right: 0;
-      opacity: 0.65;
     } 
+
+    .background-wrapper .background {
+      background-size: cover;
+      filter: grayscale(100%) brightness(150%) contrast(50%);  
+    }
+
+    .background-wrapper .color-overlay {
+      opacity: 0.65;
+    }
 
     .campaign-content {
       color: white;
@@ -257,19 +264,6 @@
       font-size: 1.7em;
       line-height: 1.9em;
     }
-  }
-
-  strong a {
-    color: $text-color;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  p.all-campaigns {
-    padding-top: 0.5em;
   }
 }
 

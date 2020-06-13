@@ -4,9 +4,10 @@
 <div id='homepage-campaigns'>
   <% @highlighted_campaigns.each do |campaign| %>
   <article class='homepage-campaign'>
-    <%= image_tag( campaign.background_image_url) %>
-
-    <div class='campaign-overlay' style='background-color: <%= campaign.homepage_color || '#f00' %>'></div>
+    <div class='background-wrapper'>
+      <div class='background' style='background-image: url(<%= campaign.background_image_url %>)'></div>
+      <div class='color-overlay' style='background-color: <%= campaign.homepage_color || '#f00' %>'></div>
+    </div>
     <div class='campaign-content'>
       <strong>
         <%= campaign.title.html_safe %>
